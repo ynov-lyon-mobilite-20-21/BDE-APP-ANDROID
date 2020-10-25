@@ -2,9 +2,16 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
+        <!--
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        -->
+    </style>
+
+    <!-- Style Bottom Navigation View -->
+    <style name="CustomTextNavBottom">
+        <item name="android:textSize">8sp</item>
     </style>
 
 </resources>
