@@ -1,3 +1,16 @@
 <resources>
-    <string name="app_name">My Application2</string>
+
+    <!--Titles-->
+    <string name="app_name">BDE</string>
+    <string name="first_OnBoardingScreen">Premier<br>Onboarding</br></string>
+    <string name="second_OnBoardingScreen">Second<br>Onboarding</br></string>
+
+
+    <!--Description-->
+    <string name="first_OnBoardingScreen_desc">Entrez du texte</string>
+    <string name="second_OnBoardingScreen_desc">Entrez du second texte</string>
+
+    <!--Buttons-->
+    <string name="OnBoardingScreen_buttons">Suivant</string>
+
 </resources>
