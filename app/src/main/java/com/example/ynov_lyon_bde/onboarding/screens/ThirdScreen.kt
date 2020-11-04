@@ -33,7 +33,6 @@ class ThirdScreen : Fragment() {
         val editor = sharedPref.edit()
         editor.putBoolean("Finished", true)
         editor.apply()
-
     }
 
 }
