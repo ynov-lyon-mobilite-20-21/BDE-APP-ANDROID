@@ -10,7 +10,7 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import kotlinx.coroutines.delay
 
-class SplashFragment : Fragment() {
+class OnBoardingFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -32,8 +32,5 @@ class SplashFragment : Fragment() {
     private fun onBoardingFinished(): Boolean{
         val sharedPref = requireActivity().getSharedPreferences("onBoarding", Context.MODE_PRIVATE)
         return sharedPref.getBoolean("Finished",false)
-
     }
-
-
 }
