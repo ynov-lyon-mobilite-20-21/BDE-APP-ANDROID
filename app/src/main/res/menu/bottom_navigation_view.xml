@@ -7,10 +7,6 @@
         android:title="ÉVÉNEMENTS"/>
 
     <item
-        android:id="@+id/home"
-        android:icon="@mipmap/ic_logo_foreground"/>
-
-    <item
         android:id="@+id/account"
         android:icon="@mipmap/ic_account_foreground"
         android:title="MON COMPTE"/>

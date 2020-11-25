@@ -11,7 +11,7 @@
 
     <!-- Style Bottom Navigation View -->
     <style name="CustomTextNavBottom">
-        <item name="android:textSize">8sp</item>
+        <item name="android:textSize">10sp</item>
     </style>
 
 </resources>
