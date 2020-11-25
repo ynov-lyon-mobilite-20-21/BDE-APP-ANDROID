@@ -1,3 +1,26 @@
 <resources>
     <string name="app_name">app BDE</string>
+    <string-array name="classe_array">
+        <item></item>
+        <item>B1</item>
+        <item>B2</item>
+        <item>B3</item>
+        <item>Master1</item>
+        <item>Master2</item>
+    </string-array>
+    <string-array name="faculty_array">
+        <item></item>
+        <item>Création Design</item>
+        <item>Animation 3D Jeux vidéo</item>
+        <item>Audiovisuel</item>
+        <item>Marketing Communication</item>
+        <item>Robotique Ingénierie Systèmes</item>
+        <item>Informatique Ingésup</item>
+    </string-array>
+    <string-array name="statut_array">
+        <item></item>
+        <item>Statut1</item>
+        <item>Statut2</item>
+        <item>Statut3</item>
+    </string-array>
 </resources>

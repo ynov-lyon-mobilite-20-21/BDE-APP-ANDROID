@@ -6,6 +6,16 @@
     android:layout_height="match_parent"
     tools:context=".CreateUserActivity">
 
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="188dp"
+        android:layout_height="146dp"
+        app:layout_constraintBottom_toTopOf="@+id/textViewConnexion"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_bde_connexion" />
+
     <EditText
         android:id="@+id/editTextMail"
         android:layout_width="wrap_content"
@@ -13,91 +23,21 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:text=""
-        app:layout_constraintBottom_toTopOf="@+id/editTextPassword"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textViewEmail"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textViewEmail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Email"
         app:layout_constraintBottom_toTopOf="@+id/textViewPassword"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/editTextClass"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text=""
-        app:layout_constraintBottom_toTopOf="@+id/editTextFaculty"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textViewClass"
-        app:layout_constraintTop_toBottomOf="@+id/editTextPhone" />
-
-    <TextView
-        android:id="@+id/textViewPhone"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Téléphone"
-        app:layout_constraintBottom_toTopOf="@+id/textViewClass"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewPassword" />
-
-    <EditText
-        android:id="@+id/editTextPhone"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text=""
-        app:layout_constraintBottom_toTopOf="@+id/editTextClass"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textViewPhone"
-        app:layout_constraintTop_toBottomOf="@+id/editTextPassword" />
-
-    <TextView
-        android:id="@+id/textViewFaculty"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Filière"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewClass" />
-
-    <TextView
-        android:id="@+id/textViewClass"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Classe"
-        app:layout_constraintBottom_toTopOf="@+id/textViewFaculty"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewPhone" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewEmail" />
 
     <TextView
         android:id="@+id/textViewPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Mot de passe"
-        app:layout_constraintBottom_toTopOf="@+id/textViewPhone"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewEmail" />
-
-    <EditText
-        android:id="@+id/editTextFaculty"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text=""
-        app:layout_constraintBottom_toTopOf="@+id/buttonValidate"
+        android:text="MOT DE PASSE"
+        app:layout_constraintBottom_toTopOf="@+id/editTextPassword"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textViewFaculty"
-        app:layout_constraintTop_toBottomOf="@+id/editTextClass" />
+        app:layout_constraintHorizontal_bias="0.32"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextMail" />
 
     <EditText
         android:id="@+id/editTextPassword"
@@ -106,18 +46,112 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:text=""
-        app:layout_constraintBottom_toTopOf="@+id/editTextPhone"
+        app:layout_constraintBottom_toTopOf="@+id/textViewClass"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textViewPassword"
-        app:layout_constraintTop_toBottomOf="@+id/editTextMail" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewPassword" />
+
+    <TextView
+        android:id="@+id/textViewEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ADRESSE E-MAIL"
+        app:layout_constraintBottom_toTopOf="@+id/editTextMail"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.333"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewConnexion" />
 
     <Button
         android:id="@+id/buttonValidate"
+        style="@style/Widget.AppCompat.Button"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Button"
+        android:layout_height="48dp"
+        android:background="@drawable/button_style"
+        android:textAllCaps="false"
+        android:text="Créer un compte"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerStatut" />
+
+
+    <Spinner
+        android:id="@+id/spinnerClasse"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:entries="@array/classe_array"
+        app:layout_constraintBottom_toTopOf="@+id/textViewFaculty"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewClass" />
+
+    <TextView
+        android:id="@+id/textViewFaculty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="FILIERE"
+        app:layout_constraintBottom_toTopOf="@+id/spinnerFaculty"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.278"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerClasse" />
+
+    <TextView
+        android:id="@+id/textViewStatut"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="STATUT"
+        app:layout_constraintBottom_toTopOf="@+id/spinnerStatut"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.28"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerFaculty" />
+
+    <TextView
+        android:id="@+id/textViewClass"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="CLASSE"
+        app:layout_constraintBottom_toTopOf="@+id/spinnerClasse"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.28"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextPassword" />
+
+    <Spinner
+        android:id="@+id/spinnerFaculty"
+        style="@style/spinnerDropDownItemStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:entries="@array/faculty_array"
+        app:layout_constraintBottom_toTopOf="@+id/textViewStatut"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewFaculty" />
+
+    <Spinner
+        android:id="@+id/spinnerStatut"
+        style="@style/spinnerDropDownItemStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:entries="@array/faculty_array"
+        app:layout_constraintBottom_toTopOf="@+id/buttonValidate"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewStatut" />
+
+    <TextView
+        android:id="@+id/textViewConnexion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="CONNEXION"
+        app:layout_constraintBottom_toTopOf="@+id/textViewEmail"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
