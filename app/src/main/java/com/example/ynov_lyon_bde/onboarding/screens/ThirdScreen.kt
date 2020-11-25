@@ -7,7 +7,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
-import androidx.viewpager.widget.ViewPager
 import com.example.ynov_lyon_bde.R
 import kotlinx.android.synthetic.main.fragment_third_screen.view.*
 
@@ -24,7 +23,6 @@ class ThirdScreen : Fragment() {
             findNavController().navigate(R.id.action_viewPagerFragment_to_homeFragment)
             onBoardingFinished()
         }
-
         return view
     }
 
