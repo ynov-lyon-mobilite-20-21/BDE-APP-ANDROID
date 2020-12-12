@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".HomeFragment">
+    tools:context=".MainActivity">
 
     <FrameLayout
         android:id="@+id/wrapper"
@@ -13,10 +13,16 @@
         android:layout_height="match_parent"
         android:layout_above="@+id/bottom_navigation_view" >
 
-        <TextView
+        <fragment
+            android:id="@+id/nav_host_fragment"
+            android:name="androidx.navigation.fragment.NavHostFragment"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Home"/>
+            android:layout_height="match_parent"
+            android:layout_above="@id/bottom_navigation"
+            android:layout_below="@+id/toolbar"
+            app:defaultNavHost="true"
+            app:navGraph="@navigation/nav_graph"/>
+
     </FrameLayout>
 
     <!-- Bottom app bar-->
@@ -46,23 +52,13 @@
     </RelativeLayout>
 
     <!-- Image Logo Home -->
-<!--    <Button-->
-<!--        android:id="@+id/buttonHome"-->
-<!--        android:layout_width="70dp"-->
-<!--        android:layout_height="70dp"-->
-<!--        android:background="@drawable/rounded_button"-->
-<!--        app:layout_anchor="@id/bottom_navigation"-->
-<!--        android:layout_marginBottom="36dp"-->
-<!--        app:layout_anchorGravity="center"/>-->
-
     <ImageView
         android:id="@+id/home"
         android:layout_width="70dp"
         android:layout_height="70dp"
-        app:srcCompat="@drawable/logo_bde_final_1024_2020"
-        app:layout_anchor="@id/bottom_navigation"
         android:layout_marginBottom="35dp"
         app:layout_anchorGravity="center"
-        android:elevation="2dp" />
+        app:srcCompat="@drawable/logo_bde_final_1024_2020"
+        app:layout_anchor="@id/bottom_navigation"/>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -2,12 +2,12 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <!-- Items Navigation Menu -->
     <item
-        android:id="@+id/events"
+        android:id="@+id/eventsFragment"
         android:icon="@mipmap/ic_events_foreground"
         android:title="ÉVÉNEMENTS"/>
 
     <item
-        android:id="@+id/account"
+        android:id="@+id/accountFragment"
         android:icon="@mipmap/ic_account_foreground"
         android:title="MON COMPTE"/>
 </menu>
