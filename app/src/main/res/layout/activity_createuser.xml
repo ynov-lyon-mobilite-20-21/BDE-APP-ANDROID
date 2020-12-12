@@ -4,29 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background_app"
     tools:context=".CreateUserActivity">
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="188dp"
-        android:layout_height="146dp"
-        app:layout_constraintBottom_toTopOf="@+id/textViewConnexion"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_bde_connexion" />
-
-    <EditText
-        android:id="@+id/editTextMail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text=""
-        app:layout_constraintBottom_toTopOf="@+id/textViewPassword"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewEmail" />
 
     <TextView
         android:id="@+id/textViewPassword"
@@ -39,51 +18,41 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextMail" />
 
-    <EditText
-        android:id="@+id/editTextPassword"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text=""
-        app:layout_constraintBottom_toTopOf="@+id/textViewClass"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewPassword" />
-
     <TextView
         android:id="@+id/textViewEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
         android:text="ADRESSE E-MAIL"
         app:layout_constraintBottom_toTopOf="@+id/editTextMail"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.333"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewConnexion" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/buttonValidate"
+        android:id="@+id/buttonCreateUser"
         style="@style/Widget.AppCompat.Button"
-        android:layout_width="wrap_content"
-        android:layout_height="48dp"
+        android:layout_width="135dp"
+        android:layout_height="44dp"
         android:background="@drawable/button_style"
-        android:textAllCaps="false"
         android:text="Créer un compte"
+        android:textAllCaps="false"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinnerStatut" />
-
+        app:layout_constraintTop_toBottomOf="@+id/spinnerFormation" />
 
     <Spinner
-        android:id="@+id/spinnerClasse"
+        android:id="@+id/spinnerPromotion"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:entries="@array/classe_array"
+        android:entries="@array/promotion_array"
         app:layout_constraintBottom_toTopOf="@+id/textViewFaculty"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewClass" />
 
@@ -92,66 +61,60 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="FILIERE"
-        app:layout_constraintBottom_toTopOf="@+id/spinnerFaculty"
+        app:layout_constraintBottom_toTopOf="@+id/spinnerFormation"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.278"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinnerClasse" />
-
-    <TextView
-        android:id="@+id/textViewStatut"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="STATUT"
-        app:layout_constraintBottom_toTopOf="@+id/spinnerStatut"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.28"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinnerFaculty" />
+        app:layout_constraintTop_toBottomOf="@+id/spinnerPromotion" />
 
     <TextView
         android:id="@+id/textViewClass"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="CLASSE"
-        app:layout_constraintBottom_toTopOf="@+id/spinnerClasse"
+        app:layout_constraintBottom_toTopOf="@+id/spinnerPromotion"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.28"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextPassword" />
 
     <Spinner
-        android:id="@+id/spinnerFaculty"
+        android:id="@+id/spinnerFormation"
         style="@style/spinnerDropDownItemStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:entries="@array/faculty_array"
-        app:layout_constraintBottom_toTopOf="@+id/textViewStatut"
+        android:entries="@array/formation_array"
+        app:layout_constraintBottom_toTopOf="@+id/buttonCreateUser"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewFaculty" />
 
-    <Spinner
-        android:id="@+id/spinnerStatut"
-        style="@style/spinnerDropDownItemStyle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:entries="@array/faculty_array"
-        app:layout_constraintBottom_toTopOf="@+id/buttonValidate"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewStatut" />
-
-    <TextView
-        android:id="@+id/textViewConnexion"
+    <EditText
+        android:id="@+id/editTextPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="CONNEXION"
-        app:layout_constraintBottom_toTopOf="@+id/textViewEmail"
+        android:ems="10"
+        android:inputType="textPassword"
+        android:text=""
+        app:layout_constraintBottom_toTopOf="@+id/textViewClass"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewPassword" />
+
+    <EditText
+        android:id="@+id/editTextMail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text=""
+        app:layout_constraintBottom_toTopOf="@+id/textViewPassword"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewEmail" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

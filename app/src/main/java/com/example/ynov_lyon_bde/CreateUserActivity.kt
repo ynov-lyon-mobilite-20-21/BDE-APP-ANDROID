@@ -1,17 +1,20 @@
 
 package com.example.ynov_lyon_bde
 
+
 import android.accounts.Account
 import android.accounts.AccountManager
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.widget.ArrayAdapter
 import android.widget.Spinner
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.android.volley.Request
-import com.android.volley.toolbox.StringRequest
-import com.android.volley.toolbox.Volley
+import com.example.ynov_lyon_bde.api.ApiManager
+import com.example.ynov_lyon_bde.model.UserInfo
 import kotlinx.android.synthetic.main.activity_createuser.*
+
+
 
 class CreateUserActivity : AppCompatActivity() {
 
@@ -25,25 +28,25 @@ class CreateUserActivity : AppCompatActivity() {
 
 
         //Spinner to take class for a new user
-        val spinnerC: Spinner = findViewById(R.id.spinnerClasse)
+        val spinnerP: Spinner = findViewById(R.id.spinnerPromotion)
         // Create an ArrayAdapter using the string array and a default spinner layout
         ArrayAdapter.createFromResource(
             this,
-            R.array.classe_array,
+            R.array.promotion_array,
             android.R.layout.simple_spinner_item
         ).also { adapter ->
             // Specify the layout to use when the list of choices appears
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
             // Apply the adapter to the spinner
-            spinnerC.adapter = adapter
+            spinnerP.adapter = adapter
         }
 
         //Spinner to take faculty for a new user
-        val spinnerF: Spinner = findViewById(R.id.spinnerFaculty)
+        val spinnerF: Spinner = findViewById(R.id.spinnerFormation)
         // Create an ArrayAdapter using the string array and a default spinner layout
         ArrayAdapter.createFromResource(
             this,
-            R.array.faculty_array,
+            R.array.formation_array,
             android.R.layout.simple_spinner_item
         ).also { adapter ->
             // Specify the layout to use when the list of choices appears
@@ -52,59 +55,69 @@ class CreateUserActivity : AppCompatActivity() {
             spinnerF.adapter = adapter
         }
 
-        //Spinner to take statut for a new user
-        val spinnerS: Spinner = findViewById(R.id.spinnerStatut)
-        // Create an ArrayAdapter using the string array and a default spinner layout
-        ArrayAdapter.createFromResource(
-            this,
-            R.array.statut_array,
-            android.R.layout.simple_spinner_item
-        ).also { adapter ->
-            // Specify the layout to use when the list of choices appears
-            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-            // Apply the adapter to the spinner
-            spinnerS.adapter = adapter
-        }
+        val listParameters = arrayListOf<String>()
 
-        buttonValidate.setOnClickListener {
+        buttonCreateUser.setOnClickListener {
             // Take informations User
-            val email = editTextMail.text
-            val psswd = editTextPassword.text
-            val classe = spinnerC.getSelectedItem().toString()
-            val faculty = spinnerF.getSelectedItem().toString()
-            val statut = spinnerS.getSelectedItem().toString()
+            val email = if(android.util.Patterns.EMAIL_ADDRESS.matcher(editTextMail.text.toString()).matches())  editTextMail.text.toString() else null
+            var firstName: String? = null
+            var lastName: String? = null
+            if(email != null){
+                val names: String = editTextMail.text.toString().split('@')[0]
+                firstName = names.split('.')[0]
+                lastName = names.split('.')[1]
+            }
 
-            /*******SEND REQUEST TO API AND TAKE RESPONSE***********/
-            // Instantiate the RequestQueue.
-            val queue = Volley.newRequestQueue(this)
-            //val url = "https://self-buy-api.herokuapp.com/api/users"
-            val url = "https://www.google.fr/"
-            // Request a string response from the provided URL.
-            val stringRequest = StringRequest(
-                Request.Method.GET, url,
-                { response ->
-                    // Display the response string.
-                    println("Response is: $response")
-                },
-                { println("That didn't work!") })
+            val password = editTextPassword.text.toString()
+            val promotion = spinnerP.getSelectedItem().toString()
+            val formation = spinnerF.getSelectedItem().toString()
+            val pictureUrl = "imageeeee"
 
-            // Add the request to the RequestQueue.
-            queue.add(stringRequest)
-
+            println("//////////////////"+ firstName+lastName+email+password+promotion+formation)
+            //send request to api to create user
+            if(firstName!= null && lastName!= null && email!= null && password!= null && promotion!= null && formation!= null){
+                signUp(firstName,lastName,email,password,promotion,formation,pictureUrl)
+            }
+            else{
+                Toast.makeText(this, "Formulaire mal renseigné", Toast.LENGTH_SHORT).show()
+            }
 
 
             //init an account manager
+            /*
             val am: AccountManager = AccountManager.get(this) // "this" references the current Context
             val accounts: Array<out Account> = am.getAccountsByType("com.google")
-
+*/
         }
 
-        fun signUp(email: String?, password: String?): String? {
-            // TODO: if user don't exist, register new user on the server and return its auth token
-            return null
-        }
+
     }
 
+    private fun signUp(firstName: String, lastName: String, email: String, password: String, promotion: String, formation: String, pictureUrl:String) {
+        val apiService = ApiManager()
+        val userInfo = UserInfo(  userId = null,
+            userFirstName = firstName,
+            userLastName = lastName,
+            userEmail = email,
+            userPassword = password,
+            userPromotion = promotion,
+            userFormation = formation,
+            userPictureUrl = pictureUrl)
 
+        apiService.addUser(userInfo) {
+            if (it?.userId != null) {
+                // it = newly added user parsed as response
+                // it?.userId = newly added user ID
+                    println(it.userFirstName)
+                Toast.makeText(this, "nouvel utilisateur ajouté", Toast.LENGTH_SHORT).show()
+            } else {
+                println(it?.userEmail+it?.responseMessage+ it?.responseCode)
+                Toast.makeText(this, "Erreur lors de l'enregistrement d'un nouvel utilisateur", Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
 }
+
+
+
 
