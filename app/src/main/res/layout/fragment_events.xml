@@ -7,71 +7,10 @@
     android:layout_height="match_parent"
     tools:context=".ui.screens.navigationbottomview.EventsFragment">
 
-    <FrameLayout
-        android:id="@+id/wrapper"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@+id/bottom_navigation_view" >
 
-        <fragment
-            android:id="@+id/nav_host_fragment"
-            android:name="androidx.navigation.fragment.NavHostFragment"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            app:defaultNavHost="true"
-            app:navGraph="@navigation/nav_graph"/>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Events"/>
-    </FrameLayout>
-
-    <!-- Bottomm app bar-->
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:layout_gravity="bottom">
-
-
-        <!-- Bottom Navigation View -->
-        <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/bottom_navigation"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/bottom_navigation_view"
-            android:clipToPadding="true"
-            app:elevation="0dp"
-            app:itemIconSize="30dp"
-            app:itemIconTint="#000"
-            app:itemTextAppearanceActive="@style/CustomTextNavBottom"
-            app:itemTextAppearanceInactive="@style/CustomTextNavBottom"
-            app:itemTextColor="#000"
-            app:menu="@menu/bottom_navigation_view"
-            tools:layout_editor_absoluteX="16dp"
-            tools:layout_editor_absoluteY="675dp">
-
-        </com.google.android.material.bottomnavigation.BottomNavigationView>
-    </RelativeLayout>
-
-    <!-- Image Logo Home -->
-    <ImageButton
-        android:id="@+id/buttonHome"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:background="@drawable/rounded_button"
-        app:layout_anchor="@id/bottom_navigation"
-        android:layout_marginBottom="36dp"
-        app:layout_anchorGravity="center"/>
-
-    <ImageView
-        android:id="@+id/home"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        app:srcCompat="@drawable/logo_bde_final_1024_2020"
-        app:layout_anchor="@id/buttonHome"
-        android:layout_marginBottom="35dp"
-        app:layout_anchorGravity="center"
-        android:elevation="2dp"/>
-
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView" />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

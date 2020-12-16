@@ -8,13 +8,7 @@
         android:id="@+id/viewPagerFragment"
         android:name="com.example.ynov_lyon_bde.ui.screens.onboarding.ViewPagerFragment"
         android:label="fragment_view_pager"
-        tools:layout="@layout/fragment_view_pager" >
-        <action
-            android:id="@+id/action_viewPagerFragment_to_homeFragment"
-            app:destination="@id/homeFragment"
-            app:popUpTo="@id/viewPagerFragment"
-            app:popUpToInclusive="true" />
-    </fragment>
+        tools:layout="@layout/fragment_view_pager" />
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.example.ynov_lyon_bde.ui.screens.navigationbottomview.HomeFragment"
@@ -35,11 +29,6 @@
         <action
             android:id="@+id/action_splashFragment_to_viewPagerFragment"
             app:destination="@id/viewPagerFragment"
-            app:popUpTo="@id/splashFragment"
-            app:popUpToInclusive="true" />
-        <action
-            android:id="@+id/action_splashFragment_to_homeFragment"
-            app:destination="@id/homeFragment"
             app:popUpTo="@id/splashFragment"
             app:popUpToInclusive="true" />
     </fragment>
@@ -67,4 +56,8 @@
             android:id="@+id/action_accountFragment_to_eventsFragment"
             app:destination="@id/eventsFragment" />
     </fragment>
+    <activity
+        android:id="@+id/navigationActivity2"
+        android:name="com.example.ynov_lyon_bde.ui.screens.navigationbottomview.NavigationActivity"
+        android:label="NavigationActivity" />
 </navigation>

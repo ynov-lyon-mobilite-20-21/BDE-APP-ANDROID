@@ -1,6 +1,7 @@
 package com.example.ynov_lyon_bde.ui.screens.onboarding
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import androidx.fragment.app.Fragment
@@ -8,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
+import com.example.ynov_lyon_bde.ui.screens.navigationbottomview.NavigationActivity
 import com.example.ynov_lyon_bde.R
 
 class OnBoardingFragment : Fragment() {
@@ -19,7 +21,8 @@ class OnBoardingFragment : Fragment() {
 
         Handler().postDelayed({
             if(onBoardingFinished()){
-                findNavController().navigate(R.id.action_splashFragment_to_homeFragment)
+                val intent = Intent(activity, NavigationActivity::class.java)
+                startActivity(intent)
             }else{
                 findNavController().navigate(R.id.action_splashFragment_to_viewPagerFragment)
             }
