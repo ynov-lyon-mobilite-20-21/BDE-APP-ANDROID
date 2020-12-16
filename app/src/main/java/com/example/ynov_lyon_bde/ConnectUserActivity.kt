@@ -5,7 +5,8 @@ import android.os.Bundle
 import android.util.Patterns
 import android.widget.Toast
 import com.example.ynov_lyon_bde.api.ApiManager
-import com.example.ynov_lyon_bde.model.UserInfo
+import com.example.ynov_lyon_bde.model.LoginDTO
+import com.example.ynov_lyon_bde.model.User
 import kotlinx.android.synthetic.main.activity_connectuser.*
 
 class ConnectUserActivity : AppCompatActivity() {
@@ -34,23 +35,10 @@ class ConnectUserActivity : AppCompatActivity() {
     }
     private fun signIn(email: String, password: String) {
         val apiService = ApiManager()
-        val userInfo = UserInfo(  userId = null,
-            userFirstName = null,
-            userLastName = null,
-            userEmail = email,
-            userPassword = password,
-            userPromotion = null,
-            userFormation = null,
-            userPictureUrl = null
-            )
-        apiService.loginUser(userInfo) {
-            if (it?.userId != null) {
-                // it = connected user parsed as response
-                // it?.userId = connected user ID
-                Toast.makeText(this, "utilisateur connecté", Toast.LENGTH_SHORT).show()
-            } else {
-                Toast.makeText(this, "Erreur lors de la connexion de l'utilisateur", Toast.LENGTH_SHORT).show()
-            }
+        val loginDto = LoginDTO(
+            email = email,
+            password = password)
+        apiService.loginUser(loginDto) {
         }
 
     }

@@ -2,16 +2,16 @@
 package com.example.ynov_lyon_bde
 
 
-import android.accounts.Account
-import android.accounts.AccountManager
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.util.Log
 import android.widget.ArrayAdapter
 import android.widget.Spinner
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.ynov_lyon_bde.api.ApiManager
-import com.example.ynov_lyon_bde.model.UserInfo
+import com.example.ynov_lyon_bde.model.User
+import com.example.ynov_lyon_bde.model.UserDTO
 import kotlinx.android.synthetic.main.activity_createuser.*
 
 
@@ -73,7 +73,6 @@ class CreateUserActivity : AppCompatActivity() {
             val formation = spinnerF.getSelectedItem().toString()
             val pictureUrl = "imageeeee"
 
-            println("//////////////////"+ firstName+lastName+email+password+promotion+formation)
             //send request to api to create user
             if(firstName!= null && lastName!= null && email!= null && password!= null && promotion!= null && formation!= null){
                 signUp(firstName,lastName,email,password,promotion,formation,pictureUrl)
@@ -95,25 +94,20 @@ class CreateUserActivity : AppCompatActivity() {
 
     private fun signUp(firstName: String, lastName: String, email: String, password: String, promotion: String, formation: String, pictureUrl:String) {
         val apiService = ApiManager()
-        val userInfo = UserInfo(  userId = null,
-            userFirstName = firstName,
-            userLastName = lastName,
-            userEmail = email,
-            userPassword = password,
-            userPromotion = promotion,
-            userFormation = formation,
-            userPictureUrl = pictureUrl)
+        val userDto = UserDTO( id = 1,
+            firstName = firstName,
+            lastName = lastName,
+            email = email,
+            password = password,
+            promotion = promotion,
+            formation = formation,
+            pictureUrl = pictureUrl)
 
-        apiService.addUser(userInfo) {
-            if (it?.userId != null) {
-                // it = newly added user parsed as response
-                // it?.userId = newly added user ID
-                    println(it.userFirstName)
-                Toast.makeText(this, "nouvel utilisateur ajouté", Toast.LENGTH_SHORT).show()
-            } else {
-                println(it?.userEmail+it?.responseMessage+ it?.responseCode)
-                Toast.makeText(this, "Erreur lors de l'enregistrement d'un nouvel utilisateur", Toast.LENGTH_SHORT).show()
-            }
+        apiService.addUser(userDto) {
+            print("RESPONSE BODY : ${it.body()}")
+            Log.d("RESPONSE CODE ", it.code().toString())
+            Log.d("RESPONSE MESSAGE ", it.message())
+
         }
     }
 }
