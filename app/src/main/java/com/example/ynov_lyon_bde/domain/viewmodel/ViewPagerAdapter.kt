@@ -1,4 +1,4 @@
-package com.example.ynov_lyon_bde.onboarding
+package com.example.ynov_lyon_bde.domain.viewmodel
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager

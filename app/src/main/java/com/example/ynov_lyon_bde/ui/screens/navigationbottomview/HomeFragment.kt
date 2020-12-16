@@ -1,4 +1,4 @@
-package com.example.ynov_lyon_bde
+package com.example.ynov_lyon_bde.ui.screens.navigationbottomview
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.Navigation
+import com.example.ynov_lyon_bde.R
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -37,8 +38,12 @@ class HomeFragment : Fragment() {
         //Change fragment click items
         bottomNavigation.setOnNavigationItemSelectedListener {
             when(it.itemId){
-                R.id.eventsFragment -> Navigation.findNavController(view).navigate(R.id.action_homeFragment_to_eventsFragment)
-                R.id.accountFragment -> Navigation.findNavController(view).navigate(R.id.action_homeFragment_to_accountFragment)
+                R.id.eventsFragment -> Navigation.findNavController(view).navigate(
+                    R.id.action_homeFragment_to_eventsFragment
+                )
+                R.id.accountFragment -> Navigation.findNavController(view).navigate(
+                    R.id.action_homeFragment_to_accountFragment
+                )
             }
             true
         }
@@ -49,7 +54,8 @@ class HomeFragment : Fragment() {
     companion object {
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
-            HomeFragment().apply {
+            HomeFragment()
+                .apply {
                 arguments = Bundle().apply {
                     putString(ARG_PARAM1, param1)
                     putString(ARG_PARAM2, param2)

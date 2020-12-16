@@ -1,4 +1,4 @@
-package com.example.ynov_lyon_bde.onboarding.screens
+package com.example.ynov_lyon_bde.ui.screens.onboarding.viewPager
 
 import android.content.Context
 import android.os.Bundle

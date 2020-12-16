@@ -1,4 +1,4 @@
-package com.example.ynov_lyon_bde
+package com.example.ynov_lyon_bde.ui.screens.onboarding
 
 import android.content.Context
 import android.os.Bundle
@@ -8,7 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
-import kotlinx.coroutines.delay
+import com.example.ynov_lyon_bde.R
 
 class OnBoardingFragment : Fragment() {
 
