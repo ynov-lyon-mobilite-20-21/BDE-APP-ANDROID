@@ -1,5 +1,5 @@
 
-package com.example.ynov_lyon_bde
+package com.example.ynov_lyon_bde.ui.screens
 
 
 import android.annotation.SuppressLint
@@ -9,20 +9,22 @@ import android.widget.ArrayAdapter
 import android.widget.Spinner
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.ynov_lyon_bde.api.ApiManager
-import com.example.ynov_lyon_bde.model.User
-import com.example.ynov_lyon_bde.model.UserDTO
+import com.example.ynov_lyon_bde.domain.services.BdeApiService
+import com.example.ynov_lyon_bde.data.model.UserDTO
+import com.example.ynov_lyon_bde.R
+import com.example.ynov_lyon_bde.domain.viewmodel.CreateUserViewModel
 import kotlinx.android.synthetic.main.activity_createuser.*
 
 
 
-class CreateUserActivity : AppCompatActivity() {
+class CreateUserActivity : AppCompatActivity(){
 
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_createuser)
 
+        val createUserViewModel = CreateUserViewModel()
         //return previous activity
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
@@ -75,7 +77,7 @@ class CreateUserActivity : AppCompatActivity() {
 
             //send request to api to create user
             if(firstName!= null && lastName!= null && email!= null && password!= null && promotion!= null && formation!= null){
-                signUp(firstName,lastName,email,password,promotion,formation,pictureUrl)
+                createUserViewModel.signUp(firstName,lastName,email,password,promotion,formation,pictureUrl)
             }
             else{
                 Toast.makeText(this, "Formulaire mal renseigné", Toast.LENGTH_SHORT).show()
@@ -87,27 +89,6 @@ class CreateUserActivity : AppCompatActivity() {
             val am: AccountManager = AccountManager.get(this) // "this" references the current Context
             val accounts: Array<out Account> = am.getAccountsByType("com.google")
 */
-        }
-
-
-    }
-
-    private fun signUp(firstName: String, lastName: String, email: String, password: String, promotion: String, formation: String, pictureUrl:String) {
-        val apiService = ApiManager()
-        val userDto = UserDTO( id = 1,
-            firstName = firstName,
-            lastName = lastName,
-            email = email,
-            password = password,
-            promotion = promotion,
-            formation = formation,
-            pictureUrl = pictureUrl)
-
-        apiService.addUser(userDto) {
-            print("RESPONSE BODY : ${it.body()}")
-            Log.d("RESPONSE CODE ", it.code().toString())
-            Log.d("RESPONSE MESSAGE ", it.message())
-
         }
     }
 }

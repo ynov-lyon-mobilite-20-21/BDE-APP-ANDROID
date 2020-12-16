@@ -1,18 +1,19 @@
-package com.example.ynov_lyon_bde.api
+package com.example.ynov_lyon_bde.domain.services
 
 
-import com.example.ynov_lyon_bde.model.LoginDTO
-import com.example.ynov_lyon_bde.model.User
-import com.example.ynov_lyon_bde.model.UserDTO
+import com.example.ynov_lyon_bde.data.model.LoginDTO
+import com.example.ynov_lyon_bde.data.model.User
+import com.example.ynov_lyon_bde.data.model.UserDTO
+import com.example.ynov_lyon_bde.domain.utils.RetrofitServiceBuilder
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 
-class ApiManager {
-    fun addUser(userData: UserDTO, onResult: (Response<UserDTO>) -> Unit){
-        val retrofit = ServiceBuilder.buildService(RestApi::class.java)
-        retrofit.addUser(userData).enqueue(
+class BdeApiService {
+    fun createUser(userData: UserDTO, onResult: (Response<UserDTO>) -> Unit){
+        val retrofit = RetrofitServiceBuilder.buildService(BdeApiInterface::class.java)
+        retrofit.createUser(userData).enqueue(
             object : Callback<UserDTO> {
                 override fun onFailure(call: Call<UserDTO>, t: Throwable) {
                     print("THROWABLE : $t")
@@ -29,7 +30,7 @@ class ApiManager {
     }
 
     fun loginUser(userData: LoginDTO, onResult: (User?) -> Unit){
-        val retrofit = ServiceBuilder.buildService(RestApi::class.java)
+        val retrofit = RetrofitServiceBuilder.buildService(BdeApiInterface::class.java)
         retrofit.loginUser(userData).enqueue(
             object : Callback<User> {
                 override fun onFailure(call: Call<User>, t: Throwable) {

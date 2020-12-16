@@ -1,4 +1,4 @@
-package com.example.ynov_lyon_bde.model
+package com.example.ynov_lyon_bde.data.model
 
 data class User (
     val id: Int,

@@ -1,10 +1,9 @@
-package com.example.ynov_lyon_bde.model
+package com.example.ynov_lyon_bde.data.model
 
 data class UserDTO(
-    val id: Int,
     val firstName: String,
     val lastName: String,
-    val email: String,
+    val mail: String,
     val password: String,
     val promotion: String,
     val formation: String,

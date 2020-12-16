@@ -1,12 +1,12 @@
-package com.example.ynov_lyon_bde
+package com.example.ynov_lyon_bde.ui.screens
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Patterns
 import android.widget.Toast
-import com.example.ynov_lyon_bde.api.ApiManager
-import com.example.ynov_lyon_bde.model.LoginDTO
-import com.example.ynov_lyon_bde.model.User
+import com.example.ynov_lyon_bde.domain.services.BdeApiService
+import com.example.ynov_lyon_bde.data.model.LoginDTO
+import com.example.ynov_lyon_bde.R
 import kotlinx.android.synthetic.main.activity_connectuser.*
 
 class ConnectUserActivity : AppCompatActivity() {
@@ -34,7 +34,7 @@ class ConnectUserActivity : AppCompatActivity() {
         }
     }
     private fun signIn(email: String, password: String) {
-        val apiService = ApiManager()
+        val apiService = BdeApiService()
         val loginDto = LoginDTO(
             email = email,
             password = password)
