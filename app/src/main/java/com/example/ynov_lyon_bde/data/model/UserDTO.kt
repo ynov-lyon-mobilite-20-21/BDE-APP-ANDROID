@@ -9,6 +9,5 @@ data class UserDTO(
     val password: String,
     val promotion: String,
     val formation: String,
-    val pictureUrl: String // A SUPPRIMER PAR LA SUITE
 )
 

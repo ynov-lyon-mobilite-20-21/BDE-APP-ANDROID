@@ -69,7 +69,6 @@ class CreateUserActivity : AppCompatActivity(){
             val password = editTextPassword.text.toString()
             val promotion = spinnerP.getSelectedItem().toString()
             val formation = spinnerF.getSelectedItem().toString()
-            val pictureUrl = "imageeeee" // A SUPPRIMER PAR LA SUITE
 
             //send request to api to create user
             if(firstName!= null && lastName!= null && email!= null && password!= null && promotion!= null && formation!= null){
@@ -82,7 +81,7 @@ class CreateUserActivity : AppCompatActivity(){
                             password,
                             promotion,
                             formation,
-                            pictureUrl)
+                        )
 
                         if (resultRequest != null) {
                             val jsonResultRequest = JSONObject(resultRequest)

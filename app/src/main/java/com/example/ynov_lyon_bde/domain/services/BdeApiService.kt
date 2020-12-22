@@ -27,7 +27,6 @@ class BdeApiService {
         jsonObject.put("password", userData.password)
         jsonObject.put("promotion", userData.promotion)
         jsonObject.put("formation", userData.formation)
-        jsonObject.put("pictureUrl", userData.pictureUrl)
 
         // Convert JSONObject to String
         val jsonObjectString = jsonObject.toString()
