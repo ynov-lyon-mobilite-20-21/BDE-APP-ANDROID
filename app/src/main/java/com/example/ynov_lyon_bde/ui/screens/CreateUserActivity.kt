@@ -4,17 +4,15 @@ package com.example.ynov_lyon_bde.ui.screens
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import android.util.Log
 import android.widget.ArrayAdapter
 import android.widget.Spinner
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.ynov_lyon_bde.domain.services.BdeApiService
-import com.example.ynov_lyon_bde.data.model.UserDTO
 import com.example.ynov_lyon_bde.R
 import com.example.ynov_lyon_bde.domain.viewmodel.CreateUserViewModel
 import kotlinx.android.synthetic.main.activity_createuser.*
-
+import kotlinx.coroutines.*
+import org.json.JSONObject
 
 
 class CreateUserActivity : AppCompatActivity(){
@@ -57,8 +55,6 @@ class CreateUserActivity : AppCompatActivity(){
             spinnerF.adapter = adapter
         }
 
-        val listParameters = arrayListOf<String>()
-
         buttonCreateUser.setOnClickListener {
             // Take informations User
             val email = if(android.util.Patterns.EMAIL_ADDRESS.matcher(editTextMail.text.toString()).matches())  editTextMail.text.toString() else null
@@ -73,11 +69,29 @@ class CreateUserActivity : AppCompatActivity(){
             val password = editTextPassword.text.toString()
             val promotion = spinnerP.getSelectedItem().toString()
             val formation = spinnerF.getSelectedItem().toString()
-            val pictureUrl = "imageeeee"
+            val pictureUrl = "imageeeee" // A SUPPRIMER PAR LA SUITE
 
             //send request to api to create user
             if(firstName!= null && lastName!= null && email!= null && password!= null && promotion!= null && formation!= null){
-                createUserViewModel.signUp(firstName,lastName,email,password,promotion,formation,pictureUrl)
+                var result : String? = null
+                GlobalScope.launch(Dispatchers.Main) {
+                    val deferred = async(Dispatchers.IO) {
+                        val resultRequest = createUserViewModel.signUp(firstName,
+                            lastName,
+                            email,
+                            password,
+                            promotion,
+                            formation,
+                            pictureUrl)
+
+                        if (resultRequest != null) {
+                            val jsonResultRequest = JSONObject(resultRequest)
+                            result = jsonResultRequest.getJSONObject("data").getString("message")
+                        }
+                    }
+                    deferred.await()
+                    Toast.makeText(applicationContext, result, Toast.LENGTH_SHORT).show()
+                }
             }
             else{
                 Toast.makeText(this, "Formulaire mal renseigné", Toast.LENGTH_SHORT).show()

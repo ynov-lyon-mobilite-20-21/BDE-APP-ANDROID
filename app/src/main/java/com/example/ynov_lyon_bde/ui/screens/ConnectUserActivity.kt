@@ -4,9 +4,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Patterns
 import android.widget.Toast
-import com.example.ynov_lyon_bde.domain.services.BdeApiService
-import com.example.ynov_lyon_bde.data.model.LoginDTO
 import com.example.ynov_lyon_bde.R
+import com.example.ynov_lyon_bde.domain.viewmodel.ConnectUserViewModel
 import kotlinx.android.synthetic.main.activity_connectuser.*
 
 class ConnectUserActivity : AppCompatActivity() {
@@ -17,6 +16,7 @@ class ConnectUserActivity : AppCompatActivity() {
         //return previous activity
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
+        val connectUserActivity = ConnectUserViewModel()
         buttonConnect.setOnClickListener {
 
             // Take informations User
@@ -27,19 +27,12 @@ class ConnectUserActivity : AppCompatActivity() {
 
             //send request to api to create user
             if (email != null && password != null) {
-                signIn(email, password)
+                val result = connectUserActivity.signIn(email, password)
+                Toast.makeText(this, "Connecte", Toast.LENGTH_SHORT).show()
             } else {
                 Toast.makeText(this, "Formulaire mal renseigné", Toast.LENGTH_SHORT).show()
             }
         }
     }
-    private fun signIn(email: String, password: String) {
-        val apiService = BdeApiService()
-        val loginDto = LoginDTO(
-            email = email,
-            password = password)
-        apiService.loginUser(loginDto) {
-        }
 
-    }
 }

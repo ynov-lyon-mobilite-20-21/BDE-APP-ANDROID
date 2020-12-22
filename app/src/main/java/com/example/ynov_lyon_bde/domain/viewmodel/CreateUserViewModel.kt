@@ -1,12 +1,11 @@
 package com.example.ynov_lyon_bde.domain.viewmodel
 
-import android.util.Log
 import com.example.ynov_lyon_bde.data.model.UserDTO
 import com.example.ynov_lyon_bde.domain.services.BdeApiService
 
 class CreateUserViewModel {
 
-    fun signUp(firstName: String, lastName: String, email: String, password: String, promotion: String, formation: String, pictureUrl:String) {
+    suspend fun signUp(firstName: String, lastName: String, email: String, password: String, promotion: String, formation: String, pictureUrl:String): String? {
         val apiService = BdeApiService()
         val userDto = UserDTO(
             firstName = firstName,
@@ -17,9 +16,7 @@ class CreateUserViewModel {
             formation = formation,
             pictureUrl = pictureUrl)
 
-        apiService.createUser(userDto) {
-            Log.d("RESPONSE CODE ", it.code().toString())
-            Log.d("RESPONSE MESSAGE ", it.message())
-        }
+
+        return apiService.createUser(userDto)
     }
 }

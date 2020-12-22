@@ -7,7 +7,7 @@ data class User (
     val email: String,
     val promotion: String,
     val formation: String,
-    val pictureUrl: String
+    val pictureUrl: String // A SUPPRIMER PAR LA SUITE
     )
 
 //    var responseCode: String? = null
