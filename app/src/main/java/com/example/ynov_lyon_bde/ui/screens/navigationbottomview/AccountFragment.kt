@@ -16,8 +16,6 @@ class AccountFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_account, container, false)
-
-        return view;
+        return inflater.inflate(R.layout.fragment_account, container, false);
     }
 }

@@ -16,7 +16,36 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
+        app:itemIconSize="30dp"
+        app:itemIconTint="#000"
+        app:itemTextAppearanceActive="@style/CustomTextNavBottom"
+        app:itemTextAppearanceInactive="@style/CustomTextNavBottom"
+        app:itemTextColor="#000"
         android:background="@drawable/bottom_navigation_view"
-        app:menu="@menu/bottom_navigation_view" />
+        app:menu="@menu/bottom_navigation_view"
+        android:elevation="0dp"/>
+
+    <!-- Image Logo Home -->
+    <ImageButton
+        android:id="@+id/buttonHome"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="20.5dp"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/rounded_button"
+        android:elevation="8dp"/>
+
+    <ImageView
+        android:id="@+id/home"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        app:srcCompat="@drawable/logo_bde_final_1024_2020"
+        app:layout_anchor="@id/buttonHome"
+        android:layout_marginBottom="20.5dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:elevation="8dp"/>
+
 
 </RelativeLayout>
