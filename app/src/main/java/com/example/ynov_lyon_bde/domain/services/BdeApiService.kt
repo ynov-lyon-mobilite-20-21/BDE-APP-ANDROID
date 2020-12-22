@@ -9,14 +9,10 @@ import com.example.ynov_lyon_bde.domain.utils.RetrofitServiceBuilder
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.RequestBody.Companion.toRequestBody
 import org.json.JSONObject
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-
 
 class BdeApiService {
     suspend fun createUser(userData: UserDTO): String? {
-        var resultRequest : String? = null
+        var resultRequest : String?
         val retrofit = RetrofitServiceBuilder.buildService(BdeApiInterface::class.java)
 
         // Create JSON using JSONObject

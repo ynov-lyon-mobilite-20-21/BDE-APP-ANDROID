@@ -6,6 +6,7 @@ import android.util.Log
 import android.util.Patterns
 import android.widget.Toast
 import com.example.ynov_lyon_bde.R
+import com.example.ynov_lyon_bde.data.model.LoginDTO
 import com.example.ynov_lyon_bde.domain.viewmodel.ConnectUserViewModel
 import kotlinx.android.synthetic.main.activity_connectuser.*
 import kotlinx.coroutines.Dispatchers
@@ -34,11 +35,13 @@ class ConnectUserActivity : AppCompatActivity() {
             //send request to api to connect user
             if (email != null && password != null) {
                 var token : String? = null
+                val loginDto = LoginDTO(
+                    mail = email,
+                    password = password
+                )
                 GlobalScope.launch(Dispatchers.Main) {
                     val deferred = async(Dispatchers.IO) {
-                        val resultRequest = connectUserViewModel.signIn(
-                            email,
-                            password)
+                        val resultRequest = connectUserViewModel.signIn(loginDto)
 
                         if (resultRequest != null) {
                             val jsonResultRequest = JSONObject(resultRequest)
@@ -54,5 +57,9 @@ class ConnectUserActivity : AppCompatActivity() {
             }
         }
     }
-
+//init an account manager
+    /*
+    val am: AccountManager = AccountManager.get(this) // "this" references the current Context
+    val accounts: Array<out Account> = am.getAccountsByType("com.google")
+*/
 }

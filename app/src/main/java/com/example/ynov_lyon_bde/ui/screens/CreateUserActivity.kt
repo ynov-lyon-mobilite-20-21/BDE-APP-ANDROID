@@ -9,6 +9,7 @@ import android.widget.Spinner
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.ynov_lyon_bde.R
+import com.example.ynov_lyon_bde.data.model.UserDTO
 import com.example.ynov_lyon_bde.domain.viewmodel.CreateUserViewModel
 import kotlinx.android.synthetic.main.activity_createuser.*
 import kotlinx.coroutines.*
@@ -73,15 +74,17 @@ class CreateUserActivity : AppCompatActivity(){
             //send request to api to create user
             if(firstName!= null && lastName!= null && email!= null && password!= null && promotion!= null && formation!= null){
                 var result : String? = null
+                val userDto = UserDTO(
+                    firstName = firstName,
+                    lastName = lastName,
+                    mail = email,
+                    password = password,
+                    promotion = promotion,
+                    formation = formation
+                )
                 GlobalScope.launch(Dispatchers.Main) {
                     val deferred = async(Dispatchers.IO) {
-                        val resultRequest = createUserViewModel.signUp(firstName,
-                            lastName,
-                            email,
-                            password,
-                            promotion,
-                            formation,
-                        )
+                        val resultRequest = createUserViewModel.signUp(userDto)
 
                         if (resultRequest != null) {
                             val jsonResultRequest = JSONObject(resultRequest)
@@ -96,12 +99,6 @@ class CreateUserActivity : AppCompatActivity(){
                 Toast.makeText(this, "Formulaire mal renseigné", Toast.LENGTH_SHORT).show()
             }
 
-
-            //init an account manager
-            /*
-            val am: AccountManager = AccountManager.get(this) // "this" references the current Context
-            val accounts: Array<out Account> = am.getAccountsByType("com.google")
-*/
         }
     }
 }

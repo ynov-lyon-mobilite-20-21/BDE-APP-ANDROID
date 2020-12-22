@@ -8,17 +8,6 @@
     tools:context=".ui.screens.CreateUserActivity">
 
     <TextView
-        android:id="@+id/textViewPassword"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="MOT DE PASSE"
-        app:layout_constraintBottom_toTopOf="@+id/editTextPassword"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.32"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextMail" />
-
-    <TextView
         android:id="@+id/textViewEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -29,6 +18,88 @@
         app:layout_constraintHorizontal_bias="0.333"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/editTextMail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text=""
+        app:layout_constraintBottom_toTopOf="@+id/textViewPassword"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewEmail" />
+
+    <TextView
+        android:id="@+id/textViewPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="MOT DE PASSE"
+        app:layout_constraintBottom_toTopOf="@+id/editTextPassword"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.333"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextMail" />
+
+    <EditText
+        android:id="@+id/editTextPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPassword"
+        android:text=""
+        app:layout_constraintBottom_toTopOf="@+id/textViewPromotion"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewPassword" />
+
+    <TextView
+        android:id="@+id/textViewPromotion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="CLASSE"
+        app:layout_constraintBottom_toTopOf="@+id/spinnerPromotion"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.28"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextPassword" />
+
+    <Spinner
+        android:id="@+id/spinnerPromotion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:entries="@array/promotion_array"
+        app:layout_constraintBottom_toTopOf="@+id/textViewFormation"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewPromotion" />
+
+    <TextView
+        android:id="@+id/textViewFormation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="FILIERE"
+        app:layout_constraintBottom_toTopOf="@+id/spinnerFormation"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.28"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerPromotion" />
+
+    <Spinner
+        android:id="@+id/spinnerFormation"
+        style="@style/spinnerDropDownItemStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:entries="@array/formation_array"
+        app:layout_constraintBottom_toTopOf="@+id/buttonCreateUser"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewFormation" />
 
     <Button
         android:id="@+id/buttonCreateUser"
@@ -44,77 +115,5 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spinnerFormation" />
-
-    <Spinner
-        android:id="@+id/spinnerPromotion"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:entries="@array/promotion_array"
-        app:layout_constraintBottom_toTopOf="@+id/textViewFaculty"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewClass" />
-
-    <TextView
-        android:id="@+id/textViewFaculty"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="FILIERE"
-        app:layout_constraintBottom_toTopOf="@+id/spinnerFormation"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.278"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinnerPromotion" />
-
-    <TextView
-        android:id="@+id/textViewClass"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="CLASSE"
-        app:layout_constraintBottom_toTopOf="@+id/spinnerPromotion"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.28"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextPassword" />
-
-    <Spinner
-        android:id="@+id/spinnerFormation"
-        style="@style/spinnerDropDownItemStyle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:entries="@array/formation_array"
-        app:layout_constraintBottom_toTopOf="@+id/buttonCreateUser"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewFaculty" />
-
-    <EditText
-        android:id="@+id/editTextPassword"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPassword"
-        android:text=""
-        app:layout_constraintBottom_toTopOf="@+id/textViewClass"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewPassword" />
-
-    <EditText
-        android:id="@+id/editTextMail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text=""
-        app:layout_constraintBottom_toTopOf="@+id/textViewPassword"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewEmail" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
