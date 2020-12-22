@@ -15,5 +15,5 @@ interface BdeApiInterface {
     suspend fun createUser(@Body requestBody: RequestBody): Response<ResponseBody>
 
     @POST("api/auth")
-    fun loginUser(@Body login: LoginDTO): Call<LoginDTO>
+    suspend fun loginUser(@Body requestBody: RequestBody): Response<ResponseBody>
 }

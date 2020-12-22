@@ -8,7 +8,7 @@ import retrofit2.Response
 class JsonService {
 
     // Convert raw JSON to pretty JSON using GSON library
-    fun ConvertRawToPrettyJson(response: Response<ResponseBody>): String {
+    fun convertRawToPrettyJson(response: Response<ResponseBody>): String {
         val gson = GsonBuilder().setPrettyPrinting().create()
         val prettyJson = gson.toJson(
             JsonParser.parseString(

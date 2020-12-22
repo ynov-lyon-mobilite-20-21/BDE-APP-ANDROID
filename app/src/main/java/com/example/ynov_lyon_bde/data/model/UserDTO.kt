@@ -1,5 +1,7 @@
 package com.example.ynov_lyon_bde.data.model
 
+import com.google.gson.annotations.SerializedName
+
 data class UserDTO(
     val firstName: String,
     val lastName: String,
@@ -9,3 +11,4 @@ data class UserDTO(
     val formation: String,
     val pictureUrl: String // A SUPPRIMER PAR LA SUITE
 )
+

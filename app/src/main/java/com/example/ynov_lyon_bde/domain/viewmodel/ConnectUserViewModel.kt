@@ -8,26 +8,12 @@ import retrofit2.Response
 
 class ConnectUserViewModel {
 
-    fun signIn(email: String, password: String): Boolean {
+    suspend fun signIn(mail: String, password: String): String? {
         val apiService = BdeApiService()
         val loginDto = LoginDTO(
-            email = email,
+            mail = mail,
             password = password)
 
-        var result = ""
-
-        var isSuccess = false
-        apiService.loginUser(loginDto) {
-
-            if(it.code() >=200 && it.code() <= 226){
-                isSuccess = true
-            }
-
-            Log.d("RESPONSE CODE ", it.code().toString())
-            Log.d("RESPONSE MESSAGE ", it.message())
-
-        }
-        println("////////////////////"+isSuccess)
-        return isSuccess
+        return apiService.loginUser(loginDto)
     }
 }

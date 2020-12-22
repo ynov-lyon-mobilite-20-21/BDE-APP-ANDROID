@@ -18,8 +18,8 @@ class BdeApiService {
     suspend fun createUser(userData: UserDTO): String? {
         var resultRequest : String? = null
         val retrofit = RetrofitServiceBuilder.buildService(BdeApiInterface::class.java)
-        // Create JSON using JSONObject
 
+        // Create JSON using JSONObject
         val jsonObject = JSONObject()
         jsonObject.put("firstName", userData.firstName)
         jsonObject.put("lastName", userData.lastName)
@@ -39,38 +39,47 @@ class BdeApiService {
             val response = retrofit.createUser(requestBody)
 
                 if (response.isSuccessful) {
-                    val prettyJson = JsonService().ConvertRawToPrettyJson(response)
-
+                    val prettyJson = JsonService().convertRawToPrettyJson(response)
                     Log.d("Pretty Printed JSON :", prettyJson)
-
                     resultRequest = prettyJson
 
                 } else {
-
                     Log.e("RETROFIT_ERROR", response.code().toString())
                     resultRequest = response.code().toString()
-
                 }
 
         return resultRequest
     }
 
-    fun loginUser(userData: LoginDTO, onResult: (Response<LoginDTO>) -> Unit){
+    suspend fun loginUser(loginData: LoginDTO): String? {
+        var resultRequest : String? = null
         val retrofit = RetrofitServiceBuilder.buildService(BdeApiInterface::class.java)
-        retrofit.loginUser(userData).enqueue(
-            object : Callback<LoginDTO> {
-                override fun onFailure(call: Call<LoginDTO>, t: Throwable) {
-                    print("THROWABLE : $t")
-                    return
-                }
 
-                override fun onResponse(call: Call<LoginDTO>, response: Response<LoginDTO>) {
-                    val connectedUser = response.body()
-                    onResult(response)
+        // Create JSON using JSONObject
+        val jsonObject = JSONObject()
+        jsonObject.put("mail", loginData.mail)
+        jsonObject.put("password", loginData.password)
 
-                }
-            }
-        )
+        // Convert JSONObject to String
+        val jsonObjectString = jsonObject.toString()
+
+        // Create RequestBody
+        val requestBody  = jsonObjectString.toRequestBody("application/json".toMediaTypeOrNull())
+
+        // Do the POST request and get response
+        val response = retrofit.loginUser(requestBody)
+
+        if (response.isSuccessful) {
+            val prettyJson = JsonService().convertRawToPrettyJson(response)
+            Log.d("Pretty Printed JSON :", prettyJson)
+            resultRequest = prettyJson
+
+        } else {
+            Log.e("RETROFIT_ERROR", response.code().toString())
+            resultRequest = response.code().toString()
+        }
+
+        return resultRequest
     }
 
 }
