@@ -4,6 +4,7 @@ package com.example.ynov_lyon_bde.ui.screens
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.util.Log
 import android.widget.ArrayAdapter
 import android.widget.Spinner
 import android.widget.Toast
@@ -72,7 +73,7 @@ class CreateUserActivity : AppCompatActivity(){
             val formation = spinnerF.getSelectedItem().toString()
 
             //send request to api to create user
-            if(firstName!= null && lastName!= null && email!= null && password!= null && promotion!= null && formation!= null){
+            if(firstName!= null && lastName!= null && email!= null && password!= "" && promotion!= "" && formation!= ""){
                 var result : String? = null
                 val userDto = UserDTO(
                     firstName = firstName,
@@ -89,6 +90,9 @@ class CreateUserActivity : AppCompatActivity(){
                         if (resultRequest != null) {
                             val jsonResultRequest = JSONObject(resultRequest)
                             result = jsonResultRequest.getJSONObject("data").getString("message")
+                        }
+                        else{
+                            result = "Erreur d'inscription"
                         }
                     }
                     deferred.await()

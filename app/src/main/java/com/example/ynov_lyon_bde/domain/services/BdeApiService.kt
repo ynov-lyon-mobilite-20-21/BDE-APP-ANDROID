@@ -4,7 +4,7 @@ package com.example.ynov_lyon_bde.domain.services
 import android.util.Log
 import com.example.ynov_lyon_bde.data.model.LoginDTO
 import com.example.ynov_lyon_bde.data.model.UserDTO
-import com.example.ynov_lyon_bde.domain.utils.JsonService
+import com.example.ynov_lyon_bde.domain.utils.JsonServiceBuilder
 import com.example.ynov_lyon_bde.domain.utils.RetrofitServiceBuilder
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.RequestBody.Companion.toRequestBody
@@ -12,7 +12,7 @@ import org.json.JSONObject
 
 class BdeApiService {
     suspend fun createUser(userData: UserDTO): String? {
-        var resultRequest : String?
+        var resultRequest : String? = null
         val retrofit = RetrofitServiceBuilder.buildService(BdeApiInterface::class.java)
 
         // Create JSON using JSONObject
@@ -34,13 +34,12 @@ class BdeApiService {
             val response = retrofit.createUser(requestBody)
 
                 if (response.isSuccessful) {
-                    val prettyJson = JsonService().convertRawToPrettyJson(response)
+                    val prettyJson = JsonServiceBuilder().convertRawToPrettyJson(response)
                     Log.d("Pretty Printed JSON :", prettyJson)
                     resultRequest = prettyJson
 
                 } else {
                     Log.e("RETROFIT_ERROR", response.code().toString())
-                    resultRequest = response.code().toString()
                 }
 
         return resultRequest
@@ -65,13 +64,12 @@ class BdeApiService {
         val response = retrofit.loginUser(requestBody)
 
         if (response.isSuccessful) {
-            val prettyJson = JsonService().convertRawToPrettyJson(response)
+            val prettyJson = JsonServiceBuilder().convertRawToPrettyJson(response)
             Log.d("Pretty Printed JSON :", prettyJson)
             resultRequest = prettyJson
 
         } else {
             Log.e("RETROFIT_ERROR", response.code().toString())
-            resultRequest = response.code().toString()
         }
 
         return resultRequest

@@ -5,7 +5,7 @@ import com.google.gson.JsonParser
 import okhttp3.ResponseBody
 import retrofit2.Response
 
-class JsonService {
+class JsonServiceBuilder {
 
     // Convert raw JSON to pretty JSON using GSON library
     fun convertRawToPrettyJson(response: Response<ResponseBody>): String {
