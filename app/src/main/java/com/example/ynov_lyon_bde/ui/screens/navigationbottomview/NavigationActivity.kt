@@ -21,5 +21,9 @@ class NavigationActivity : AppCompatActivity() {
             viewModel.chooseCurrentFragment(it)
             true
         }
+
+        home.setOnClickListener{
+            viewModel.makeStartingFragment()
+        }
     }
 }
