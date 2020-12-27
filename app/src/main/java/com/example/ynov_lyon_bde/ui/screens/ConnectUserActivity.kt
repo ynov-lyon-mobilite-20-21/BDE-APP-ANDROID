@@ -2,6 +2,7 @@ package com.example.ynov_lyon_bde.ui.screens
 
 import android.app.PendingIntent.getActivity
 import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
@@ -28,7 +29,13 @@ class ConnectUserActivity : AppCompatActivity() {
 
         //return previous activity
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        
+
+        buttonCreateUser2.setOnClickListener {
+            //Go to inscription activity
+            val intent = Intent().setClass(this, CreateUserActivity::class.java)
+            startActivity(intent)
+        }
+
         buttonConnect.setOnClickListener {
             val connectUserViewModel = ConnectUserViewModel()
             val sharedPreferencesService = SharedPreferencesService()
