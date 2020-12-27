@@ -1,11 +1,15 @@
 package com.example.ynov_lyon_bde.data.model
 
 data class User (
-    val token:String,
+    val _id:String,
+    val isActive:Boolean,
+    val isAdmin:Boolean,
+    val isAdherent: Boolean,
     val firstName: String,
     val lastName: String,
-    val email: String,
+    val mail: String,
     val promotion: String,
     val formation: String,
+    val activationKey:String
     )
 

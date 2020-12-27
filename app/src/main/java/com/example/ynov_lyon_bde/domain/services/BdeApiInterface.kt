@@ -3,8 +3,7 @@ package com.example.ynov_lyon_bde.domain.services
 import okhttp3.RequestBody
 import okhttp3.ResponseBody
 import retrofit2.Response
-import retrofit2.http.Body
-import retrofit2.http.POST
+import retrofit2.http.*
 
 
 interface BdeApiInterface {
@@ -14,4 +13,7 @@ interface BdeApiInterface {
 
     @POST("api/auth")
     suspend fun loginUser(@Body requestBody: RequestBody): Response<ResponseBody>
+
+    @GET("api/me")
+    suspend fun getUser(@Header("Authorization") token: String?): Response<ResponseBody>
 }

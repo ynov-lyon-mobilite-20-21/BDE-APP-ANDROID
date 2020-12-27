@@ -8,7 +8,9 @@ import com.example.ynov_lyon_bde.domain.utils.JsonServiceBuilder
 import com.example.ynov_lyon_bde.domain.utils.RetrofitServiceBuilder
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.RequestBody.Companion.toRequestBody
+import okhttp3.ResponseBody
 import org.json.JSONObject
+import retrofit2.Response
 
 class BdeApiService {
     suspend fun createUser(userData: UserDTO): String? {
@@ -62,6 +64,25 @@ class BdeApiService {
 
         // Do the POST request and get response
         val response = retrofit.loginUser(requestBody)
+
+        if (response.isSuccessful) {
+            val prettyJson = JsonServiceBuilder().convertRawToPrettyJson(response)
+            Log.d("Pretty Printed JSON :", prettyJson)
+            resultRequest = prettyJson
+
+        } else {
+            Log.e("RETROFIT_ERROR", response.code().toString())
+        }
+
+        return resultRequest
+    }
+
+    suspend fun getUser(token: String?): String? {
+        var resultRequest : String? = null
+        val retrofit = RetrofitServiceBuilder.buildService(BdeApiInterface::class.java)
+
+        // Do the POST request and get response
+        val response = retrofit.getUser("Bearer $token")
 
         if (response.isSuccessful) {
             val prettyJson = JsonServiceBuilder().convertRawToPrettyJson(response)
