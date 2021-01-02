@@ -1,6 +1,8 @@
 package com.example.ynov_lyon_bde.domain.services
 
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.util.Log
 import com.example.ynov_lyon_bde.data.model.LoginDTO
 import com.example.ynov_lyon_bde.data.model.UserDTO
@@ -8,9 +10,8 @@ import com.example.ynov_lyon_bde.domain.utils.JsonServiceBuilder
 import com.example.ynov_lyon_bde.domain.utils.RetrofitServiceBuilder
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.RequestBody.Companion.toRequestBody
-import okhttp3.ResponseBody
 import org.json.JSONObject
-import retrofit2.Response
+
 
 class BdeApiService {
     suspend fun createUser(userData: UserDTO): String? {
@@ -64,6 +65,35 @@ class BdeApiService {
 
         // Do the POST request and get response
         val response = retrofit.loginUser(requestBody)
+
+        if (response.isSuccessful) {
+            val prettyJson = JsonServiceBuilder().convertRawToPrettyJson(response)
+            Log.d("Pretty Printed JSON :", prettyJson)
+            resultRequest = prettyJson
+
+        } else {
+            Log.e("RETROFIT_ERROR", response.code().toString())
+        }
+
+        return resultRequest
+    }
+
+    suspend fun refreshToken(token:String): String? {
+        var resultRequest : String? = null
+        val retrofit = RetrofitServiceBuilder.buildService(BdeApiInterface::class.java)
+
+        // Create JSON using JSONObject
+        val jsonObject = JSONObject()
+        jsonObject.put("refreshToken", token)
+
+        // Convert JSONObject to String
+        val jsonObjectString = jsonObject.toString()
+
+        // Create RequestBody
+        val requestBody  = jsonObjectString.toRequestBody("application/json".toMediaTypeOrNull())
+
+        // Do the POST request and get response
+        val response = retrofit.refreshToken(requestBody)
 
         if (response.isSuccessful) {
             val prettyJson = JsonServiceBuilder().convertRawToPrettyJson(response)

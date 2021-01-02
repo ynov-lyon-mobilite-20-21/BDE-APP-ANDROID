@@ -1,11 +1,7 @@
 package com.example.ynov_lyon_bde.ui.screens
 
-import android.app.PendingIntent.getActivity
-import android.content.Context
 import android.content.Intent
-import android.content.SharedPreferences
 import android.os.Bundle
-import android.util.Log
 import android.util.Patterns
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -68,22 +64,22 @@ class ConnectUserActivity : AppCompatActivity() {
                         //Save token in shared preference
                         sharedPreferencesService.saveIn("TOKEN", token!!, applicationContext)
 
-                        //Retrieve token and get user informations
-                        val retrivedToken = sharedPreferencesService.retrived("TOKEN", applicationContext)
-                        val resultRequest = connectUserViewModel.getUserInformations(retrivedToken)
+                        val resultRequest = connectUserViewModel.getUserInformations(token)
                         val jsonResultRequest = JSONObject(resultRequest)
-                        val isActive = jsonResultRequest.getJSONObject("data").getBoolean("isActive")
-                        val isAdmin = jsonResultRequest.getJSONObject("data").getBoolean("isAdmin")
-                        val isAdherent = jsonResultRequest.getJSONObject("data").getBoolean("isAdherent")
-                        val _id = jsonResultRequest.getJSONObject("data").getString("_id")
-                        val mail = jsonResultRequest.getJSONObject("data").getString("mail")
-                        val firstName = jsonResultRequest.getJSONObject("data").getString("firstName")
-                        val lastName = jsonResultRequest.getJSONObject("data").getString("lastName")
-                        val promotion = jsonResultRequest.getJSONObject("data").getString("promotion")
-                        val formation = jsonResultRequest.getJSONObject("data").getString("formation")
-                        val activationKey = jsonResultRequest.getJSONObject("data").getString("activationKey")
-                        val user = User(_id,isActive,isAdmin,isAdherent,mail,firstName,lastName,promotion,formation,activationKey)
-                        Log.d("retrivedToken :", retrivedToken)
+
+                        val user = User(jsonResultRequest.getJSONObject("data").getString("_id"),
+                            jsonResultRequest.getJSONObject("data").getBoolean("isActive"),
+                            jsonResultRequest.getJSONObject("data").getBoolean("isAdmin"),
+                            jsonResultRequest.getJSONObject("data").getBoolean("isAdherent"),
+                            jsonResultRequest.getJSONObject("data").getString("firstName"),
+                            jsonResultRequest.getJSONObject("data").getString("lastName"),
+                            jsonResultRequest.getJSONObject("data").getString("mail"),
+                            jsonResultRequest.getJSONObject("data").getString("promotion"),
+                            jsonResultRequest.getJSONObject("data").getString("formation"),
+                            jsonResultRequest.getJSONObject("data").getString("activationKey"))
+
+                        //Save User in shared preferences
+                        sharedPreferencesService.saveInUser("USER", user, applicationContext)
 
                         Toast.makeText(applicationContext, "Connecté", Toast.LENGTH_SHORT).show()
                     }

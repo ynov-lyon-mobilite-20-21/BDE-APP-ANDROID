@@ -1,7 +1,7 @@
 package com.example.ynov_lyon_bde.data.model
 
 data class User (
-    val _id:String,
+    val id:String,
     val isActive:Boolean,
     val isAdmin:Boolean,
     val isAdherent: Boolean,
