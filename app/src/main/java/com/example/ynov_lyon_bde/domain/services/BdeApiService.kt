@@ -78,7 +78,7 @@ class BdeApiService {
         return resultRequest
     }
 
-    suspend fun refreshToken(token:String): String? {
+    suspend fun refreshToken(token:String?): String? {
         var resultRequest : String? = null
         val retrofit = RetrofitServiceBuilder.buildService(BdeApiInterface::class.java)
 

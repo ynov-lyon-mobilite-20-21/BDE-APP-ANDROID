@@ -15,4 +15,9 @@ class ConnectUserViewModel {
         val apiService = BdeApiService()
         return apiService.getUser(token)
     }
+
+    suspend fun refreshTokenUser(token:String?):String?{
+        val apiService = BdeApiService()
+        return apiService.refreshToken(token)
+    }
 }

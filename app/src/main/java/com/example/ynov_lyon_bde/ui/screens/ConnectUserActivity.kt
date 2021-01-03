@@ -2,6 +2,7 @@ package com.example.ynov_lyon_bde.ui.screens
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.util.Patterns
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -66,8 +67,8 @@ class ConnectUserActivity : AppCompatActivity() {
 
                         //Stock Informations user in Shared preferences
                         if(sharedPreferencesService.retrivedUser("USER", applicationContext) == null){
-                            val resultRequest = connectUserViewModel.getUserInformations(token)
-                            val jsonResultRequest = JSONObject(resultRequest)
+                            val resultUserInformations = connectUserViewModel.getUserInformations(token)
+                            val jsonResultRequest = JSONObject(resultUserInformations)
                             val user = User(jsonResultRequest.getJSONObject("data").getString("_id"),
                                 jsonResultRequest.getJSONObject("data").getBoolean("isActive"),
                                 jsonResultRequest.getJSONObject("data").getBoolean("isAdmin"),
@@ -80,6 +81,11 @@ class ConnectUserActivity : AppCompatActivity() {
                                 jsonResultRequest.getJSONObject("data").getString("activationKey"))
                             sharedPreferencesService.saveInUser("USER", user, applicationContext)
                         }
+                        /*
+                        //To refresh token
+                        val resultRefreshToken = connectUserViewModel.refreshTokenUser(token)
+                        Log.d("token refresh", resultRefreshToken)
+*/
 
                         Toast.makeText(applicationContext, "Connecté", Toast.LENGTH_SHORT).show()
                     }
