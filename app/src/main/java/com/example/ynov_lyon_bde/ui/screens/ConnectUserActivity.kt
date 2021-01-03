@@ -64,22 +64,22 @@ class ConnectUserActivity : AppCompatActivity() {
                         //Save token in shared preference
                         sharedPreferencesService.saveIn("TOKEN", token!!, applicationContext)
 
-                        val resultRequest = connectUserViewModel.getUserInformations(token)
-                        val jsonResultRequest = JSONObject(resultRequest)
-
-                        val user = User(jsonResultRequest.getJSONObject("data").getString("_id"),
-                            jsonResultRequest.getJSONObject("data").getBoolean("isActive"),
-                            jsonResultRequest.getJSONObject("data").getBoolean("isAdmin"),
-                            jsonResultRequest.getJSONObject("data").getBoolean("isAdherent"),
-                            jsonResultRequest.getJSONObject("data").getString("firstName"),
-                            jsonResultRequest.getJSONObject("data").getString("lastName"),
-                            jsonResultRequest.getJSONObject("data").getString("mail"),
-                            jsonResultRequest.getJSONObject("data").getString("promotion"),
-                            jsonResultRequest.getJSONObject("data").getString("formation"),
-                            jsonResultRequest.getJSONObject("data").getString("activationKey"))
-
-                        //Save User in shared preferences
-                        sharedPreferencesService.saveInUser("USER", user, applicationContext)
+                        //Stock Informations user in Shared preferences
+                        if(sharedPreferencesService.retrivedUser("USER", applicationContext) == null){
+                            val resultRequest = connectUserViewModel.getUserInformations(token)
+                            val jsonResultRequest = JSONObject(resultRequest)
+                            val user = User(jsonResultRequest.getJSONObject("data").getString("_id"),
+                                jsonResultRequest.getJSONObject("data").getBoolean("isActive"),
+                                jsonResultRequest.getJSONObject("data").getBoolean("isAdmin"),
+                                jsonResultRequest.getJSONObject("data").getBoolean("isAdherent"),
+                                jsonResultRequest.getJSONObject("data").getString("firstName"),
+                                jsonResultRequest.getJSONObject("data").getString("lastName"),
+                                jsonResultRequest.getJSONObject("data").getString("mail"),
+                                jsonResultRequest.getJSONObject("data").getString("promotion"),
+                                jsonResultRequest.getJSONObject("data").getString("formation"),
+                                jsonResultRequest.getJSONObject("data").getString("activationKey"))
+                            sharedPreferencesService.saveInUser("USER", user, applicationContext)
+                        }
 
                         Toast.makeText(applicationContext, "Connecté", Toast.LENGTH_SHORT).show()
                     }
