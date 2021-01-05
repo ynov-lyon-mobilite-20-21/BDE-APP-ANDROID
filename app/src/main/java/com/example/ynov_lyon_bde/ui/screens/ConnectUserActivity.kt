@@ -45,7 +45,8 @@ class ConnectUserActivity : AppCompatActivity() {
 
             //send request to api to connect user
             if (email != null && password != null) {
-                var token : String? = null
+                var resultRequestToken : String? = null
+                var message : String? = null
                 val loginDto = LoginDTO(
                     mail = email,
                     password = password
@@ -56,42 +57,53 @@ class ConnectUserActivity : AppCompatActivity() {
 
                         if (resultRequest != null) {
                             val jsonResultRequest = JSONObject(resultRequest)
-                            token = jsonResultRequest.getJSONObject("data").getString("token")
+                            if(jsonResultRequest.getJSONObject("error").toString() == "{}"){
+                                resultRequestToken = jsonResultRequest.getJSONObject("data").getString("token")
+
+                                //Save token in shared preference
+                                if(sharedPreferencesService.retrived("TOKEN", applicationContext) == null) {
+                                    sharedPreferencesService.saveIn("TOKEN",
+                                        resultRequestToken!!,
+                                        applicationContext)
+                                }
+
+                                //Stock Informations user in Shared preferences
+                                if(sharedPreferencesService.retrivedUser("USER", applicationContext) == null){
+                                    val resultUserInformations = connectUserViewModel.getUserInformations(resultRequestToken)
+                                    val jsonResultRequest = JSONObject(resultUserInformations)
+                                    val user = User(jsonResultRequest.getJSONObject("data").getString("_id"),
+                                        jsonResultRequest.getJSONObject("data").getBoolean("isActive"),
+                                        jsonResultRequest.getJSONObject("data").getBoolean("isAdmin"),
+                                        jsonResultRequest.getJSONObject("data").getBoolean("isAdherent"),
+                                        jsonResultRequest.getJSONObject("data").getString("firstName"),
+                                        jsonResultRequest.getJSONObject("data").getString("lastName"),
+                                        jsonResultRequest.getJSONObject("data").getString("mail"),
+                                        jsonResultRequest.getJSONObject("data").getString("promotion"),
+                                        jsonResultRequest.getJSONObject("data").getString("formation"),
+                                        jsonResultRequest.getJSONObject("data").getString("activationKey"))
+                                    sharedPreferencesService.saveInUser("USER", user, applicationContext)
+                                }
+                                message = "Connecté"
+                            }
+                            else{
+                                message = jsonResultRequest.getJSONObject("error").getString("code")
+                            }
                         }
+                        else{
+                            message = "Erreur de connexion"
+
+                        }
+
                     }
                     deferred.await()
+                    Toast.makeText(applicationContext, message, Toast.LENGTH_SHORT).show()
 
-                    if(token !=null){
-                        //Save token in shared preference
-                        sharedPreferencesService.saveIn("TOKEN", token!!, applicationContext)
-
-                        //Stock Informations user in Shared preferences
-                        if(sharedPreferencesService.retrivedUser("USER", applicationContext) == null){
-                            val resultUserInformations = connectUserViewModel.getUserInformations(token)
-                            val jsonResultRequest = JSONObject(resultUserInformations)
-                            val user = User(jsonResultRequest.getJSONObject("data").getString("_id"),
-                                jsonResultRequest.getJSONObject("data").getBoolean("isActive"),
-                                jsonResultRequest.getJSONObject("data").getBoolean("isAdmin"),
-                                jsonResultRequest.getJSONObject("data").getBoolean("isAdherent"),
-                                jsonResultRequest.getJSONObject("data").getString("firstName"),
-                                jsonResultRequest.getJSONObject("data").getString("lastName"),
-                                jsonResultRequest.getJSONObject("data").getString("mail"),
-                                jsonResultRequest.getJSONObject("data").getString("promotion"),
-                                jsonResultRequest.getJSONObject("data").getString("formation"),
-                                jsonResultRequest.getJSONObject("data").getString("activationKey"))
-                            sharedPreferencesService.saveInUser("USER", user, applicationContext)
-                        }
                         /*
                         //To refresh token
                         val resultRefreshToken = connectUserViewModel.refreshTokenUser(token)
                         Log.d("token refresh", resultRefreshToken)
 */
 
-                        Toast.makeText(applicationContext, "Connecté", Toast.LENGTH_SHORT).show()
-                    }
-                    else{
-                        Toast.makeText(applicationContext, "Connexion échouée", Toast.LENGTH_SHORT).show()
-                    }
                 }
             } else {
                 Toast.makeText(this, "Formulaire mal renseigné", Toast.LENGTH_SHORT).show()

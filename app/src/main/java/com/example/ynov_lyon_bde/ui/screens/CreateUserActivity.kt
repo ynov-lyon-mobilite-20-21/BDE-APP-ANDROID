@@ -89,7 +89,12 @@ class CreateUserActivity : AppCompatActivity(){
 
                         if (resultRequest != null) {
                             val jsonResultRequest = JSONObject(resultRequest)
-                            result = jsonResultRequest.getJSONObject("data").getString("message")
+                            if(jsonResultRequest.getJSONObject("error")== null){
+                                result = jsonResultRequest.getJSONObject("data").getString("message")
+                            }
+                            else{
+                                result = jsonResultRequest.getJSONObject("error").getString("code")
+                            }
                         }
                         else{
                             result = "Erreur d'inscription"

@@ -35,14 +35,15 @@ class BdeApiService {
 
             // Do the POST request and get response
             val response = retrofit.createUser(requestBody)
-
                 if (response.isSuccessful) {
                     val prettyJson = JsonServiceBuilder().convertRawToPrettyJson(response)
                     Log.d("Pretty Printed JSON :", prettyJson)
                     resultRequest = prettyJson
 
                 } else {
-                    Log.e("RETROFIT_ERROR", response.code().toString())
+                    val prettyJson = JsonServiceBuilder().convertRawToPrettyJsonErr(response.errorBody())
+                    Log.e("RETROFIT_ERROR", prettyJson)
+                    resultRequest = prettyJson
                 }
 
         return resultRequest
@@ -65,16 +66,15 @@ class BdeApiService {
 
         // Do the POST request and get response
         val response = retrofit.loginUser(requestBody)
-
         if (response.isSuccessful) {
             val prettyJson = JsonServiceBuilder().convertRawToPrettyJson(response)
             Log.d("Pretty Printed JSON :", prettyJson)
             resultRequest = prettyJson
-
         } else {
-            Log.e("RETROFIT_ERROR", response.code().toString())
+            val prettyJson = JsonServiceBuilder().convertRawToPrettyJsonErr(response.errorBody())
+            Log.e("RETROFIT_ERROR", prettyJson)
+            resultRequest = prettyJson
         }
-
         return resultRequest
     }
 

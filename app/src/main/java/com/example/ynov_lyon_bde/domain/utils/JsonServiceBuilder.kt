@@ -18,4 +18,15 @@ class JsonServiceBuilder {
         )
         return prettyJson
     }
+
+    fun convertRawToPrettyJsonErr(response : ResponseBody?): String {
+        val gson = GsonBuilder().setPrettyPrinting().create()
+        val prettyJson = gson.toJson(
+            JsonParser.parseString(
+                response
+                    ?.string()
+            )
+        )
+        return prettyJson
+    }
 }
