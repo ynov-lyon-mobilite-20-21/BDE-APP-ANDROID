@@ -10,25 +10,7 @@ import kotlinx.android.synthetic.main.my_tickets.view.*
 
 class RecylclerViewAdapter(private val data: List<DataObject>) : RecyclerView.Adapter<RecylclerViewAdapter.ViewHolder>() {
 
-    override fun onCreateViewHolder(
-        parent: ViewGroup,
-        viewType: Int
-    ): RecylclerViewAdapter.ViewHolder {
-        val inflater = LayoutInflater.from(parent.context)
-        .inflate(R.layout.my_tickets, parent, false)
-
-        return ViewHolder(inflater)
-    }
-
-    override fun getItemCount(): Int {
-       return data.size
-    }
-
-    override fun onBindViewHolder(holder: RecylclerViewAdapter.ViewHolder, position: Int) {
-        holder.titleEvent.text = data[position].titleEvent
-        holder.dateEvent.text = data[position].dateEvent
-    }
-
+    //Provides all the functionality for our list items
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
         var dateEvent : TextView
         var titleEvent : TextView
@@ -39,4 +21,25 @@ class RecylclerViewAdapter(private val data: List<DataObject>) : RecyclerView.Ad
         }
     }
 
+    //Create new views (invoked by the layout manager)
+    override fun onCreateViewHolder(
+        parent: ViewGroup,
+        viewType: Int
+    ): RecylclerViewAdapter.ViewHolder {
+        val view = LayoutInflater.from(parent.context)
+        .inflate(R.layout.my_tickets, parent, false)
+
+        return ViewHolder(view)
+    }
+
+    //Return the total count of items in the list
+    override fun getItemCount(): Int {
+       return data.size
+    }
+
+    //Updates list data; Associates ViewHolder data
+    override fun onBindViewHolder(holder: RecylclerViewAdapter.ViewHolder, position: Int) {
+        holder.titleEvent.text = data[position].titleEvent
+        holder.dateEvent.text = data[position].dateEvent
+    }
 }

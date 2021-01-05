@@ -37,19 +37,15 @@ class AccountFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_account, container, false);
     }
 
-    // populate the views now that the layout has been inflated
+    //Populate the views now that the layout has been inflated
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        // RecyclerView initialized here
+        //RecyclerView initialized here
         recyclerView_tickets.apply {
-            // Set a LinearLayoutManager to handle Android
+            //Set a LinearLayoutManager to handle Android; Correctly positions all the data in the list.
             layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
-            // Set the custom adapter to the RecyclerView
+            //Set the custom adapter to the RecyclerView; Links the RecyclerView view to a list of data.
             adapter = RecylclerViewAdapter(data)
         }
-    }
-
-    companion object {
-        fun newInstance(): AccountFragment = AccountFragment()
     }
 }
