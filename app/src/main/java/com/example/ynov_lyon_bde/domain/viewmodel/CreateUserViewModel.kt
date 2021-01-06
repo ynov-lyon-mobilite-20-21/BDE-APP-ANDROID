@@ -5,7 +5,7 @@ import com.example.ynov_lyon_bde.domain.services.BdeApiService
 
 class CreateUserViewModel {
 
-    suspend fun signUp(userData: UserDTO): String? {
+    suspend fun signUp(userData: UserDTO): MutableList<String> {
         val apiService = BdeApiService()
         return apiService.createUser(userData)
     }

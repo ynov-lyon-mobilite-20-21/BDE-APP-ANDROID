@@ -6,17 +6,17 @@ import com.example.ynov_lyon_bde.domain.services.BdeApiService
 
 class ConnectUserViewModel {
 
-    suspend fun signIn(loginDto : LoginDTO): String? {
+    suspend fun signIn(loginDto: LoginDTO): MutableList<String> {
         val apiService = BdeApiService()
         return apiService.loginUser(loginDto)
     }
 
-    suspend fun getUserInformations(token:String?) :String?{
+    suspend fun getUserInformations(token: String?): MutableList<String> {
         val apiService = BdeApiService()
         return apiService.getUser(token)
     }
 
-    suspend fun refreshTokenUser(token:String?):String?{
+    suspend fun refreshTokenUser(token: String?): MutableList<String> {
         val apiService = BdeApiService()
         return apiService.refreshToken(token)
     }
