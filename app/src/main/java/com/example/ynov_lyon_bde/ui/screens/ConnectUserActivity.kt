@@ -69,7 +69,6 @@ class ConnectUserActivity : AppCompatActivity() {
                                     connectUserViewModel.getUserInformations(resultRequestToken)
                                 if (resultUserInformations != null) {
                                     val jsonResultRqInfo = JSONObject(resultUserInformations[1])
-
                                     if (resultUserInformations[0].toInt() in 200..299) {
                                         //TODO : create repository for store user
                                         //TODO : go to home activity
@@ -80,14 +79,14 @@ class ConnectUserActivity : AppCompatActivity() {
                                 } else {
                                     message = "Erreur de récupération des informations"
                                 }
-                            } else {
+                            }
+                            else {
                                 message = jsonResultRequest.getJSONObject("error").getString("code")
                             }
                         } else {
                             message = "Erreur de connexion"
 
                         }
-
                     }
                     deferred.await()
                     Toast.makeText(applicationContext, message, Toast.LENGTH_SHORT).show()
@@ -97,7 +96,6 @@ class ConnectUserActivity : AppCompatActivity() {
                     val resultRefreshToken = connectUserViewModel.refreshTokenUser(token)
                     Log.d("token refresh", resultRefreshToken)
 */
-
                 }
             } else {
                 Toast.makeText(this, "Formulaire mal renseigné", Toast.LENGTH_SHORT).show()

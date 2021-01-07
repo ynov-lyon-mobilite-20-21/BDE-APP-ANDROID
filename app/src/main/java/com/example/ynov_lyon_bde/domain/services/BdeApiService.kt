@@ -7,6 +7,7 @@ import com.example.ynov_lyon_bde.domain.utils.JsonServiceBuilder
 import com.example.ynov_lyon_bde.domain.utils.RetrofitServiceBuilder
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.RequestBody.Companion.toRequestBody
+import okhttp3.internal.wait
 import org.json.JSONObject
 
 
@@ -32,6 +33,7 @@ class BdeApiService {
 
         // Do the POST request and get response
         val response = retrofit.createUser(requestBody)
+
         if (response.isSuccessful) {
             val prettyJson = JsonServiceBuilder().convertRawToPrettyJson(response)
             Log.d("Pretty Printed JSON :", prettyJson)
@@ -107,6 +109,7 @@ class BdeApiService {
             resultRequest.add(response.code().toString())
             resultRequest.add(prettyJson)
         }
+
 
         return resultRequest
     }
