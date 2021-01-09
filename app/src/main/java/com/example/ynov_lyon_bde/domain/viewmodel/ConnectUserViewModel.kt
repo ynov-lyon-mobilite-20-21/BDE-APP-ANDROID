@@ -1,23 +1,16 @@
 package com.example.ynov_lyon_bde.domain.viewmodel
 
+import android.content.Context
+import android.util.Log
 import com.example.ynov_lyon_bde.data.model.LoginDTO
-import com.example.ynov_lyon_bde.domain.services.BdeApiService
 
 
 class ConnectUserViewModel {
 
-    suspend fun signIn(loginDto: LoginDTO): MutableList<String> {
-        val apiService = BdeApiService()
-        return apiService.loginUser(loginDto)
-    }
-
-    suspend fun getUserInformations(token: String?): MutableList<String> {
-        val apiService = BdeApiService()
-        return apiService.getUser(token)
-    }
-
-    suspend fun refreshTokenUser(token: String?): MutableList<String> {
-        val apiService = BdeApiService()
-        return apiService.refreshToken(token)
+    suspend fun callApi(loginDto: LoginDTO, context: Context) {
+        val userViewModel = AuthenticationViewModel()
+        if (userViewModel.callLoginRequest(loginDto, context)) {
+            userViewModel.callInformationUserRequest(context)
+        }
     }
 }

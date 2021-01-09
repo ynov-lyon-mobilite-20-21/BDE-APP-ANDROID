@@ -3,138 +3,114 @@ package com.example.ynov_lyon_bde.domain.services
 import android.util.Log
 import com.example.ynov_lyon_bde.data.model.LoginDTO
 import com.example.ynov_lyon_bde.data.model.UserDTO
+import com.example.ynov_lyon_bde.domain.utils.Constants.Companion.MEDIA_TYPE_JSON
 import com.example.ynov_lyon_bde.domain.utils.JsonServiceBuilder
 import com.example.ynov_lyon_bde.domain.utils.RetrofitServiceBuilder
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.RequestBody.Companion.toRequestBody
-import okhttp3.internal.wait
+import okhttp3.ResponseBody
 import org.json.JSONObject
-
+import retrofit2.Response
+import java.lang.Exception
 
 class BdeApiService {
-    suspend fun createUser(userData: UserDTO): MutableList<String> {
-        val resultRequest: MutableList<String> = arrayListOf()
-        val retrofit = RetrofitServiceBuilder.buildService(BdeApiInterface::class.java)
 
-        // Create JSON using JSONObject
-        val jsonObject = JSONObject()
-        jsonObject.put("firstName", userData.firstName)
-        jsonObject.put("lastName", userData.lastName)
-        jsonObject.put("mail", userData.mail)
-        jsonObject.put("password", userData.password)
-        jsonObject.put("promotion", userData.promotion)
-        jsonObject.put("formation", userData.formation)
+//Throw an error if json response of request is null or code request no enter 200 and 299
+    fun handleException(apiResponse: String?, errorMessage: ErrorType): Boolean {
+        var success: Boolean = true
+        if (!apiResponse.isNullOrEmpty()) {
+            val t = apiResponse.split(";")
+            val code = t[0].toInt()
+            val json = t[1]
+            val jsonObject = JSONObject(t[1])
 
-        // Convert JSONObject to String
-        val jsonObjectString = jsonObject.toString()
+            if (json.isEmpty()) {
+                throw Exception("Le Json récupéré est null")
+            }
 
-        // Create RequestBody
-        val requestBody = jsonObjectString.toRequestBody("application/json".toMediaTypeOrNull())
+            if (code !in 200..299) {
+                when (errorMessage) {
+                    ErrorType.CODE ->
+                        throw Exception(jsonObject.getString("code"))
+                    ErrorType.ERROR ->
+                        throw Exception(jsonObject.getJSONObject("error").getString("code"))
+                }
+                success = false
+            }
 
-        // Do the POST request and get response
-        val response = retrofit.createUser(requestBody)
-
-        if (response.isSuccessful) {
-            val prettyJson = JsonServiceBuilder().convertRawToPrettyJson(response)
-            Log.d("Pretty Printed JSON :", prettyJson)
-            resultRequest.add(response.code().toString())
-            resultRequest.add(prettyJson)
         } else {
-            val prettyJson = JsonServiceBuilder().convertRawToPrettyJsonErr(response.errorBody())
-            Log.e("RETROFIT_ERROR", prettyJson)
-            resultRequest.add(response.code().toString())
-            resultRequest.add(prettyJson)
+            throw Exception("la reponse reçue est null")
+            success = false
         }
+        return success
+    }
 
+    enum class ErrorType {
+        CODE, ERROR
+    }
+/*
+    fun <T> apiCallerPost(propertyRequest : Class<T>){
+
+        val jsonObject = JSONObject()
+        for(item in propertyRequest){
+
+        }
+    }
+
+ */
+
+    suspend fun <T> apiCaller(requestType: RequestType, propertyRequest: T): String? {
+        var resultRequest: String? = null
+        val retrofit = RetrofitServiceBuilder.buildService(BdeApiInterface::class.java)
+        var response: Response<ResponseBody>? = null
+        val jsonObject = JSONObject()
+
+        when (propertyRequest) {
+            is UserDTO -> {
+                jsonObject.put("firstName", propertyRequest.firstName)
+                jsonObject.put("lastName", propertyRequest.lastName)
+                jsonObject.put("mail", propertyRequest.mail)
+                jsonObject.put("password", propertyRequest.password)
+                jsonObject.put("promotion", propertyRequest.promotion)
+                jsonObject.put("formation", propertyRequest.formation)
+                val requestBody =
+                    jsonObject.toString().toRequestBody(MEDIA_TYPE_JSON.toMediaTypeOrNull())
+                response = retrofit.createUser(requestBody)
+            }
+            is LoginDTO -> {
+                jsonObject.put("mail", propertyRequest.mail)
+                jsonObject.put("password", propertyRequest.password)
+                val requestBody =
+                    jsonObject.toString().toRequestBody(MEDIA_TYPE_JSON.toMediaTypeOrNull())
+                response = retrofit.loginUser(requestBody)
+            }
+            is String -> {
+                if (requestType == RequestType.REFRESH) {
+                    jsonObject.put("refreshToken", propertyRequest)
+                    val requestBody =
+                        jsonObject.toString().toRequestBody(MEDIA_TYPE_JSON.toMediaTypeOrNull())
+                    response = retrofit.refreshToken(requestBody)
+                } else if (requestType == RequestType.ME) {
+                    response = retrofit.getUser("Bearer $propertyRequest")
+                }
+            }
+        }
+        if (response != null) {
+            if (response.isSuccessful) {
+                val prettyJson = JsonServiceBuilder().convertRawToPrettyJson(response.body())
+                Log.d("Pretty Printed JSON :", prettyJson)
+                resultRequest = "${response.code()};$prettyJson"
+            } else {
+                val prettyJson = JsonServiceBuilder().convertRawToPrettyJson(response.errorBody())
+                Log.e("RETROFIT_ERROR", prettyJson)
+                resultRequest = "${response.code()};$prettyJson"
+            }
+        }
         return resultRequest
     }
 
-    suspend fun loginUser(loginData: LoginDTO): MutableList<String> {
-        val resultRequest: MutableList<String> = arrayListOf()
-        val retrofit = RetrofitServiceBuilder.buildService(BdeApiInterface::class.java)
-
-        // Create JSON using JSONObject
-        val jsonObject = JSONObject()
-        jsonObject.put("mail", loginData.mail)
-        jsonObject.put("password", loginData.password)
-
-        // Convert JSONObject to String
-        val jsonObjectString = jsonObject.toString()
-
-        // Create RequestBody
-        val requestBody = jsonObjectString.toRequestBody("application/json".toMediaTypeOrNull())
-
-        // Do the POST request and get response
-        val response = retrofit.loginUser(requestBody)
-        if (response.isSuccessful) {
-            val prettyJson = JsonServiceBuilder().convertRawToPrettyJson(response)
-            Log.d("Pretty Printed JSON :", prettyJson)
-            resultRequest.add(response.code().toString())
-            resultRequest.add(prettyJson)
-        } else {
-            val prettyJson = JsonServiceBuilder().convertRawToPrettyJsonErr(response.errorBody())
-            Log.e("RETROFIT_ERROR", prettyJson)
-            resultRequest.add(response.code().toString())
-            resultRequest.add(prettyJson)
-        }
-        return resultRequest
-    }
-
-    suspend fun refreshToken(token: String?): MutableList<String> {
-        val resultRequest: MutableList<String> = arrayListOf()
-        val retrofit = RetrofitServiceBuilder.buildService(BdeApiInterface::class.java)
-
-        // Create JSON using JSONObject
-        val jsonObject = JSONObject()
-        jsonObject.put("refreshToken", token)
-
-        // Convert JSONObject to String
-        val jsonObjectString = jsonObject.toString()
-
-        // Create RequestBody
-        val requestBody = jsonObjectString.toRequestBody("application/json".toMediaTypeOrNull())
-
-        // Do the POST request and get response
-        val response = retrofit.refreshToken(requestBody)
-
-        if (response.isSuccessful) {
-            val prettyJson = JsonServiceBuilder().convertRawToPrettyJson(response)
-            Log.d("Pretty Printed JSON :", prettyJson)
-            resultRequest.add(response.code().toString())
-            resultRequest.add(prettyJson)
-
-        } else {
-            val prettyJson = JsonServiceBuilder().convertRawToPrettyJsonErr(response.errorBody())
-            Log.e("RETROFIT_ERROR", response.code().toString())
-            resultRequest.add(response.code().toString())
-            resultRequest.add(prettyJson)
-        }
-
-
-        return resultRequest
-    }
-
-    suspend fun getUser(token: String?): MutableList<String> {
-        val resultRequest: MutableList<String> = arrayListOf()
-        val retrofit = RetrofitServiceBuilder.buildService(BdeApiInterface::class.java)
-
-        // Do the POST request and get response
-        val response = retrofit.getUser("Bearer $token")
-
-        if (response.isSuccessful) {
-            val prettyJson = JsonServiceBuilder().convertRawToPrettyJson(response)
-            Log.d("Pretty Printed JSON :", prettyJson)
-            resultRequest.add(response.code().toString())
-            resultRequest.add(prettyJson)
-
-        } else {
-            val prettyJson = JsonServiceBuilder().convertRawToPrettyJsonErr(response.errorBody())
-            Log.e("RETROFIT_ERROR", prettyJson)
-            resultRequest.add(response.code().toString())
-            resultRequest.add(prettyJson)
-        }
-
-        return resultRequest
+    enum class RequestType {
+        REFRESH, ME, USER, LOGIN
     }
 
 }

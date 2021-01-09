@@ -4,5 +4,6 @@ class Constants {
 
     companion object{
         const val BASE_URL = "https://lyon-ynov-bde-api.herokuapp.com/"
+        const val MEDIA_TYPE_JSON = "application/json"
     }
 }

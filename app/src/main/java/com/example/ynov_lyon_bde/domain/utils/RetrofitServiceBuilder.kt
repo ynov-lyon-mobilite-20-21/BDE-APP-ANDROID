@@ -2,7 +2,11 @@ package com.example.ynov_lyon_bde.domain.utils
 
 import com.example.ynov_lyon_bde.domain.utils.Constants.Companion.BASE_URL
 import okhttp3.OkHttpClient
+import retrofit2.HttpException
 import retrofit2.Retrofit
+import java.lang.Exception
+import java.net.SocketTimeoutException
+import java.net.UnknownHostException
 import java.util.concurrent.TimeUnit
 
 
@@ -19,15 +23,29 @@ object RetrofitServiceBuilder {
         .build()
 
     fun <T> buildService(service: Class<T>): T {
-        /*
-        val request = retrofit.create(service)
-        return if(client.readTimeoutMillis < 30000 && client.writeTimeoutMillis < 10000 && client.connectTimeoutMillis < 10000){
-            request
-        }else{
-            null
-        }*/
+        try{
+            return retrofit.create(service)
+        }catch (err:Exception){
+            when(err) {
+                is SocketTimeoutException -> {
+                    //Server takes too long to respond
+                    throw SocketTimeoutException("TimeOut")
+                }
+                is UnknownHostException -> {
+                    //No connection and broken url / no server at all
+                    throw err
+                }
+                is HttpException -> {
+                    //server error response
+                    throw err
+                }
+                else -> throw err
+            }
+        }finally{}
         return retrofit.create(service)
+
     }
+
 
 }
 

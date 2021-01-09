@@ -14,9 +14,9 @@ interface BdeApiInterface {
     @POST("api/auth")
     suspend fun loginUser(@Body requestBody: RequestBody): Response<ResponseBody>
 
-    @POST("api/auth/refresh")
-    suspend fun refreshToken(@Body requestBody: RequestBody): Response<ResponseBody>
-
     @GET("api/me")
     suspend fun getUser(@Header("Authorization") token: String?): Response<ResponseBody>
+
+    @POST("api/auth/refresh")
+    suspend fun refreshToken(@Body requestBody: RequestBody): Response<ResponseBody>
 }

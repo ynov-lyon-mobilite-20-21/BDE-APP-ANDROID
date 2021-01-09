@@ -2,62 +2,66 @@ package com.example.ynov_lyon_bde.domain.services
 
 import android.content.Context
 import android.content.Intent
-import com.example.ynov_lyon_bde.domain.viewmodel.ConnectUserViewModel
+import android.util.Log
+import com.example.ynov_lyon_bde.domain.viewmodel.AuthenticationViewModel
 import com.example.ynov_lyon_bde.ui.screens.ConnectUserActivity
 import com.example.ynov_lyon_bde.ui.screens.CreateUserActivity
+import com.example.ynov_lyon_bde.ui.screens.MainActivity
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
-import org.json.JSONObject
+import java.lang.Exception
 
 class RedirectService {
 
     fun redirect(context: Context): Intent {
+        val authenticationViewModel = AuthenticationViewModel()
+        var intent = Intent().setClass(context, ConnectUserActivity::class.java)
+
         val sharedPreferencesService = SharedPreferencesService()
-        var token: String?
-        var intent: Intent = Intent().setClass(context, ConnectUserActivity::class.java)
-        val connectUserViewModel = ConnectUserViewModel()
+        var messageMe: String? = null
+        var messageRefresh: String? = null
 
-        //If user exist
-        if (sharedPreferencesService.retrived("TOKEN", context) != null) {
-            token = sharedPreferencesService.retrived("TOKEN", context)
-            //Request info user
-            GlobalScope.launch(Dispatchers.Main) {
-                async(Dispatchers.IO) {
-                    //Information user request
-                    var resultUserInformations = connectUserViewModel.getUserInformations(token)
-
-                    var jsonResultRqInfo = JSONObject(resultUserInformations[1])
-                    if (resultUserInformations[0].toInt() in 200..299) {
-                        //TODO : create repository for store user
-                        //TODO : go to home activity
-
-                    } else if (jsonResultRqInfo.getString("code") == "INVALID_TOKEN") {
-                        //Request refresh token
-                        val resultRqRefresh = connectUserViewModel.refreshTokenUser(token)
-
-                        val jsonResultRqRefresh = JSONObject(resultRqRefresh[1])
-                        if (resultRqRefresh[0].toInt() in 200..299) {
-                            //Information user request
-                            resultUserInformations = connectUserViewModel.getUserInformations(token)
-
-                            jsonResultRqInfo = JSONObject(resultUserInformations[1])
-                            if (resultUserInformations[0].toInt() in 200..299) {
-                                //TODO : create repository for store user
-                                //TODO : go to home activity
-                            }else{
-                                //Go to connexion activity
-                                intent = Intent().setClass(context, ConnectUserActivity::class.java)
-                            }
+        if (sharedPreferencesService.retrived("TOKEN", context).isNullOrEmpty()) {
+            intent = Intent().setClass(context, CreateUserActivity::class.java)
+        }
+        GlobalScope.launch(Dispatchers.Main) {
+            val deferred = async(Dispatchers.IO) {
+                //call requests
+                try {
+                    authenticationViewModel.callInformationUserRequest(context)
+                } catch (err: Exception) {
+                    messageMe = err.message
+                    Log.e("message", messageMe)
+                }
+                if (messageMe == "INVALID_TOKEN") {
+                    try {
+                        authenticationViewModel.callRefreshRequest(context)
+                    } catch (err: Exception) {
+                        messageRefresh = err.message
+                        Log.e("message", messageRefresh)
+                    }
+                    if (messageRefresh.isNullOrEmpty()) {
+                        try {
+                            authenticationViewModel.callInformationUserRequest(context)
+                            messageMe = null
+                        } catch (err: Exception) {
+                            messageMe = err.message
+                            Log.e("message", messageMe)
                         }
                     }
                 }
             }
-        //User don't exist
-        } else {
-            //Go to inscription activity
-            intent = Intent().setClass(context, CreateUserActivity::class.java)
+            deferred.await()
+            if (messageMe.isNullOrEmpty()) {
+                //TODO : change to home activity
+                val intent = Intent().setClass(context, MainActivity::class.java)
+            }
+            if (!messageRefresh.isNullOrEmpty()) {
+                intent = Intent().setClass(context, ConnectUserActivity::class.java)
+            }
+
         }
         return intent
     }
