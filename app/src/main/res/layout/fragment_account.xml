@@ -1,263 +1,277 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/lyon_ynov_campus"
     android:layout_width="match_parent"
-    android:layout_height="560dp"
-    android:fillViewport="true"
+    android:layout_height="match_parent"
+    android:background="@mipmap/background_account_foreground"
     tools:context=".ui.screens.navigationbottomview.AccountFragment">
 
-    <!-- Background image -->
-<!--    <ImageView-->
-<!--        android:id="@+id/imageView3"-->
-<!--        android:layout_width="691dp"-->
-<!--        android:layout_height="877dp"-->
-<!--        android:layout_marginTop="4dp"-->
-<!--        android:layout_marginEnd="4dp"-->
-<!--        android:src="@mipmap/background_account_foreground"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintHorizontal_bias="0.62"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent"-->
-<!--        app:layout_constraintVertical_bias="0.815"/>-->
-
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingBottom="50dp">
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-        <!-- Background image -->
-        <ImageView
-            android:id="@+id/background"
-            android:layout_width="700dp"
-            android:layout_height="560dp"
-            android:layout_marginBottom="25dp"
-            android:src="@mipmap/background_account_foreground"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.706"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0" />
+        <!-- Constraint layout parent -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-        <!-- Campus image -->
-        <ImageView
-            android:id="@+id/ynov_campus"
-            android:layout_width="99dp"
-            android:layout_height="93dp"
-            android:src="@mipmap/lyon_ynov_campus_foreground"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            <!-- Constraint layout user informations -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/user_information"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/user_tickets"
+                app:layout_constraintStart_toStartOf="parent">
 
-        <!-- Icon logout -->
-        <ImageButton
-            android:id="@+id/button_logout"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="40dp"
-            android:background="@drawable/rounded_button"
-            android:src="@android:drawable/ic_lock_power_off"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.956"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <!-- Ampoule -->
-        <ImageButton
-            android:id="@+id/ampoule"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_marginTop="40dp"
-            android:background="@drawable/rounded_button"
-            android:src="@drawable/ic_launcher_foreground"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-
-        <!-- INFORMATION BLOC -->
-        <LinearLayout
-            android:id="@+id/information_bloc"
-            android:layout_width="280dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="150dp"
-            android:background="@drawable/account_design"
-            android:orientation="horizontal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.496"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <!-- informations -->
-            <LinearLayout
-                android:id="@+id/informations"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/name"
-                    android:layout_width="match_parent"
+                <!-- Campus image -->
+                <!-- layout_constraintHorizontal_bias="1.0" -> The right side is shorter -->
+                <!-- layout_constraintVertical_bias="0" -> The top side is shorter -->
+                <ImageView
+                    android:id="@+id/ynov_campus2"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="10dp"
-                    android:text="MAEVA HAMEL-POIRAT"
-                    android:textSize="16sp"
-                    android:textColor="@color/black"
+                    android:scaleType="fitXY"
+                    android:scaleX="0.8"
+                    android:scaleY="0.8"
+                    android:src="@mipmap/lyon_ynov_campus_foreground"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintVertical_bias="0"
+                    />
+
+                <!-- User informations title -->
+                <TextView
+                    android:id="@+id/user_informations_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/background_title_profil"
+                    android:paddingStart="15dp"
+                    android:paddingTop="5dp"
+                    android:paddingEnd="15dp"
+                    android:paddingBottom="5dp"
                     android:shadowColor="@color/white"
                     android:shadowDx="1"
                     android:shadowDy="1"
-                    android:shadowRadius="4"/>
+                    android:shadowRadius="4"
+                    android:text="MES INFORMATIONS"
+                    android:textColor="#fff"
+                    android:textSize="11sp"
+                    app:layout_constraintTop_toBottomOf="@id/ynov_campus2"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0" />
 
-                <TextView
-                    android:id="@+id/filiaire"
-                    android:layout_width="match_parent"
+                <!-- User informations bloc -->
+                <LinearLayout
+                    android:id="@+id/information_bloc"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="5dp"
-                    android:text="B2 Création and Design"
-                    android:textSize="12sp"
-                    android:textColor="@color/black"/>
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:background="@drawable/account_design"
+                    android:orientation="horizontal"
+                    app:layout_constraintTop_toBottomOf="@id/user_informations_title"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintHorizontal_bias="0.1">
 
-                <TextView
-                    android:id="@+id/email"
-                    android:layout_width="match_parent"
+                    <!-- Informations -->
+                    <LinearLayout
+                        android:id="@+id/informations"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/name"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:paddingStart="10dp"
+                            android:shadowColor="#17182F"
+                            android:shadowDx="1"
+                            android:shadowDy="1"
+                            android:shadowRadius="2"
+                            android:text="MAEVA HAMEL-POIRAT"
+                            android:textColor="#17182F"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/filiere"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:paddingStart="10dp"
+                            android:text="B2 Création and Design"
+                            android:textColor="#17182F"
+                            android:textSize="11sp" />
+
+                        <TextView
+                            android:id="@+id/email"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:paddingStart="10dp"
+                            android:text="maeva.hamelpoirat@ynov.com"
+                            android:textColor="#17182F"
+                            android:textSize="11sp" />
+
+                        <TextView
+                            android:id="@+id/phone"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="10dp"
+                            android:paddingStart="10dp"
+                            android:text="06 92 93 84 72"
+                            android:textColor="#17182F"
+                            android:textSize="11sp" />
+                    </LinearLayout>
+
+                    <!-- Edit informations -->
+                    <LinearLayout
+                        android:layout_width="50dp"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <!-- Edit icon -->
+                        <ImageView
+                            android:id="@+id/edit_icon"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="6dp"
+                            android:scaleType="fitXY"
+                            android:scaleX="0.4"
+                            android:scaleY="0.6"
+                            android:src="@android:drawable/ic_menu_edit"
+                            app:itemIconTint="#17182F" />
+
+                        <!-- Design icon (ampoule) -->
+                        <ImageView
+                            android:id="@+id/ampoule"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:scaleType="fitXY"
+                            android:scaleX="1.7"
+                            android:scaleY="1.7"
+                            app:srcCompat="@mipmap/ampoule_foreground" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- User action bloc -->
+                <LinearLayout
+                    android:id="@+id/user_actions"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="5dp"
-                    android:text="maeva.hamelpoirat@ynov.com"
-                    android:textSize="12sp"
-                    android:textColor="@color/black"/>
+                    android:orientation="vertical"
+                    app:layout_constraintTop_toTopOf="@id/information_bloc"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintBottom_toBottomOf="@+id/information_bloc"
+                    app:layout_constraintStart_toEndOf="@id/information_bloc"
+                    app:layout_constraintHorizontal_bias="0.1">
 
-                <TextView
-                    android:id="@+id/phone"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginBottom="10dp"
-                    android:text="06 92 93 84 72"
-                    android:textSize="12sp"
-                    android:textColor="@color/black"/>
-            </LinearLayout>
+                    <!-- Action delete -->
+                    <ImageButton
+                        android:id="@+id/action_delete"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/account_design"
+                        android:paddingStart="9sp"
+                        android:paddingTop="8sp"
+                        android:paddingEnd="9sp"
+                        android:paddingBottom="8sp"
+                        android:src="@android:drawable/ic_menu_delete" />
 
-            <!-- Edit informations -->
-            <LinearLayout
+                    <!-- Action card -->
+                    <ImageButton
+                        android:id="@+id/action_card"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4sp"
+                        android:background="@drawable/account_design"
+                        android:paddingStart="9sp"
+                        android:paddingTop="8sp"
+                        android:paddingEnd="9sp"
+                        android:paddingBottom="8sp"
+                        android:src="@android:drawable/ic_menu_gallery" />
+                </LinearLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <!-- Constraint layout user tickets -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/user_tickets"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:layout_marginTop="32dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/user_information">
 
-                <ImageView
-                    android:id="@+id/edit_icon"
+                <!-- User tickets title -->
+                <TextView
+                    android:id="@+id/user_tickets_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/background_title_profil"
+                    android:paddingStart="15dp"
+                    android:paddingTop="5dp"
+                    android:paddingEnd="55dp"
+                    android:paddingBottom="5dp"
+                    android:shadowColor="@color/white"
+                    android:shadowDx="1"
+                    android:shadowDy="1"
+                    android:shadowRadius="4"
+                    android:text="MES BILLETS"
+                    android:textColor="#fff"
+                    android:textSize="11sp"
+                    app:layout_constraintBottom_toTopOf="@id/recyclerView_tickets"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <!-- Carousel tickets -->
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerView_tickets"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
-                    android:layout_weight="1"
-                    android:src="@android:drawable/ic_menu_edit" />
-            </LinearLayout>
-        </LinearLayout>
+                    android:layout_marginTop="16dp"
+                    android:orientation="horizontal"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/user_tickets_title" />
 
-        <!-- MY TICKETS -->
-        <TextView
-            android:id="@+id/title_tickets"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="270dp"
-            android:background="@drawable/background_title_account_tickets"
-            android:paddingStart="15dp"
-            android:paddingTop="5dp"
-            android:paddingEnd="50dp"
-            android:paddingBottom="5dp"
-            android:text="MES BILLETS"
-            android:textColor="#fff"
-            android:textSize="11sp"
-            android:shadowColor="@color/white"
-            android:shadowDx="1"
-            android:shadowDy="1"
-            android:shadowRadius="4"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <!-- Carousel tickets -->
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerView_tickets"
-            android:layout_width="366dp"
-            android:layout_height="179dp"
-            android:layout_marginTop="300dp"
-            android:orientation="horizontal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            <!-- User logout -->
+<!--            <ImageButton-->
+<!--                android:id="@+id/user_logout"-->
+<!--                android:layout_width="50dp"-->
+<!--                android:layout_height="50dp"-->
+<!--                android:background="@drawable/rounded_button"-->
+<!--                android:src="@android:drawable/ic_lock_power_off"-->
+<!--                android:layout_marginTop="32dp"-->
+<!--                app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toBottomOf="@id/user_tickets"/>-->
 
-        <TextView
-            android:id="@+id/title_management"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="485dp"
-            android:background="@drawable/background_title_account_management"
-            android:paddingStart="50dp"
-            android:paddingTop="5dp"
-            android:paddingEnd="50dp"
-            android:paddingBottom="5dp"
-            android:text="GESTION"
-            android:textColor="#fff"
-            android:textSize="11sp"
-            android:shadowColor="@color/white"
-            android:shadowDx="1"
-            android:shadowDy="1"
-            android:shadowRadius="4"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
 
-        <!-- MANAGEMENT -->
-        <LinearLayout
-            android:id="@+id/management_bloc"
-            android:layout_width="280dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="520dp"
-            android:background="@drawable/account_design"
-            android:orientation="horizontal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.496"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <ImageButton
-                android:id="@+id/gestion1"
-                android:layout_width="100dp"
-                android:layout_height="60dp"
-                android:layout_margin="20dp"
-                android:layout_weight="1"
-                android:background="@drawable/rounded_corners"
-                android:backgroundTint="#FFFFFF"
-                android:src="@drawable/ic_launcher_foreground" />
-
-            <ImageButton
-                android:id="@+id/gestion2"
-                android:layout_width="100dp"
-                android:layout_height="60dp"
-                android:layout_margin="20dp"
-                android:layout_weight="1"
-                android:background="@drawable/rounded_corners"
-                android:backgroundTint="#FFFFFF"
-                android:src="@drawable/ic_launcher_foreground" />
-
-            <ImageButton
-                android:id="@+id/gestion3"
-                android:layout_width="100dp"
-                android:layout_height="60dp"
-                android:layout_margin="20dp"
-                android:layout_weight="1"
-                android:background="@drawable/rounded_corners"
-                android:backgroundTint="#FFFFFF"
-                android:src="@drawable/ic_launcher_foreground" />
-        </LinearLayout>
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</ScrollView>
