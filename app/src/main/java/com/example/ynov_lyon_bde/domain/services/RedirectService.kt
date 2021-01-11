@@ -18,51 +18,53 @@ class RedirectService {
     fun redirect(context: Context): Intent {
         val authenticationViewModel = AuthenticationViewModel()
         var intent = Intent().setClass(context, ConnectUserActivity::class.java)
-
         val sharedPreferencesService = SharedPreferencesService()
-        var messageMe: String? = null
-        var messageRefresh: String? = null
+
+        var errorGetUser: String? = null
+        var errorRefresh: String? = null
 
         if (sharedPreferencesService.retrived("TOKEN", context).isNullOrEmpty()) {
             intent = Intent().setClass(context, CreateUserActivity::class.java)
-        }
-        GlobalScope.launch(Dispatchers.Main) {
-            val deferred = async(Dispatchers.IO) {
-                //call requests
-                try {
-                    authenticationViewModel.callInformationUserRequest(context)
-                } catch (err: Exception) {
-                    messageMe = err.message
-                    Log.e("message", messageMe)
-                }
-                if (messageMe == "INVALID_TOKEN") {
+        }else{
+            GlobalScope.launch(Dispatchers.Main) {
+                val deferred = async(Dispatchers.IO) {
+                    //call requests
                     try {
-                        authenticationViewModel.callRefreshRequest(context)
+                        authenticationViewModel.callInformationUserRequest(context)
                     } catch (err: Exception) {
-                        messageRefresh = err.message
-                        Log.e("message", messageRefresh)
+                        errorGetUser = err.message
+                        Log.e("error", errorGetUser)
                     }
-                    if (messageRefresh.isNullOrEmpty()) {
+                    if (errorGetUser == "INVALID_TOKEN") {
                         try {
-                            authenticationViewModel.callInformationUserRequest(context)
-                            messageMe = null
+                            authenticationViewModel.callRefreshRequest(context)
                         } catch (err: Exception) {
-                            messageMe = err.message
-                            Log.e("message", messageMe)
+                            errorRefresh = err.message
+                            Log.e("error", errorRefresh)
+                        }
+                        if (errorRefresh.isNullOrEmpty()) {
+                            try {
+                                authenticationViewModel.callInformationUserRequest(context)
+                                errorGetUser = null
+                            } catch (err: Exception) {
+                                errorGetUser = err.message
+                                Log.e("error", errorGetUser)
+                            }
                         }
                     }
                 }
+                deferred.await()
             }
-            deferred.await()
-            if (messageMe.isNullOrEmpty()) {
+            if (errorGetUser == null) {
                 //TODO : change to home activity
-                val intent = Intent().setClass(context, MainActivity::class.java)
+                intent = Intent().setClass(context, MainActivity::class.java)
             }
-            if (!messageRefresh.isNullOrEmpty()) {
+            if (errorRefresh != null) {
                 intent = Intent().setClass(context, ConnectUserActivity::class.java)
             }
-
         }
+
+        Log.e("intent", intent.toString())
         return intent
     }
 
