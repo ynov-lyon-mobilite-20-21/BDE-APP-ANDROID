@@ -48,16 +48,6 @@ class BdeApiService {
     enum class ErrorType {
         CODE, ERROR
     }
-/*
-    fun <T> apiCallerPost(propertyRequest : Class<T>){
-
-        val jsonObject = JSONObject()
-        for(item in propertyRequest){
-
-        }
-    }
-
- */
 
     suspend fun <T> apiCaller(requestType: RequestType, propertyRequest: T): String? {
         var resultRequest: String? = null

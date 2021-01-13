@@ -1,7 +1,6 @@
 package com.example.ynov_lyon_bde.domain.viewmodel
 
 import android.content.Context
-import android.util.Log
 import com.example.ynov_lyon_bde.data.model.LoginDTO
 
 

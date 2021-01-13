@@ -2,9 +2,6 @@ package com.example.ynov_lyon_bde.domain.services
 
 import android.content.Context
 import android.content.SharedPreferences
-import androidx.appcompat.app.AppCompatActivity
-import com.example.ynov_lyon_bde.data.model.User
-import com.google.gson.Gson
 
 class SharedPreferencesService {
 

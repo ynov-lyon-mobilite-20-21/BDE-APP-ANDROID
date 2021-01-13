@@ -17,10 +17,13 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        //to redirect user on activity inscription/connexion/home
+        /*
         val redirectService = RedirectService()
-
         var intent = redirectService.redirect(applicationContext)
         startActivity(intent)
+
+         */
 /*
         val user = User(
             id = "id",
