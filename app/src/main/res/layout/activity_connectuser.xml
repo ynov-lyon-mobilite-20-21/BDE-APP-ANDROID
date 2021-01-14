@@ -7,70 +7,41 @@
     android:background="@drawable/background_app"
     tools:context=".ui.screens.ConnectUserActivity">
 
-    <TextView
-        android:id="@+id/textViewEmail2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+
+    <EditText
+        android:id="@+id/editTextMail2"
+        android:layout_width="210dp"
+        android:layout_height="45dp"
+        android:background="@drawable/edittext_style"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text=""
+        android:hint="Adresse e-mail"
+        app:layout_constraintBottom_toTopOf="@+id/buttonConnect"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextPassword2" />
+
+    <EditText
+        android:id="@+id/editTextPassword2"
+        android:layout_width="210dp"
+        android:layout_height="45dp"
         android:layout_marginTop="150dp"
-        android:text="ADRESSE E-MAIL"
+        android:background="@drawable/edittext_style"
+        android:ems="10"
+        android:hint="Mot de passe"
+        android:inputType="textPassword"
+        android:text=""
         app:layout_constraintBottom_toTopOf="@+id/editTextMail2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/editTextMail2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text=""
-        app:layout_constraintBottom_toTopOf="@+id/textViewPassword2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewEmail2" />
-
-    <TextView
-        android:id="@+id/textViewPassword2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="MOT DE PASSE"
-        app:layout_constraintBottom_toTopOf="@+id/editTextPassword2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextMail2" />
-
-    <EditText
-        android:id="@+id/editTextPassword2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPassword"
-        android:text=""
-        app:layout_constraintBottom_toTopOf="@+id/buttonConnect"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewPassword2" />
-
-    <Button
-        android:id="@+id/buttonConnect"
-        style="@style/Widget.AppCompat.Button"
-        android:layout_width="wrap_content"
-        android:layout_height="48dp"
-        android:background="@drawable/button_style"
-        android:text="Me connecter"
-        android:textAllCaps="false"
-        android:textColor="@color/white"
-        app:layout_constraintBottom_toTopOf="@+id/buttonCreateUser2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextPassword2" />
-
     <Button
         android:id="@+id/buttonCreateUser2"
         style="@style/Widget.AppCompat.Button"
-        android:layout_width="wrap_content"
-        android:layout_height="48dp"
+        android:layout_width="140dp"
+        android:layout_height="45dp"
         android:layout_marginBottom="100dp"
         android:background="@drawable/button_style"
         android:text="Créer un compte"
@@ -80,5 +51,20 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buttonConnect" />
+
+    <Button
+        android:id="@+id/buttonConnect"
+        style="@style/Widget.AppCompat.Button"
+        android:layout_width="140dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/button_style"
+        android:text="Me connecter"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toTopOf="@+id/buttonCreateUser2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextMail2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

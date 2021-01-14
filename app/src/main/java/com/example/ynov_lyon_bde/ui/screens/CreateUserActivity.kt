@@ -4,11 +4,15 @@ package com.example.ynov_lyon_bde.ui.screens
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
+import android.os.Trace.isEnabled
 import android.util.Log
-import android.widget.ArrayAdapter
-import android.widget.Spinner
-import android.widget.Toast
+import android.view.View
+import android.view.ViewGroup
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.os.TraceCompat.isEnabled
+import androidx.core.view.get
+import androidx.core.view.isVisible
 import com.example.ynov_lyon_bde.R
 import com.example.ynov_lyon_bde.data.model.LoginDTO
 import com.example.ynov_lyon_bde.data.model.UserDTO
@@ -39,6 +43,7 @@ class CreateUserActivity : AppCompatActivity() {
         ).also { adapter ->
             // Specify the layout to use when the list of choices appears
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+
             // Apply the adapter to the spinner
             spinnerP.adapter = adapter
         }
