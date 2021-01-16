@@ -4,22 +4,25 @@ package com.example.ynov_lyon_bde.ui.screens
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
-import android.os.Trace.isEnabled
+import android.text.method.HideReturnsTransformationMethod
+import android.text.method.PasswordTransformationMethod
 import android.util.Log
 import android.view.View
-import android.view.ViewGroup
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.os.TraceCompat.isEnabled
-import androidx.core.view.get
-import androidx.core.view.isVisible
 import com.example.ynov_lyon_bde.R
 import com.example.ynov_lyon_bde.data.model.LoginDTO
 import com.example.ynov_lyon_bde.data.model.UserDTO
+import com.example.ynov_lyon_bde.domain.utils.SpinnerService
 import com.example.ynov_lyon_bde.domain.viewmodel.CreateUserViewModel
 import kotlinx.android.synthetic.main.activity_createuser.*
-import kotlinx.coroutines.*
-import java.lang.Exception
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.async
+import kotlinx.coroutines.launch
+import java.util.*
+import kotlin.collections.ArrayList
+
 
 class CreateUserActivity : AppCompatActivity() {
 
@@ -28,39 +31,43 @@ class CreateUserActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_createuser)
 
+
         //return previous activity
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         val createUserViewModel = CreateUserViewModel()
+        val spinnerAdapter = SpinnerService()
 
-        //Spinner to take class for a new user
+        // list of spinner Formation
+        val listFormation = ArrayList<String>(listOf(*resources.getStringArray(R.array.formation_array)))
+        val listPromotion = ArrayList<String>(listOf(*resources.getStringArray(R.array.promotion_array)))
+
+
+        //Init spinner Promotion
         val spinnerP: Spinner = findViewById(R.id.spinnerPromotion)
-        // Create an ArrayAdapter using the string array and a default spinner layout
-        ArrayAdapter.createFromResource(
-            this,
-            R.array.promotion_array,
-            android.R.layout.simple_spinner_item
-        ).also { adapter ->
-            // Specify the layout to use when the list of choices appears
-            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        val adapterspinnerP = spinnerAdapter.initAdapter(applicationContext,
+            listPromotion,
+            spinnerP)
+        spinnerP.adapter = adapterspinnerP
 
-            // Apply the adapter to the spinner
-            spinnerP.adapter = adapter
-        }
-
-        //Spinner to take faculty for a new user
+        //Init spinner formation
         val spinnerF: Spinner = findViewById(R.id.spinnerFormation)
-        // Create an ArrayAdapter using the string array and a default spinner layout
-        ArrayAdapter.createFromResource(
-            this,
-            R.array.formation_array,
-            android.R.layout.simple_spinner_item
-        ).also { adapter ->
-            // Specify the layout to use when the list of choices appears
-            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-            // Apply the adapter to the spinner
-            spinnerF.adapter = adapter
+        val adapterspinnerF = spinnerAdapter.initAdapter(applicationContext,
+            listFormation,
+            spinnerF)
+        spinnerF.adapter = adapterspinnerF
+
+        //Show / Hide button
+        showHideButton.setOnClickListener {
+            if(editTextPassword.getTransformationMethod().equals(PasswordTransformationMethod.getInstance())){
+                editTextPassword.transformationMethod = HideReturnsTransformationMethod.getInstance()
+                //TODO set an icon hide
+            } else{
+                editTextPassword.transformationMethod = PasswordTransformationMethod.getInstance()
+                //TODO set an icon show
+            }
         }
+
 
         buttonCreateUser.setOnClickListener {
 

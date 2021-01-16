@@ -2,6 +2,8 @@ package com.example.ynov_lyon_bde.ui.screens
 
 import android.content.Intent
 import android.os.Bundle
+import android.text.method.HideReturnsTransformationMethod
+import android.text.method.PasswordTransformationMethod
 import android.util.Log
 import android.util.Patterns
 import android.widget.Toast
@@ -10,6 +12,7 @@ import com.example.ynov_lyon_bde.R
 import com.example.ynov_lyon_bde.data.model.LoginDTO
 import com.example.ynov_lyon_bde.domain.viewmodel.ConnectUserViewModel
 import kotlinx.android.synthetic.main.activity_connectuser.*
+import kotlinx.android.synthetic.main.activity_createuser.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.async
@@ -24,6 +27,18 @@ class ConnectUserActivity : AppCompatActivity() {
 
         //return previous activity
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setDisplayShowHomeEnabled(true)
+
+        //Show / Hide button
+        showHideButton2.setOnClickListener {
+            if(editTextPassword2.getTransformationMethod().equals(PasswordTransformationMethod.getInstance())){
+                editTextPassword2.transformationMethod = HideReturnsTransformationMethod.getInstance()
+                //TODO set an icon hide
+            } else{
+                editTextPassword2.transformationMethod = PasswordTransformationMethod.getInstance()
+                //TODO set an icon show
+            }
+        }
 
         buttonCreateUser2.setOnClickListener {
             //Go to inscription activity

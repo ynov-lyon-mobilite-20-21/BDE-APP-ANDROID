@@ -10,8 +10,8 @@
 
     <EditText
         android:id="@+id/editTextMail"
-        android:layout_width="210dp"
-        android:layout_height="45dp"
+        android:layout_width="328dp"
+        android:layout_height="56dp"
         android:ems="10"
         android:hint="Adresse e-mail"
         android:inputType="textPersonName"
@@ -25,22 +25,35 @@
 
     <EditText
         android:id="@+id/editTextPassword"
-        android:layout_width="210dp"
-        android:layout_height="45dp"
+        android:layout_width="328dp"
+        android:layout_height="56dp"
         android:ems="10"
         android:hint="Mot de passe"
         android:inputType="textPassword"
         android:text=""
-        android:background="@drawable/edittext_style"
+        android:background="@drawable/edittext_password_style"
         app:layout_constraintBottom_toTopOf="@+id/editTextPhone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextMail" />
 
+    <ImageView
+        android:id="@+id/showHideButton"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:ems="10"
+        android:inputType="textPassword"
+        app:layout_constraintBottom_toTopOf="@+id/editTextPhone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.89"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextMail"
+        app:srcCompat="@drawable/show" />
+
     <EditText
         android:id="@+id/editTextPhone"
-        android:layout_width="210dp"
-        android:layout_height="45dp"
+        android:layout_width="328dp"
+        android:layout_height="56dp"
         android:ems="10"
         android:hint="Téléphone"
         android:inputType="textPassword"
@@ -53,8 +66,10 @@
 
     <Spinner
         android:id="@+id/spinnerPromotion"
-        android:layout_width="210dp"
-        android:layout_height="45dp"
+        style="@style/Widget.AppCompat.Spinner"
+        android:layout_width="328dp"
+        android:layout_height="56dp"
+        android:background="@drawable/spinner_style"
         android:entries="@array/promotion_array"
         app:layout_constraintBottom_toTopOf="@+id/spinnerFormation"
         app:layout_constraintEnd_toEndOf="parent"
@@ -63,9 +78,10 @@
 
     <Spinner
         android:id="@+id/spinnerFormation"
-        android:layout_width="210dp"
-        android:layout_height="45dp"
+        android:layout_width="328dp"
+        android:layout_height="56dp"
         android:entries="@array/formation_array"
+        android:background="@drawable/spinner_style"
         app:layout_constraintBottom_toTopOf="@+id/buttonCreateUser"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -74,8 +90,8 @@
     <Button
         android:id="@+id/buttonCreateUser"
         style="@style/Widget.AppCompat.Button"
-        android:layout_width="135dp"
-        android:layout_height="44dp"
+        android:layout_width="158dp"
+        android:layout_height="36dp"
         android:background="@drawable/button_style"
         android:text="Créer un compte"
         android:textAllCaps="false"
