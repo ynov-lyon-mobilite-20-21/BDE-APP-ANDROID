@@ -9,7 +9,6 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.Spinner
 import android.widget.TextView
-import androidx.core.view.get
 
 class SpinnerService {
     fun initAdapter(context: Context, list: MutableList<String>, spinner: Spinner): ArrayAdapter<String> {

@@ -7,7 +7,6 @@ import android.os.Bundle
 import android.text.method.HideReturnsTransformationMethod
 import android.text.method.PasswordTransformationMethod
 import android.util.Log
-import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.example.ynov_lyon_bde.R
@@ -20,7 +19,6 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
-import java.util.*
 import kotlin.collections.ArrayList
 
 
@@ -38,22 +36,17 @@ class CreateUserActivity : AppCompatActivity() {
         val createUserViewModel = CreateUserViewModel()
         val spinnerAdapter = SpinnerService()
 
-        // list of spinner Formation
-        val listFormation = ArrayList<String>(listOf(*resources.getStringArray(R.array.formation_array)))
-        val listPromotion = ArrayList<String>(listOf(*resources.getStringArray(R.array.promotion_array)))
-
-
         //Init spinner Promotion
         val spinnerP: Spinner = findViewById(R.id.spinnerPromotion)
         val adapterspinnerP = spinnerAdapter.initAdapter(applicationContext,
-            listPromotion,
+            ArrayList<String>(listOf(*resources.getStringArray(R.array.promotion_array))),
             spinnerP)
         spinnerP.adapter = adapterspinnerP
 
         //Init spinner formation
         val spinnerF: Spinner = findViewById(R.id.spinnerFormation)
         val adapterspinnerF = spinnerAdapter.initAdapter(applicationContext,
-            listFormation,
+            ArrayList<String>(listOf(*resources.getStringArray(R.array.formation_array))),
             spinnerF)
         spinnerF.adapter = adapterspinnerF
 
@@ -62,9 +55,11 @@ class CreateUserActivity : AppCompatActivity() {
             if(editTextPassword.getTransformationMethod().equals(PasswordTransformationMethod.getInstance())){
                 editTextPassword.transformationMethod = HideReturnsTransformationMethod.getInstance()
                 //TODO set an icon hide
+                showHideButton.setImageResource(R.drawable.hide)
             } else{
                 editTextPassword.transformationMethod = PasswordTransformationMethod.getInstance()
                 //TODO set an icon show
+                showHideButton.setImageResource(R.drawable.show)
             }
         }
 

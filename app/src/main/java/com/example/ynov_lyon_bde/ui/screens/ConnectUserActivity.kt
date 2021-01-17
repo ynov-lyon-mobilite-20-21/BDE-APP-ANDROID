@@ -12,7 +12,6 @@ import com.example.ynov_lyon_bde.R
 import com.example.ynov_lyon_bde.data.model.LoginDTO
 import com.example.ynov_lyon_bde.domain.viewmodel.ConnectUserViewModel
 import kotlinx.android.synthetic.main.activity_connectuser.*
-import kotlinx.android.synthetic.main.activity_createuser.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.async
@@ -27,7 +26,6 @@ class ConnectUserActivity : AppCompatActivity() {
 
         //return previous activity
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar?.setDisplayShowHomeEnabled(true)
 
         //Show / Hide button
         showHideButton2.setOnClickListener {

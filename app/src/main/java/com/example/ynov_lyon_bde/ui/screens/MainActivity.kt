@@ -1,15 +1,8 @@
 package com.example.ynov_lyon_bde.ui.screens
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import com.example.ynov_lyon_bde.R
-import com.example.ynov_lyon_bde.data.model.User
-import com.example.ynov_lyon_bde.data.model.UserDTO
-import com.example.ynov_lyon_bde.data.repository.UserRepository
-import com.example.ynov_lyon_bde.domain.services.RedirectService
-import kotlinx.coroutines.NonCancellable.start
 
 class MainActivity : AppCompatActivity() {
 
