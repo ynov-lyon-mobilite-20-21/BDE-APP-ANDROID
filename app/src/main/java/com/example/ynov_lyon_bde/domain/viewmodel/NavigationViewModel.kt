@@ -1,32 +1,20 @@
 package com.example.ynov_lyon_bde.domain.viewmodel
 
-import android.text.TextUtils.replace
 import android.view.MenuItem
+import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
+import androidx.navigation.findNavController
 import com.example.ynov_lyon_bde.R
 import com.example.ynov_lyon_bde.ui.screens.navigationbottomview.AccountFragment
 import com.example.ynov_lyon_bde.ui.screens.navigationbottomview.EventsFragment
 
 class NavigationViewModel(private val fragmentManager: FragmentManager) {
 
-    private val eventFragment =  EventsFragment()
-    private val accountFragment = AccountFragment()
-
-    fun makeStartingFragment() {
-        makeCurrentFragment(eventFragment)
-    }
-
-    fun chooseCurrentFragment(it: MenuItem) {
+    fun chooseCurrentFragment(it: MenuItem, view: View) {
         when(it.itemId){
-            R.id.eventsFragment -> makeCurrentFragment(eventFragment)
-            R.id.accountFragment -> makeCurrentFragment(accountFragment)
+            R.id.bottomNavigationEventButton -> view.findNavController().navigate(R.id.action_global_eventsFragment2)
+            R.id.bottomNavigationAccountButton -> view.findNavController().navigate(R.id.action_global_accountFragment2)
         }
     }
-
-    private fun makeCurrentFragment(fragment: Fragment) =
-        fragmentManager.beginTransaction().apply {
-            replace(R.id.frameLayout, fragment)
-            commit ()
-        }
 }

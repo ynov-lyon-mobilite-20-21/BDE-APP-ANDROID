@@ -5,22 +5,21 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import com.example.ynov_lyon_bde.R
 import com.example.ynov_lyon_bde.domain.viewmodel.ViewPagerAdapter
 import com.example.ynov_lyon_bde.ui.screens.onboarding.viewPager.FirstScreen
 import com.example.ynov_lyon_bde.ui.screens.onboarding.viewPager.SecondScreen
 import com.example.ynov_lyon_bde.ui.screens.onboarding.viewPager.ThirdScreen
+import kotlinx.android.synthetic.main.fragment_view_pager.*
 import kotlinx.android.synthetic.main.fragment_view_pager.view.*
 
-class ViewPagerFragment : Fragment() {
+class OnBoardingActivity : AppCompatActivity() {
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.fragment_view_pager)
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        val view =  inflater.inflate(R.layout.fragment_view_pager, container, false)
 
         val fragmentList = arrayListOf<Fragment>(
             FirstScreen(),
@@ -31,12 +30,11 @@ class ViewPagerFragment : Fragment() {
         val adapter =
             ViewPagerAdapter(
                 fragmentList,
-                requireActivity().supportFragmentManager,
+                supportFragmentManager,
                 lifecycle
             )
 
-        view.viewPager.adapter = adapter
-        return view
+        viewPager.adapter = adapter
     }
 
 }
