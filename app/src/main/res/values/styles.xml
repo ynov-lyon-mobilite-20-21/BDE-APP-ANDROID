@@ -11,4 +11,10 @@
         <item name = "windowActionBar">false</item>
         <item name = "windowNoTitle">true</item>
     </style>
+
+    <!-- Style Bottom Navigation View -->
+    <style name="CustomTextNavBottom">
+        <item name="android:textSize">10sp</item>
+    </style>
+
 </resources>
