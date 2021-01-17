@@ -21,7 +21,6 @@
         android:id="@+id/scroll_page_profil"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="60dp"
         android:fillViewport="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -37,12 +36,15 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <!-- Constraint layout user informations -->
+
+            <!-- Constraint layout user tickets -->
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/user_informations"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintBottom_toTopOf="@id/user_tickets"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
@@ -58,10 +60,10 @@
                     android:scaleY="0.8"
                     android:src="@mipmap/lyon_ynov_campus_foreground"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="0" />
 
                 <!-- User informations title -->
@@ -81,24 +83,26 @@
                     android:text="MES INFORMATIONS"
                     android:textColor="#fff"
                     android:textSize="11sp"
-                    app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintBottom_toTopOf="@id/information_bloc"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/ynov_campus" />
 
                 <!-- User informations bloc -->
                 <LinearLayout
                     android:id="@+id/information_bloc"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
                     android:layout_marginBottom="16dp"
                     android:background="@drawable/account_design"
                     android:orientation="horizontal"
-                    app:layout_constraintHorizontal_bias="0.1"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/user_actions"
+                    app:layout_constraintHorizontal_bias="0.1"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/user_informations_title">
 
@@ -189,11 +193,10 @@
                     android:id="@+id/user_actions"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
                     android:orientation="vertical"
                     app:layout_constraintBottom_toBottomOf="@+id/information_bloc"
-                    app:layout_constraintHorizontal_bias="0.1"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@id/information_bloc"
                     app:layout_constraintTop_toTopOf="@id/information_bloc">
 
                     <!-- Action delete -->
@@ -223,7 +226,6 @@
                 </LinearLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <!-- Constraint layout user tickets -->
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/user_tickets"
                 android:layout_width="match_parent"
@@ -251,9 +253,9 @@
                     android:text="MES BILLETS"
                     android:textColor="#fff"
                     android:textSize="11sp"
-                    app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintBottom_toTopOf="@id/recyclerView_tickets"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
