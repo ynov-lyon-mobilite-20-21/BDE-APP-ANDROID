@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_app"
+    tools:context=".ui.screens.CreateUserActivity">
+
+
+    <EditText
+        android:id="@+id/editTextMail"
+        android:layout_width="328dp"
+        android:layout_height="56dp"
+        android:ems="10"
+        android:hint="Adresse e-mail"
+        android:inputType="textPersonName"
+        android:text=""
+        android:background="@drawable/edittext_style"
+        app:layout_constraintBottom_toTopOf="@+id/editTextPassword"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/editTextPassword"
+        android:layout_width="328dp"
+        android:layout_height="56dp"
+        android:ems="10"
+        android:hint="Mot de passe"
+        android:inputType="textPassword"
+        android:text=""
+        android:background="@drawable/edittext_password_style"
+        app:layout_constraintBottom_toTopOf="@+id/editTextPhone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextMail" />
+
+    <ImageView
+        android:id="@+id/showHideButton"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:ems="10"
+        android:inputType="textPassword"
+        app:layout_constraintBottom_toTopOf="@+id/editTextPhone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.89"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextMail"
+        app:srcCompat="@drawable/show" />
+
+    <EditText
+        android:id="@+id/editTextPhone"
+        android:layout_width="328dp"
+        android:layout_height="56dp"
+        android:ems="10"
+        android:hint="Téléphone"
+        android:inputType="textPassword"
+        android:text=""
+        android:background="@drawable/edittext_style"
+        app:layout_constraintBottom_toTopOf="@+id/spinnerPromotion"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextPassword" />
+
+    <Spinner
+        android:id="@+id/spinnerPromotion"
+        style="@style/Widget.AppCompat.Spinner"
+        android:layout_width="328dp"
+        android:layout_height="56dp"
+        android:background="@drawable/spinner_style"
+        android:entries="@array/promotion_array"
+        app:layout_constraintBottom_toTopOf="@+id/spinnerFormation"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextPhone" />
+
+    <Spinner
+        android:id="@+id/spinnerFormation"
+        android:layout_width="328dp"
+        android:layout_height="56dp"
+        android:entries="@array/formation_array"
+        android:background="@drawable/spinner_style"
+        app:layout_constraintBottom_toTopOf="@+id/buttonCreateUser"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerPromotion" />
+
+    <Button
+        android:id="@+id/buttonCreateUser"
+        style="@style/Widget.AppCompat.Button"
+        android:layout_width="158dp"
+        android:layout_height="36dp"
+        android:background="@drawable/button_style"
+        android:text="Créer un compte"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerFormation" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

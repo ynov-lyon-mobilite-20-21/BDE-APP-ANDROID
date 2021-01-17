@@ -1,10 +1,19 @@
 <resources>
-    <string name="app_name">My Application2</string>
-    <string name="title_activity_navigation">NavigationActivity</string>
-    <!--
-    This string is used for square devices and overridden by hello_world in
-    values-round/strings.xml for round devices.
-    -->
-    <string name="hello_world">Hello Square World!</string>
-    <string name="title_activity_test">test</string>
+    <string name="app_name">app BDE</string>
+    <string-array name="promotion_array">
+        <item>Classe</item>
+        <item>Bachelor 1</item>
+        <item>Bachelor 2</item>
+        <item>Bachelor 3</item>
+        <item>Mastère 1</item>
+        <item>Mastère 2</item>
+    </string-array>
+    <string-array name="formation_array">
+        <item>Filière</item>
+        <item>Animation 3D</item>
+        <item>Audiovisuel</item>
+        <item>Création &amp; Design</item>
+        <item>Marketing Communication</item>
+        <item>Informatique</item>
+    </string-array>
 </resources>
