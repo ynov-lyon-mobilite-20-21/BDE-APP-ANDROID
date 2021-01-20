@@ -1,4 +1,4 @@
-package com.example.ynov_lyon_bde.ui.screens
+package com.example.ynov_lyon_bde.ui.screens.connection.signIn
 
 import android.content.Intent
 import android.os.Bundle
@@ -6,45 +6,47 @@ import android.text.method.HideReturnsTransformationMethod
 import android.text.method.PasswordTransformationMethod
 import android.util.Log
 import android.util.Patterns
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.example.ynov_lyon_bde.R
 import com.example.ynov_lyon_bde.data.model.LoginDTO
 import com.example.ynov_lyon_bde.domain.viewmodel.ConnectUserViewModel
-import kotlinx.android.synthetic.main.activity_connectuser.*
+import com.example.ynov_lyon_bde.ui.screens.MainActivity
+import kotlinx.android.synthetic.main.fragment_connectuser.*
+import kotlinx.android.synthetic.main.fragment_connectuser.view.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
-import java.lang.Exception
 
 
-class ConnectUserActivity : AppCompatActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_connectuser)
+class SignInFragment : Fragment() {
 
-        //return previous activity
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        val view = inflater.inflate(R.layout.fragment_connectuser, container, false)
 
         //Show / Hide button
-        showHideButton2.setOnClickListener {
-            if(editTextPassword2.getTransformationMethod().equals(PasswordTransformationMethod.getInstance())){
+        view.showHideButton2.setOnClickListener {
+            if(editTextPassword2.transformationMethod.equals(PasswordTransformationMethod.getInstance())){
                 editTextPassword2.transformationMethod = HideReturnsTransformationMethod.getInstance()
-                //TODO set an icon hide
             } else{
                 editTextPassword2.transformationMethod = PasswordTransformationMethod.getInstance()
-                //TODO set an icon show
             }
         }
 
-        buttonCreateUser2.setOnClickListener {
-            //Go to inscription activity
-            val intent = Intent().setClass(this, CreateUserActivity::class.java)
-            startActivity(intent)
+        view.buttonCreateUser2.setOnClickListener {
+            findNavController().navigate(R.id.action_connectUserFragment_to_signUpFragment)
         }
 
-        buttonConnect.setOnClickListener {
+        view.buttonConnect.setOnClickListener {
             val connectUserViewModel = ConnectUserViewModel()
 
             // Take informations User
@@ -64,7 +66,7 @@ class ConnectUserActivity : AppCompatActivity() {
                     val deferred = async(Dispatchers.IO) {
                         //call requests
                         try {
-                            connectUserViewModel.callApi(loginDto, applicationContext)
+                            context?.let { it1 -> connectUserViewModel.callApi(loginDto, it1) }
                         } catch (err: Exception) {
                             message = err.message
                             Log.e("message", message)
@@ -72,17 +74,17 @@ class ConnectUserActivity : AppCompatActivity() {
                     }
                     deferred.await()
                     if (message.isNullOrEmpty()) {
-                        //TODO : change to home activity
-                        val intent = Intent().setClass(applicationContext, MainActivity::class.java)
+                        val intent = context?.let { it1 -> Intent().setClass(it1, MainActivity::class.java) }
                         startActivity(intent)
                     } else {
-                        Toast.makeText(applicationContext, message, Toast.LENGTH_SHORT).show()
+                        Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
                     }
                 }
             } else {
-                Toast.makeText(this, "Formulaire mal renseigné", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "Formulaire mal renseigné", Toast.LENGTH_SHORT).show()
             }
         }
-    }
 
+        return view
+    }
 }

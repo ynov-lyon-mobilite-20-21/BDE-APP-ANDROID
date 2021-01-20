@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/base_navigation_graph"
+    app:startDestination="@id/eventsFragment">
+
+    <fragment
+        android:id="@+id/eventsFragment"
+        android:name="com.example.ynov_lyon_bde.ui.screens.bottomNavigation.EventsFragment"
+        android:label="fragment_events"
+        tools:layout="@layout/fragment_events"/>
+    <fragment
+        android:id="@+id/accountFragment"
+        android:name="com.example.ynov_lyon_bde.ui.screens.profil.ProfileFragment"
+        android:label="fragment_account"
+        tools:layout="@layout/fragment_account"/>
+    <action android:id="@+id/action_global_eventsFragment" app:destination="@id/eventsFragment"/><action android:id="@+id/action_global_accountFragment" app:destination="@id/accountFragment"/>
+
+</navigation>
