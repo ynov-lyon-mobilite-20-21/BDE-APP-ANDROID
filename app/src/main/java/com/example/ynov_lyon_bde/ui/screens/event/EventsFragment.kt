@@ -1,4 +1,4 @@
-package com.example.ynov_lyon_bde.ui.screens.navigationbottomview
+package com.example.ynov_lyon_bde.ui.screens.event
 
 import android.os.Bundle
 import android.view.LayoutInflater

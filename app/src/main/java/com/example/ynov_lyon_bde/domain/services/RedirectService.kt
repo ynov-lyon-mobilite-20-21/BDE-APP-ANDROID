@@ -4,8 +4,8 @@ import android.content.Context
 import android.content.Intent
 import android.util.Log
 import com.example.ynov_lyon_bde.domain.viewmodel.AuthenticationViewModel
-import com.example.ynov_lyon_bde.ui.screens.ConnectUserActivity
-import com.example.ynov_lyon_bde.ui.screens.CreateUserActivity
+import com.example.ynov_lyon_bde.ui.screens.connection.signIn.SignInFragment
+//import com.example.ynov_lyon_bde.ui.screens.CreateUserActivity
 import com.example.ynov_lyon_bde.ui.screens.MainActivity
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -17,14 +17,14 @@ class RedirectService {
 
     fun redirect(context: Context): Intent {
         val authenticationViewModel = AuthenticationViewModel()
-        var intent = Intent().setClass(context, ConnectUserActivity::class.java)
+        var intent = Intent().setClass(context, SignInFragment::class.java)
         val sharedPreferencesService = SharedPreferencesService()
 
         var errorGetUser: String? = null
         var errorRefresh: String? = null
 
         if (sharedPreferencesService.retrived("TOKEN", context).isNullOrEmpty()) {
-            intent = Intent().setClass(context, CreateUserActivity::class.java)
+//            intent = Intent().setClass(context, CreateUserActivity::class.java)
         }else{
             GlobalScope.launch(Dispatchers.Main) {
                 val deferred = async(Dispatchers.IO) {
@@ -60,7 +60,7 @@ class RedirectService {
                 intent = Intent().setClass(context, MainActivity::class.java)
             }
             if (errorRefresh != null) {
-                intent = Intent().setClass(context, ConnectUserActivity::class.java)
+                intent = Intent().setClass(context, SignInFragment::class.java)
             }
         }
 

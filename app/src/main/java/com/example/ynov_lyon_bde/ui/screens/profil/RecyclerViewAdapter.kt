@@ -1,14 +1,14 @@
-package com.example.ynov_lyon_bde
+package com.example.ynov_lyon_bde.ui.screens.profil
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.android.synthetic.main.my_tickets.view.*
+import com.example.ynov_lyon_bde.data.model.Event
+import com.example.ynov_lyon_bde.R
 
-class RecylclerViewAdapter(private val data: List<DataObject>) : RecyclerView.Adapter<RecylclerViewAdapter.ViewHolder>() {
+class RecyclerViewAdapter(private val data: List<Event>) : RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>() {
 
     //Provides all the functionality for our list items
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
@@ -25,7 +25,7 @@ class RecylclerViewAdapter(private val data: List<DataObject>) : RecyclerView.Ad
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): RecylclerViewAdapter.ViewHolder {
+    ): ViewHolder {
         val view = LayoutInflater.from(parent.context)
         .inflate(R.layout.my_tickets, parent, false)
 
@@ -38,7 +38,7 @@ class RecylclerViewAdapter(private val data: List<DataObject>) : RecyclerView.Ad
     }
 
     //Updates list data; Associates ViewHolder data
-    override fun onBindViewHolder(holder: RecylclerViewAdapter.ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.titleEvent.text = data[position].titleEvent
         holder.dateEvent.text = data[position].dateEvent
     }
