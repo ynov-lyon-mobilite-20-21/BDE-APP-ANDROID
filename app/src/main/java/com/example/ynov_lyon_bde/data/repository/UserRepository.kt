@@ -28,8 +28,6 @@ class UserRepository(ctx: Context) {
         }
 
          */
-
-
     }
 
     fun getUserCurrent(){
@@ -42,4 +40,3 @@ class UserRepository(ctx: Context) {
     //val file = File(context.filesDir, "userFile")
 
 }
-

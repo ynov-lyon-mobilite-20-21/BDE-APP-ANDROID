@@ -36,7 +36,6 @@ class ProfileFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_account, container, false)
 
         view.action_delete.setOnClickListener {
-//            activity?.setContentView(R.layout.fragment_createuser)
             val intent = Intent(activity, LoginActivity::class.java)
             startActivity(intent)
         }
