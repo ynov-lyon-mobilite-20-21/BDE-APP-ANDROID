@@ -13,8 +13,8 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.ynov_lyon_bde.R
-import com.example.ynov_lyon_bde.data.model.LoginDTO
-import com.example.ynov_lyon_bde.domain.viewmodel.ConnectUserViewModel
+import com.example.ynov_lyon_bde.data.model.DTO.LoginDTO
+import com.example.ynov_lyon_bde.domain.viewmodel.SignInViewModel
 import com.example.ynov_lyon_bde.ui.screens.MainActivity
 import kotlinx.android.synthetic.main.fragment_connectuser.*
 import kotlinx.android.synthetic.main.fragment_connectuser.view.*
@@ -35,7 +35,7 @@ class SignInFragment : Fragment() {
 
         //Show / Hide button
         view.showHideButton2.setOnClickListener {
-            if(editTextPassword2.transformationMethod.equals(PasswordTransformationMethod.getInstance())){
+            if(editTextPassword2.transformationMethod == PasswordTransformationMethod.getInstance()){
                 editTextPassword2.transformationMethod = HideReturnsTransformationMethod.getInstance()
             } else{
                 editTextPassword2.transformationMethod = PasswordTransformationMethod.getInstance()
@@ -43,16 +43,18 @@ class SignInFragment : Fragment() {
         }
 
         view.buttonCreateUser2.setOnClickListener {
-            findNavController().navigate(R.id.action_connectUserFragment_to_signUpFragment)
+            findNavController().navigate(R.id.action_signInFragment_to_signUpFragment)
         }
 
         view.buttonConnect.setOnClickListener {
-            val connectUserViewModel = ConnectUserViewModel()
+            val connectUserViewModel = SignInViewModel()
 
             // Take informations User
-            val email = if (Patterns.EMAIL_ADDRESS.matcher(editTextMail2.text.toString())
-                    .matches()
-            ) editTextMail2.text.toString() else null
+            val email = if (Patterns.EMAIL_ADDRESS.matcher(editTextMail2.text.toString()).matches()) {
+                editTextMail2.text.toString()
+            } else {
+                null
+            }
             val password = editTextPassword2.text.toString()
 
             //send request to api to connect user

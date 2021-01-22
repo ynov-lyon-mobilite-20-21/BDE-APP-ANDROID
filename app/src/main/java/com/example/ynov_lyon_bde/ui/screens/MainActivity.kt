@@ -4,15 +4,26 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.findNavController
 import com.example.ynov_lyon_bde.R
+import com.example.ynov_lyon_bde.domain.di.dependencyInjectionModule
 import com.example.ynov_lyon_bde.domain.viewmodel.NavigationViewModel
 import com.example.ynov_lyon_bde.ui.screens.onboarding.OnBoardingActivity
 import kotlinx.android.synthetic.main.activity_main.*
+import org.koin.android.ext.koin.androidContext
+import org.koin.core.context.startKoin
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        // start Koin!
+        startKoin {
+            // Android context
+            androidContext(this@MainActivity)
+            // modules
+            modules(dependencyInjectionModule)
+        }
+
         setContentView(R.layout.activity_main)
         supportActionBar?.hide()
 

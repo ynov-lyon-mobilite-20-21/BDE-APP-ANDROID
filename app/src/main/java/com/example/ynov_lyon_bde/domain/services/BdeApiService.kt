@@ -1,8 +1,8 @@
 package com.example.ynov_lyon_bde.domain.services
 
 import android.util.Log
-import com.example.ynov_lyon_bde.data.model.LoginDTO
-import com.example.ynov_lyon_bde.data.model.UserDTO
+import com.example.ynov_lyon_bde.data.model.DTO.LoginDTO
+import com.example.ynov_lyon_bde.data.model.DTO.UserDTO
 import com.example.ynov_lyon_bde.domain.utils.Constants.Companion.MEDIA_TYPE_JSON
 import com.example.ynov_lyon_bde.domain.utils.JsonServiceBuilder
 import com.example.ynov_lyon_bde.domain.utils.RetrofitServiceBuilder

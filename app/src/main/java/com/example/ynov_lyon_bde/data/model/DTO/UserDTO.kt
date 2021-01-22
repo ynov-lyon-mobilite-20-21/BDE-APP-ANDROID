@@ -1,4 +1,4 @@
-package com.example.ynov_lyon_bde.data.model
+package com.example.ynov_lyon_bde.data.model.DTO
 
 import com.google.gson.annotations.SerializedName
 

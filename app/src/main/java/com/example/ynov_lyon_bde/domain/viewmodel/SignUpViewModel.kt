@@ -1,11 +1,12 @@
 package com.example.ynov_lyon_bde.domain.viewmodel
 
 import android.content.Context
-import com.example.ynov_lyon_bde.data.model.LoginDTO
-import com.example.ynov_lyon_bde.data.model.UserDTO
+import androidx.lifecycle.ViewModel
+import com.example.ynov_lyon_bde.data.model.DTO.LoginDTO
+import com.example.ynov_lyon_bde.data.model.DTO.UserDTO
 
 
-class CreateUserViewModel {
+class SignUpViewModel : ViewModel() {
 
     suspend fun callApi(userDto: UserDTO, loginDto: LoginDTO, context: Context) {
         val userViewModel = AuthenticationViewModel()

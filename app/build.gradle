@@ -71,4 +71,16 @@ dependencies {
     // Gson (To convert raw JSON to pretty JSON)
     implementation 'com.google.code.gson:gson:2.8.6'
 
+    def koin_version = '2.2.2'
+    implementation "org.koin:koin-core:$koin_version"
+    testImplementation "org.koin:koin-test:$koin_version"
+    // Koin AndroidX Scope feature
+        implementation "org.koin:koin-androidx-scope:$koin_version"
+
+    // Koin AndroidX ViewModel feature
+        implementation "org.koin:koin-androidx-viewmodel:$koin_version"
+
+    // Koin AndroidX Fragment Factory
+        implementation "org.koin:koin-androidx-fragment:$koin_version"
+
 }
