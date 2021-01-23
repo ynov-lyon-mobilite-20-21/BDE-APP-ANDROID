@@ -76,8 +76,9 @@ class SignInFragment : Fragment() {
                     }
                     deferred.await()
                     if (message.isNullOrEmpty()) {
-                        val intent = context?.let { it1 -> Intent().setClass(it1, MainActivity::class.java) }
-                        startActivity(intent)
+                        //TODO : Set intent with home activity
+                        //val intent = context?.let { it1 -> Intent().setClass(it1, MainActivity::class.java) }
+                        //startActivity(intent)
                     } else {
                         Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
                     }

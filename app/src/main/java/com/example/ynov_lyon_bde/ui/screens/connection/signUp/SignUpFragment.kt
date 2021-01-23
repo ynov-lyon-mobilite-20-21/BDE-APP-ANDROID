@@ -46,18 +46,18 @@ class SignUpFragment: Fragment() {
             "Marketing Communication",
             "Informatique")
 
-        view.spinnerFormation.adapter = ArrayAdapter<String>(requireContext(), android.R.layout.simple_spinner_dropdown_item, formation)
-        view.spinnerPromotion.adapter = ArrayAdapter<String>(requireContext(), android.R.layout.simple_spinner_dropdown_item, promotion)
+        view.spinnerFormation.adapter = spinnerAdapter.initAdapter(requireContext(), formation, view.spinnerFormation)
+        view.spinnerPromotion.adapter = spinnerAdapter.initAdapter(requireContext(), promotion, view.spinnerPromotion)
+        //view.spinnerFormation.adapter = ArrayAdapter<String>(requireContext(), android.R.layout.simple_spinner_dropdown_item, formation)
+        //view.spinnerPromotion.adapter = ArrayAdapter<String>(requireContext(), android.R.layout.simple_spinner_dropdown_item, promotion)
 
         //Show / Hide button
         view.showHideButton.setOnClickListener {
             if(editTextPassword.transformationMethod == PasswordTransformationMethod.getInstance()){
                 editTextPassword.transformationMethod = HideReturnsTransformationMethod.getInstance()
-                //TODO set an icon hide
                 showHideButton.setImageResource(R.drawable.hide)
             } else{
                 editTextPassword.transformationMethod = PasswordTransformationMethod.getInstance()
-                //TODO set an icon show
                 showHideButton.setImageResource(R.drawable.show)
             }
         }

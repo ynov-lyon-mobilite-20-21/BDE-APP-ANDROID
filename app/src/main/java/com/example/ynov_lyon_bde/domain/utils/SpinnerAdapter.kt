@@ -11,7 +11,7 @@ import android.widget.Spinner
 import android.widget.TextView
 
 class SpinnerService {
-    fun initAdapter(context: Context, list: MutableList<String>, spinner: Spinner): ArrayAdapter<String> {
+    fun initAdapter(context: Context, list: Array<String>, spinner: Spinner): ArrayAdapter<String> {
         // initialize an array adapter for spinner
         val adapter: ArrayAdapter<String> = object: ArrayAdapter<String>(
             context,
@@ -30,7 +30,7 @@ class SpinnerService {
                 ) as TextView
 
                 // set item text bold and sans serif font
-                view.setTypeface(Typeface.SANS_SERIF, Typeface.BOLD)
+                //view.setTypeface(Typeface.SANS_SERIF, Typeface.BOLD)
 
                 if (position == 0){
                     // set the spinner disabled item text color
