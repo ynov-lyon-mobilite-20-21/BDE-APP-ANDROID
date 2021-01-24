@@ -55,6 +55,12 @@ class BdeApiService {
         var response: Response<ResponseBody>? = null
         val jsonObject = JSONObject()
 
+        //TODO la partie when doit être extraite de cette fonction
+        // Elle doit aussi être modifié pour ne pas gérer les cas en fonction du type de donnée (string, int...)
+        // Je te conseille de plutôt soit faire des services pour chaques type de requête, soit gérer tes envois avec des types génériques et des énums
+
+        //TODO Il faut refacto cette fonction pour qu'elle s'adapte au plus grand nombre de cas
+        // par exemple tu pourrais passer en paramètre de la fonction le type de requête, les headers, le body.. etc
         when (propertyRequest) {
             is UserDTO -> {
                 jsonObject.put("firstName", propertyRequest.firstName)

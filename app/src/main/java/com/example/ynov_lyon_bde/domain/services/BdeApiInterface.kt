@@ -5,7 +5,7 @@ import okhttp3.ResponseBody
 import retrofit2.Response
 import retrofit2.http.*
 
-
+//TODO à renommer pour que ça feat mieux avec retrofit
 interface BdeApiInterface {
 
     @POST("api/users")

@@ -5,6 +5,7 @@ import android.content.ContextWrapper
 import com.example.ynov_lyon_bde.data.model.User
 import java.io.File
 
+//TODO à toi de voir si l'utilisation du design pattern repository te semble intéressant, propose une façon de faire :)
 
 class UserRepository(ctx: Context) {
 

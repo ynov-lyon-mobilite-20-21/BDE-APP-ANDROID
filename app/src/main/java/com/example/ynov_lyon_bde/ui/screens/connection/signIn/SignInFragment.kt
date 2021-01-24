@@ -23,9 +23,12 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 
-
+//TODO les contraintes graohiques et le design du fragment_connectUser ne sont pas assez responsives, il faut reprendre le design pour qu'il puisse fonctionner
+// avec le plus grand nombre de device et ce qu'il fasse 4" ou 6"
 class SignInFragment : Fragment() {
 
+    //TODO tu as de la logique ici qui devrait être dans un viewModel, fais attention à respecter l'archi MVVM
+    
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,

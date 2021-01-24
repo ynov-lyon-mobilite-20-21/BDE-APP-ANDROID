@@ -12,6 +12,7 @@ import org.koin.core.component.KoinApiExtension
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 
+//TODO nom de classe à renomer
 @KoinApiExtension
 class AuthenticationViewModel() : ViewModel(), KoinComponent {
 
