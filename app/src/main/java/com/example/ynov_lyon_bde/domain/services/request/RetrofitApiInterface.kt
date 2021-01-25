@@ -1,12 +1,11 @@
-package com.example.ynov_lyon_bde.domain.services
+package com.example.ynov_lyon_bde.domain.services.request
 
 import okhttp3.RequestBody
 import okhttp3.ResponseBody
 import retrofit2.Response
 import retrofit2.http.*
 
-//TODO à renommer pour que ça feat mieux avec retrofit
-interface BdeApiInterface {
+interface RetrofitApiInterface {
 
     @POST("api/users")
     suspend fun createUser(@Body requestBody: RequestBody): Response<ResponseBody>

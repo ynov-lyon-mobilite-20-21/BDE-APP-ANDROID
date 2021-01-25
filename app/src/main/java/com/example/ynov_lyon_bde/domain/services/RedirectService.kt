@@ -3,7 +3,7 @@ package com.example.ynov_lyon_bde.domain.services
 import android.content.Context
 import android.content.Intent
 import android.util.Log
-import com.example.ynov_lyon_bde.domain.viewmodel.AuthenticationViewModel
+import com.example.ynov_lyon_bde.domain.services.request.AuthenticationRequests
 import com.example.ynov_lyon_bde.ui.screens.connection.signIn.SignInFragment
 //import com.example.ynov_lyon_bde.ui.screens.CreateUserActivity
 import com.example.ynov_lyon_bde.ui.screens.MainActivity
@@ -11,13 +11,12 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
-import org.koin.core.component.KoinApiExtension
 import java.lang.Exception
 
 class RedirectService {
 
     fun redirect(context: Context): Intent {
-        val authenticationViewModel = AuthenticationViewModel()
+        val authenticationViewModel = AuthenticationRequests()
         var intent = Intent().setClass(context, SignInFragment::class.java)
         val sharedPreferencesService = SharedPreferencesService()
 

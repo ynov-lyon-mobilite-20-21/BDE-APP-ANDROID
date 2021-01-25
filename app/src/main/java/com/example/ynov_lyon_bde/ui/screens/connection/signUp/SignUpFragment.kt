@@ -2,8 +2,6 @@ package com.example.ynov_lyon_bde.ui.screens
 
 
 import android.os.Bundle
-import android.text.method.HideReturnsTransformationMethod
-import android.text.method.PasswordTransformationMethod
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -14,7 +12,7 @@ import com.example.ynov_lyon_bde.R
 import com.example.ynov_lyon_bde.data.model.DTO.LoginDTO
 import com.example.ynov_lyon_bde.data.model.DTO.UserDTO
 import com.example.ynov_lyon_bde.domain.utils.SpinnerService
-import com.example.ynov_lyon_bde.domain.viewmodel.SignUpViewModel
+import com.example.ynov_lyon_bde.domain.viewmodel.AuthenticationViewModel
 import kotlinx.android.synthetic.main.fragment_createuser.*
 import kotlinx.android.synthetic.main.fragment_createuser.view.*
 import kotlinx.coroutines.Dispatchers
@@ -35,14 +33,14 @@ class SignUpFragment: Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_createuser, container, false)
 
-        val createUserViewModel = SignUpViewModel()
+        val authenticationViewModel = AuthenticationViewModel()
         val spinnerAdapter = SpinnerService()
 
-        val promotion = arrayOf<String>("Classe", "Bachelor 1",
+        val promotion = arrayOf("Classe", "Bachelor 1",
             "Bachelor 2", "Bachelor 3",
             "Mastère 1", "Mastère 2")
 
-        val formation = arrayOf<String>("Filière",
+        val formation = arrayOf("Filière",
             "Animation 3D",
             "Audiovisuel",
             "Création & Design",
@@ -51,46 +49,32 @@ class SignUpFragment: Fragment() {
 
         view.spinnerFormation.adapter = spinnerAdapter.initAdapter(requireContext(), formation, view.spinnerFormation)
         view.spinnerPromotion.adapter = spinnerAdapter.initAdapter(requireContext(), promotion, view.spinnerPromotion)
-        //view.spinnerFormation.adapter = ArrayAdapter<String>(requireContext(), android.R.layout.simple_spinner_dropdown_item, formation)
-        //view.spinnerPromotion.adapter = ArrayAdapter<String>(requireContext(), android.R.layout.simple_spinner_dropdown_item, promotion)
 
         //Show / Hide button
         view.showHideButton.setOnClickListener {
-            if(editTextPassword.transformationMethod == PasswordTransformationMethod.getInstance()){
-                editTextPassword.transformationMethod = HideReturnsTransformationMethod.getInstance()
-                showHideButton.setImageResource(R.drawable.userconnect_illustration_noshow_password)
-            } else{
-                editTextPassword.transformationMethod = PasswordTransformationMethod.getInstance()
-                showHideButton.setImageResource(R.drawable.userconnect_illustration_show_password)
-            }
+            authenticationViewModel.showHideBehaviour(editTextPassword, showHideButton)
         }
 
         view.buttonCreateUser.setOnClickListener {
 
             // Take informations User
-            val email =
-                if (android.util.Patterns.EMAIL_ADDRESS.matcher(editTextMail.text.toString())
-                        .matches()
-                ) editTextMail.text.toString() else null
-            var firstName: String? = null
-            var lastName: String? = null
+            val email = authenticationViewModel.checkMail(editTextMail.text.toString())
+            var names: MutableList<String>? = null
             if (email != null) {
-                val names: String = editTextMail.text.toString().split('@')[0]
-                firstName = names.split('.')[0]
-                lastName = names.split('.')[1]
+                names = authenticationViewModel.checkNames(editTextMail.text.toString()) // firstname + lastname
             }
 
             val password = editTextPassword.text.toString()
             val promotion = spinnerPromotion.selectedItem.toString()
             val formation = spinnerFormation.selectedItem.toString()
 
-            if (firstName != null && lastName != null && email != null && password != "" && promotion != "" && formation != "") {
+            if (names != null && email != null && password != "" && authenticationViewModel.spinnerInformed(mutableListOf(promotion, formation))) {
                 var message: String? = null
 
                 //create DTO models
                 val userDto = UserDTO(
-                    firstName = firstName,
-                    lastName = lastName,
+                    firstName = names[0],
+                    lastName = names[1],
                     mail = email,
                     password = password,
                     promotion = promotion,
@@ -107,7 +91,7 @@ class SignUpFragment: Fragment() {
                         //call requests
                         try {
                             context?.let { it1 ->
-                                createUserViewModel.callApi(userDto, loginDto,
+                                authenticationViewModel.callApiSignUp(userDto, loginDto,
                                     it1
                                 )
                             }
@@ -126,7 +110,6 @@ class SignUpFragment: Fragment() {
             } else {
                 Toast.makeText(context, "Formulaire mal renseigné", Toast.LENGTH_SHORT).show()
             }
-
         }
         return view
 
