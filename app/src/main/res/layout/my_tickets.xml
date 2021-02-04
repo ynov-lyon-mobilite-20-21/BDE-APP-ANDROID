@@ -23,7 +23,7 @@
             android:layout_height="match_parent"
             android:layout_marginBottom="40dp"
             android:background="#17182F"
-            app:layout_constraintBottom_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -44,55 +44,40 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/information_ticket"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
+            android:paddingStart="10dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/background_ticket"
-            app:layout_constraintVertical_bias="0.95">
-
-            <!-- Theme event -->
-            <ImageButton
-                android:id="@+id/theme_event"
-                android:layout_width="30dp"
-                android:layout_height="35dp"
-                android:backgroundTint="#17182F"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.05"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-            </ImageButton>
+            app:layout_constraintTop_toBottomOf="@+id/background_ticket">
 
             <!-- Date event -->
             <TextView
                 android:id="@+id/date_event"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="6dp"
                 android:text="dd/mm/YYYY"
-                android:textSize="8dp"
-                app:layout_constraintHorizontal_bias="0.0"
+                android:textSize="8sp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/theme_event"
-                app:layout_constraintTop_toTopOf="@+id/theme_event"
-                app:layout_constraintBottom_toTopOf="@+id/title_event"/>
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.2"/>
 
             <!-- Title event -->
             <TextView
                 android:id="@+id/title_event"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Title Event"
-                android:layout_marginTop="10dp"
                 android:textColor="#17182F"
                 android:textSize="12dp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintVertical_bias="0.0"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toEndOf="@id/theme_event"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/date_event"
+                app:layout_constraintBottom_toBottomOf="parent"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
