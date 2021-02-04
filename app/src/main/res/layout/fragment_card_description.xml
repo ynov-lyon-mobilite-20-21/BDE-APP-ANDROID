@@ -35,7 +35,7 @@
                 android:src="@drawable/ic_card_kolok"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
-    </RelativeLayout>
+        </RelativeLayout>
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -45,41 +45,45 @@
             <TextView
                 android:id="@+id/eventTitle"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text=""
+                android:layout_height="match_parent"
+                android:text="ESPIT CHUPITOS"
+                android:fontFamily="@font/roboto_bold"
                 android:textColor="@color/black"
-                android:textSize="45sp" />
+                android:textSize="45sp"/>
 
             <TextView
                 android:id="@+id/eventDescriptionType"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/eventTitle"
-                android:text=""
+                android:text="SOIREE ETUDIANTE"
+                android:fontFamily="@font/roboto_regular"
                 android:textColor="@color/black"
                 android:textSize="13sp"/>
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/eventTime"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_below="@id/eventDescriptionType"
                 android:layout_marginTop="36dp">
 
                 <TextView
                     android:id="@+id/dateEvent"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text=""
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="13/11/2020"
+                    android:fontFamily="@font/roboto_regular"
                     android:textColor="@color/black"
                     android:textSize="15sp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
 
                 <ImageView
                     android:id="@+id/eventClockIcon"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
+                    android:layout_width="20dp"
+                    android:layout_height="match_parent"
                     android:layout_marginEnd="5dp"
                     android:src="@drawable/eventclock"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -90,10 +94,13 @@
                     android:id="@+id/eventHour"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:text=""
+                    android:text="21H - 3H"
+                    android:fontFamily="@font/roboto_regular"
                     android:textColor="@color/black"
                     android:textSize="15sp"
-                    app:layout_constraintEnd_toEndOf="parent"/>
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <TextView
@@ -102,7 +109,8 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/eventTime"
                 android:layout_marginTop="35dp"
-                android:text=""
+                android:text="22 Rue Joseph Serlin, 69001 Lyon"
+                android:fontFamily="@font/roboto_regular"
                 android:textColor="@color/black"
                 android:textSize="15sp"/>
 
@@ -110,7 +118,8 @@
                 android:id="@+id/eventDescription"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text=""
+                android:text="hdijsh"
+                android:fontFamily="@font/roboto_regular"
                 android:textColor="@color/black"
                 android:layout_below="@+id/eventAddress"
                 android:layout_marginTop="35dp"
@@ -125,13 +134,15 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/eventDescription"
                 android:layout_gravity="center"
-                android:layout_marginTop="40dp"
                 android:layout_centerHorizontal="true"
-                android:layout_marginBottom="15dp"
-                android:background="@drawable/button_event_description"
-                android:text="@string/button_place"
+                android:textAllCaps="false"
                 android:textColor="@color/white"
-                android:textSize="15sp" />
+                android:text="@string/button_place"
+                android:fontFamily="@font/roboto_regular"
+                android:textSize="12sp"
+                android:layout_marginTop="40dp"
+                android:layout_marginBottom="15dp"
+                android:background="@drawable/button_event_description"/>
         </RelativeLayout>
     </LinearLayout>
 </ScrollView>
