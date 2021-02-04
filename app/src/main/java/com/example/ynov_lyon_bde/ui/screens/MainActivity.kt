@@ -11,10 +11,13 @@ import com.example.ynov_lyon_bde.ui.screens.onboarding.OnBoardingActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
+import org.koin.core.context.stopKoin
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        stopKoin()
 
         // start Koin!
         startKoin {
@@ -32,7 +35,6 @@ class MainActivity : AppCompatActivity() {
         if (!onBoardingFinished()) {
             val intent = Intent(this, OnBoardingActivity::class.java)
             startActivity(intent)
-            finish()
         }
 
         bottomNavigation.setOnNavigationItemSelectedListener { bottomNavigationItem ->

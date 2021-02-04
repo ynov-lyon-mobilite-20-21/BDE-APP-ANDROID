@@ -12,13 +12,9 @@ class RecyclerViewAdapter(private val data: List<Event>) : RecyclerView.Adapter<
 
     //Provides all the functionality for our list items
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
-        var dateEvent : TextView
-        var titleEvent : TextView
+        var dateEvent : TextView = itemView.findViewById(R.id.date_event)
+        var titleEvent : TextView = itemView.findViewById(R.id.title_event)
 
-        init {
-            dateEvent = itemView.findViewById(R.id.date_event)
-            titleEvent = itemView.findViewById(R.id.title_event)
-        }
     }
 
     //Create new views (invoked by the layout manager)
@@ -39,7 +35,7 @@ class RecyclerViewAdapter(private val data: List<Event>) : RecyclerView.Adapter<
 
     //Updates list data; Associates ViewHolder data
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.titleEvent.text = data[position].titleEvent
-        holder.dateEvent.text = data[position].dateEvent
+        holder.titleEvent.text = data[position].name
+        holder.dateEvent.text = data[position].date
     }
 }

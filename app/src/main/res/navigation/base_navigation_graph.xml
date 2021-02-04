@@ -9,12 +9,28 @@
         android:id="@+id/eventsFragment"
         android:name="com.example.ynov_lyon_bde.ui.screens.event.EventsFragment"
         android:label="fragment_events"
-        tools:layout="@layout/fragment_events"/>
+        tools:layout="@layout/fragment_events">
+        <action
+            android:id="@+id/action_eventsFragment_to_cardDescription2"
+            app:destination="@id/cardDescription" />
+    </fragment>
     <fragment
         android:id="@+id/accountFragment"
         android:name="com.example.ynov_lyon_bde.ui.screens.profil.ProfileFragment"
         android:label="fragment_account"
         tools:layout="@layout/fragment_account"/>
-    <action android:id="@+id/action_global_eventsFragment" app:destination="@id/eventsFragment"/><action android:id="@+id/action_global_accountFragment" app:destination="@id/accountFragment"/>
+
+    <fragment
+        android:id="@+id/cardDescription"
+        android:name="com.example.ynov_lyon_bde.ui.screens.event.CardDescription"
+        android:label="fragment_card_description"
+        tools:layout="@layout/fragment_card_description" >
+        <argument
+            android:name="Event"
+            app:argType="com.example.ynov_lyon_bde.data.model.Event" />
+    </fragment>
+
+    <action android:id="@+id/action_global_eventsFragment" app:destination="@id/eventsFragment"/>
+    <action android:id="@+id/action_global_accountFragment" app:destination="@id/accountFragment"/>
 
 </navigation>
