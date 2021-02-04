@@ -21,12 +21,12 @@ class ProfileFragment : Fragment() {
 
     //Fake data
     private val data = listOf(
-        Event("", "", "", EventType.DEFAULTVALUE, ImageType.DEFAULTVALUE, "", "", 0),
-        Event("", "", "", EventType.DEFAULTVALUE, ImageType.DEFAULTVALUE, "", "", 0),
-        Event("", "", "", EventType.DEFAULTVALUE, ImageType.DEFAULTVALUE, "", "", 0),
-        Event("", "", "", EventType.DEFAULTVALUE, ImageType.DEFAULTVALUE, "", "", 0),
-        Event("", "", "", EventType.DEFAULTVALUE, ImageType.DEFAULTVALUE, "", "", 0),
-        Event("", "", "", EventType.DEFAULTVALUE, ImageType.DEFAULTVALUE, "", "", 0)
+        Event("1", "Test", "05/02/2021", EventType.DEFAULTVALUE, ImageType.DEFAULTVALUE, "5 Rue michel", "Voici une petite description", 0),
+        Event("1", "Test", "05/02/2021", EventType.DEFAULTVALUE, ImageType.DEFAULTVALUE, "5 Rue michel", "Voici une petite description", 0),
+        Event("1", "Test", "05/02/2021", EventType.DEFAULTVALUE, ImageType.DEFAULTVALUE, "5 Rue michel", "Voici une petite description", 0),
+        Event("1", "Test", "05/02/2021", EventType.DEFAULTVALUE, ImageType.DEFAULTVALUE, "5 Rue michel", "Voici une petite description", 0),
+        Event("1", "Test", "05/02/2021", EventType.DEFAULTVALUE, ImageType.DEFAULTVALUE, "5 Rue michel", "Voici une petite description", 0),
+        Event("1", "Test", "05/02/2021", EventType.DEFAULTVALUE, ImageType.DEFAULTVALUE, "5 Rue michel", "Voici une petite description", 0),
     )
 
     override fun onCreateView(
@@ -35,7 +35,7 @@ class ProfileFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_account, container, false)
 
-        view.action_delete.setOnClickListener {
+        view.settings.setOnClickListener {
             val intent = Intent(activity, LoginActivity::class.java)
             startActivity(intent)
         }
