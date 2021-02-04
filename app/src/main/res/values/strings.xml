@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">app BDE</string>
+    //fragment_home
+    <string name="Evenement">EVENEMENTS</string>
+    <string name="title_event">Espit Chupitos</string>
+    <string name="type_event">Soirée Etudiante </string>
+
+    //card description
+    <string name="button_place">Prendre ma place</string>
 </resources>

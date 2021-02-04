@@ -10,6 +10,17 @@
     <color name="colorPrimary">#407baa</color>
     <color name="colorPrimaryDark">#000000</color>
     <color name="colorAccent">#33F3FF</color>
-    <color name="dark_blue">#16162E</color>
     <color name="Turquoise">#19A294</color>
+    <color name="dark_blue">#16162E</color>
+    <color name="color_home_fragment">#18192E</color>
+    <color name="yellow">#FAEA28</color>
+    <color name="gray">#707070</color>
+    <color name="color_evenment">#23B2A4</color>
+    <color name="shadow_home_fragment">#23b2a4</color>
+    <color name="light_blue_400">#FF29B6F6</color>
+    <color name="light_blue_600">#FF039BE5</color>
+    <color name="gray_400">#FFBDBDBD</color>
+    <color name="gray_600">#FF757575</color>
+    <color name="title_onboarding">#17182F</color>
+    <color name="button_onboarding">#BB86FC</color>
 </resources>

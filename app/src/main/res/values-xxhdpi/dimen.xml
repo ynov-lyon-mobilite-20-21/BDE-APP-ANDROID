@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="size_title_onboarding">25sp</dimen>
+    <dimen name="size_text_onboarding">12sp</dimen>
+    <dimen name="button_onboarding">13sp</dimen>
+</resources>
