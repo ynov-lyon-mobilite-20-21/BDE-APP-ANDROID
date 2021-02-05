@@ -4,28 +4,29 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background_app"
     tools:context=".ui.screens.profil.ProfileFragment">
 
     <!-- Background -->
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scaleType="centerCrop"
-        android:src="@mipmap/background_account_foreground"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+<!--    <ImageView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:scaleType="centerCrop"-->
+<!--        android:src="@mipmap/background_account_foreground"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent" />-->
 
-    <ScrollView
-        android:id="@+id/scroll_page_profil"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:fillViewport="false"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+<!--    <ScrollView-->
+<!--        android:id="@+id/scroll_page_profil"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:fillViewport="false"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent">-->
 
         <!-- Constraint layout parent -->
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -33,36 +34,28 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent">
 
             <!-- Constraint layout user informations -->
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/user_informations"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintBottom_toTopOf="@id/user_tickets"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                app:layout_constraintEnd_toEndOf="parent">
 
                 <!-- Campus image -->
-                <!-- layout_constraintHorizontal_bias="1.0" -> The right side is shorter -->
-                <!-- layout_constraintVertical_bias="0" -> The top side is shorter -->
                 <ImageView
                     android:id="@+id/ynov_campus"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:scaleType="fitXY"
-                    android:scaleX="0.8"
-                    android:scaleY="0.8"
                     android:src="@mipmap/lyon_ynov_campus_foreground"
-                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="1.0"
-                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0" />
+                    app:layout_constraintBottom_toTopOf="@+id/user_informations_title"/>
 
                 <!-- User informations title -->
                 <TextView
@@ -74,18 +67,16 @@
                     android:paddingTop="5dp"
                     android:paddingEnd="15dp"
                     android:paddingBottom="5dp"
-                    android:shadowColor="@color/white"
-                    android:shadowDx="1"
-                    android:shadowDy="1"
-                    android:shadowRadius="4"
                     android:text="MES INFORMATIONS"
-                    android:textColor="#fff"
+                    android:shadowColor="@color/shadow_home_fragment"
+                    android:shadowDx="5"
+                    android:shadowDy="5"
+                    android:shadowRadius="1"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
                     android:textSize="16sp"
-                    app:layout_constraintBottom_toTopOf="@id/information_bloc"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/ynov_campus" />
+                    app:layout_constraintTop_toBottomOf="@id/ynov_campus"/>
 
                 <!-- Settings icon -->
                 <ImageView
@@ -93,17 +84,16 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@android:drawable/ic_lock_power_off"
+                    android:layout_marginStart="24dp"
                     app:layout_constraintBottom_toBottomOf="@id/user_informations_title"
-                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@id/user_informations_title"
-                    app:layout_constraintTop_toTopOf="@+id/user_informations_title"
-                    app:layout_constraintHorizontal_bias="0.15"/>
+                    app:layout_constraintTop_toTopOf="@+id/user_informations_title"/>
 
                 <!-- User informations bloc -->
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/information_bloc"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_marginStart="42dp"
                     android:layout_marginTop="16dp"
                     android:layout_marginEnd="42dp"
@@ -139,6 +129,7 @@
                             android:textColor="#17182F"
                             android:textSize="16sp"
                             android:textStyle="bold"
+                            android:fontFamily="@font/roboto_bold"
                             app:layout_constraintTop_toTopOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintBottom_toTopOf="@id/filiere"
@@ -152,6 +143,7 @@
                             android:text="B2 Création and Design"
                             android:textColor="#17182F"
                             android:textSize="12sp"
+                            android:fontFamily="@font/roboto_regular"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintTop_toBottomOf="@id/name"/>
@@ -164,6 +156,7 @@
                             android:text="maeva.hamelpoirat@ynov.com"
                             android:textColor="#17182F"
                             android:textSize="12sp"
+                            android:fontFamily="@font/roboto_regular"
                             app:layout_constraintTop_toBottomOf="@+id/filiere"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintBottom_toBottomOf="parent"
@@ -203,9 +196,8 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/user_tickets"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/user_informations">
@@ -220,16 +212,14 @@
                     android:paddingTop="5dp"
                     android:paddingEnd="55dp"
                     android:paddingBottom="5dp"
-                    android:shadowColor="@color/white"
-                    android:shadowDx="1"
-                    android:shadowDy="1"
-                    android:shadowRadius="4"
                     android:text="MES BILLETS"
-                    android:textColor="#fff"
                     android:textSize="16sp"
-                    app:layout_constraintBottom_toTopOf="@id/recyclerView_tickets"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.0"
+                    android:shadowColor="@color/shadow_home_fragment"
+                    android:shadowDx="5"
+                    android:shadowDy="5"
+                    android:shadowRadius="1"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -237,7 +227,7 @@
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recyclerView_tickets"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_marginTop="10dp"
                     android:orientation="horizontal"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -248,6 +238,6 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-    </ScrollView>
+<!--    </ScrollView>-->
 </androidx.constraintlayout.widget.ConstraintLayout>
 
