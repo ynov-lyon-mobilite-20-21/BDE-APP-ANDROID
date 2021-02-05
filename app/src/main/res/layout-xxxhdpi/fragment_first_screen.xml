@@ -8,6 +8,13 @@
     tools:context=".ui.screens.onboarding.viewPager.FirstScreen">
 
     <ImageView
+        android:layout_width="85dp"
+        android:layout_height="60dp"
+        android:src="@drawable/onboarding_illustration_ynov_campus"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
         android:id="@+id/image_onboarding3"
         android:layout_width="match_parent"
         android:layout_height="350dp"

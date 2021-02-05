@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="centerCrop"
-        android:src="@mipmap/background_account_foreground"
+        android:src="@drawable/onboarding_illustration_1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -60,7 +60,7 @@
                     android:scaleType="fitXY"
                     android:scaleX="0.8"
                     android:scaleY="0.8"
-                    android:src="@mipmap/lyon_ynov_campus_foreground"
+                    android:src="@drawable/onboarding_illustration_1"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="1.0"
@@ -186,7 +186,7 @@
                             android:scaleType="fitXY"
                             android:scaleX="1.7"
                             android:scaleY="1.7"
-                            app:srcCompat="@mipmap/ampoule_foreground" />
+                            app:srcCompat="@drawable/onboarding_illustration_1" />
                     </LinearLayout>
                 </LinearLayout>
 
