@@ -55,10 +55,10 @@ class SignUpFragment: Fragment() {
         view.showHideButton.setOnClickListener {
             if(editTextPassword.transformationMethod == PasswordTransformationMethod.getInstance()){
                 editTextPassword.transformationMethod = HideReturnsTransformationMethod.getInstance()
-                showHideButton.setImageResource(R.drawable.connectuser_noshow_password)
+                showHideButton.setImageResource(R.drawable.userconnect_illustration_noshow_password)
             } else{
                 editTextPassword.transformationMethod = PasswordTransformationMethod.getInstance()
-                showHideButton.setImageResource(R.drawable.connectuser_illustration_show_password)
+                showHideButton.setImageResource(R.drawable.userconnect_illustration_show_password)
             }
         }
 

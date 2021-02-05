@@ -23,7 +23,7 @@
                 android:layout_height="24dp"
                 android:layout_marginStart="25dp"
                 android:layout_marginTop="38dp"
-                android:background="@drawable/carddescription_button_back_homefragment" />
+                android:background="@drawable/descriptioncard_button_back_homefragment" />
 
             <ImageView
                 android:id="@+id/imageEvent"
@@ -85,7 +85,7 @@
                     android:layout_width="20dp"
                     android:layout_height="match_parent"
                     android:layout_marginEnd="5dp"
-                    android:src="@drawable/carddescription_illustration_clock"
+                    android:src="@drawable/descriptioncard_illustration_clock"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@id/eventHour"
                     app:layout_constraintTop_toTopOf="parent"/>
@@ -142,7 +142,7 @@
                 android:textSize="12sp"
                 android:layout_marginTop="40dp"
                 android:layout_marginBottom="15dp"
-                android:background="@drawable/carddescription_button_place"/>
+                android:background="@drawable/descriptioncard_button_takeplace"/>
         </RelativeLayout>
     </LinearLayout>
 </ScrollView>

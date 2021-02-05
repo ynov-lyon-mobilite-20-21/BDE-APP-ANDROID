@@ -48,7 +48,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:padding="20dp"
-                android:src="@drawable/card_circle" />
+                android:src="@drawable/card_figure_circle" />
 
             <ImageView
                 android:layout_width="match_parent"

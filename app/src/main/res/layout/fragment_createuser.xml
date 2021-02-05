@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/account_background_illustration_logo_ynov"
+    android:background="@drawable/account_background_logo_ynov"
     tools:context=".ui.screens.SignUpFragment">
 
 
@@ -16,7 +16,7 @@
         android:hint="Adresse e-mail"
         android:inputType="textPersonName"
         android:text=""
-        android:background="@drawable/edittext_style"
+        android:background="@drawable/createuser_illustration_edittext"
         app:layout_constraintBottom_toTopOf="@+id/editTextPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -30,7 +30,7 @@
         android:hint="Mot de passe"
         android:inputType="textPassword"
         android:text=""
-        android:background="@drawable/edittext_password_style"
+        android:background="@drawable/createuser_illustration_edittext_password"
         app:layout_constraintBottom_toTopOf="@+id/editTextPhone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -47,7 +47,7 @@
         app:layout_constraintHorizontal_bias="0.88"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextMail"
-        app:srcCompat="@drawable/connectuser_illustration_show_password" />
+        app:srcCompat="@drawable/userconnect_illustration_show_password" />
 
     <EditText
         android:id="@+id/editTextPhone"
@@ -57,7 +57,7 @@
         android:hint="Téléphone"
         android:inputType="textPassword"
         android:text=""
-        android:background="@drawable/edittext_style"
+        android:background="@drawable/createuser_illustration_edittext"
         app:layout_constraintBottom_toTopOf="@+id/spinnerPromotion"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -89,7 +89,7 @@
         style="@style/Widget.AppCompat.Button"
         android:layout_width="158dp"
         android:layout_height="36dp"
-        android:background="@drawable/button_style"
+        android:background="@drawable/createuser_figure_button"
         android:text="Créer un compte"
         android:textAllCaps="false"
         android:textColor="@color/white"

@@ -11,7 +11,7 @@
         android:id="@+id/SplashScreen"
         android:layout_width="94dp"
         android:layout_height="234dp"
-        android:src="@drawable/splashscreen_logo"
+        android:src="@drawable/splashscreen_illustration_logo_ynov"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"

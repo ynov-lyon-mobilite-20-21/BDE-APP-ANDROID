@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/account_background_illustration_logo_ynov"
+    android:background="@drawable/account_background_logo_ynov"
     tools:context=".ui.screens.connection.signIn.SignInFragment">
 
 
@@ -13,7 +13,7 @@
         android:layout_width="328dp"
         android:layout_height="56dp"
         android:layout_marginBottom="32dp"
-        android:background="@drawable/edittext_style"
+        android:background="@drawable/createuser_illustration_edittext"
         android:ems="10"
         android:hint="Adresse e-mail"
         android:inputType="textPersonName"
@@ -27,7 +27,7 @@
         android:layout_width="328dp"
         android:layout_height="56dp"
         android:layout_marginBottom="32dp"
-        android:background="@drawable/edittext_password_style"
+        android:background="@drawable/createuser_illustration_edittext_password"
         android:ems="10"
         android:hint="Mot de passe"
         android:inputType="textPassword"
@@ -47,7 +47,7 @@
         app:layout_constraintHorizontal_bias="0.88"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextMail2"
-        app:srcCompat="@drawable/connectuser_illustration_show_password" />
+        app:srcCompat="@drawable/userconnect_illustration_show_password" />
 
     <Button
         android:id="@+id/buttonCreateUser2"
@@ -55,7 +55,7 @@
         android:layout_width="158dp"
         android:layout_height="36dp"
         android:layout_marginBottom="100dp"
-        android:background="@drawable/button_style"
+        android:background="@drawable/createuser_figure_button"
         android:text="Créer un compte"
         android:textAllCaps="false"
         android:textColor="@color/white"
@@ -69,7 +69,7 @@
         android:layout_width="158dp"
         android:layout_height="36dp"
         android:layout_marginBottom="32dp"
-        android:background="@drawable/button_style"
+        android:background="@drawable/createuser_figure_button"
         android:text="Me connecter"
         android:textAllCaps="false"
         android:textColor="@color/white"
