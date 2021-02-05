@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:drawable="@drawable/select_dot"
+    <item android:drawable="@drawable/onboarding_button_noclick"
         android:state_selected="true"/>
 
-    <item android:drawable="@drawable/default_dot"/>
+    <item android:drawable="@drawable/onboarding_tabview_default_dot"/>
 
 </selector>

@@ -25,7 +25,7 @@
         android:layout_marginBottom="25dp"
         app:tabIndicatorHeight="0dp"
         app:tabGravity="center"
-        app:tabBackground="@drawable/tab_selector"
+        app:tabBackground="@drawable/onboarding_tabview"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

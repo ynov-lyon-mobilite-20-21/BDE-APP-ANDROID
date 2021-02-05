@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background_app"
+    android:background="@drawable/account_background_illustration_logo_ynov"
     tools:context=".ui.screens.connection.signIn.SignInFragment">
 
 
@@ -47,7 +47,7 @@
         app:layout_constraintHorizontal_bias="0.88"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextMail2"
-        app:srcCompat="@drawable/show" />
+        app:srcCompat="@drawable/connectuser_illustration_show_password" />
 
     <Button
         android:id="@+id/buttonCreateUser2"
