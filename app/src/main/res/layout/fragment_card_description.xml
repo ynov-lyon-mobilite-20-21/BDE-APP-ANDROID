@@ -137,7 +137,7 @@
                 android:layout_centerHorizontal="true"
                 android:textAllCaps="false"
                 android:textColor="@color/white"
-                android:text="@string/button_place"
+                android:text="@string/descriptioncard_button_takeplace"
                 android:fontFamily="@font/roboto_regular"
                 android:textSize="12sp"
                 android:layout_marginTop="40dp"

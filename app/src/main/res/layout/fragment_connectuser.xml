@@ -15,7 +15,7 @@
         android:layout_marginBottom="32dp"
         android:background="@drawable/createuser_illustration_edittext"
         android:ems="10"
-        android:hint="Adresse e-mail"
+        android:hint="@string/account_text_email"
         android:inputType="textPersonName"
         android:text=""
         app:layout_constraintBottom_toTopOf="@+id/editTextPassword2"
@@ -29,7 +29,7 @@
         android:layout_marginBottom="32dp"
         android:background="@drawable/createuser_illustration_edittext_password"
         android:ems="10"
-        android:hint="Mot de passe"
+        android:hint="@string/account_text_password"
         android:inputType="textPassword"
         android:text=""
         app:layout_constraintBottom_toTopOf="@+id/buttonConnect"
@@ -47,7 +47,7 @@
         app:layout_constraintHorizontal_bias="0.88"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextMail2"
-        app:srcCompat="@drawable/userconnect_illustration_show_password" />
+        app:srcCompat="@drawable/userconnect_illustration_show_password"/>
 
     <Button
         android:id="@+id/buttonCreateUser2"
@@ -56,12 +56,12 @@
         android:layout_height="36dp"
         android:layout_marginBottom="100dp"
         android:background="@drawable/createuser_figure_button"
-        android:text="Créer un compte"
+        android:text="@string/account_text_create_account"
         android:textAllCaps="false"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"/>
 
     <Button
         android:id="@+id/buttonConnect"
@@ -70,11 +70,10 @@
         android:layout_height="36dp"
         android:layout_marginBottom="32dp"
         android:background="@drawable/createuser_figure_button"
-        android:text="Me connecter"
+        android:text="@string/account_text_login"
         android:textAllCaps="false"
         android:textColor="@color/white"
         app:layout_constraintBottom_toTopOf="@+id/buttonCreateUser2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
+        app:layout_constraintStart_toStartOf="parent"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

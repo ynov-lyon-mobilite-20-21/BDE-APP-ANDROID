@@ -13,28 +13,28 @@
         android:layout_width="328dp"
         android:layout_height="56dp"
         android:ems="10"
-        android:hint="Adresse e-mail"
+        android:hint="@string/account_text_email"
         android:inputType="textPersonName"
         android:text=""
         android:background="@drawable/createuser_illustration_edittext"
         app:layout_constraintBottom_toTopOf="@+id/editTextPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <EditText
         android:id="@+id/editTextPassword"
         android:layout_width="328dp"
         android:layout_height="56dp"
         android:ems="10"
-        android:hint="Mot de passe"
+        android:hint="@string/account_text_password"
         android:inputType="textPassword"
         android:text=""
         android:background="@drawable/createuser_illustration_edittext_password"
         app:layout_constraintBottom_toTopOf="@+id/editTextPhone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextMail" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextMail"/>
 
     <ImageView
         android:id="@+id/showHideButton"
@@ -47,21 +47,21 @@
         app:layout_constraintHorizontal_bias="0.88"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextMail"
-        app:srcCompat="@drawable/userconnect_illustration_show_password" />
+        app:srcCompat="@drawable/userconnect_illustration_show_password"/>
 
     <EditText
         android:id="@+id/editTextPhone"
         android:layout_width="328dp"
         android:layout_height="56dp"
         android:ems="10"
-        android:hint="Téléphone"
+        android:hint="@string/account_text_phonenumber"
         android:inputType="textPassword"
         android:text=""
         android:background="@drawable/createuser_illustration_edittext"
         app:layout_constraintBottom_toTopOf="@+id/spinnerPromotion"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextPassword" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextPassword"/>
 
     <Spinner
         android:id="@+id/spinnerPromotion"
@@ -72,7 +72,7 @@
         app:layout_constraintBottom_toTopOf="@+id/spinnerFormation"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextPhone" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextPhone"/>
 
     <Spinner
         android:id="@+id/spinnerFormation"
@@ -82,7 +82,7 @@
         app:layout_constraintBottom_toTopOf="@+id/buttonCreateUser"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinnerPromotion" />
+        app:layout_constraintTop_toBottomOf="@+id/spinnerPromotion"/>
 
     <Button
         android:id="@+id/buttonCreateUser"
@@ -90,12 +90,11 @@
         android:layout_width="158dp"
         android:layout_height="36dp"
         android:background="@drawable/createuser_figure_button"
-        android:text="Créer un compte"
+        android:text="@string/account_text_create_account"
         android:textAllCaps="false"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinnerFormation" />
-
+        app:layout_constraintTop_toBottomOf="@+id/spinnerFormation"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
