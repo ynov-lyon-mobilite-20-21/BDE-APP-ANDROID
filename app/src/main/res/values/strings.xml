@@ -1,10 +1,29 @@
 <resources>
     <string name="app_name">app BDE</string>
     //fragment_home
-    <string name="Evenement">EVENEMENTS</string>
-    <string name="title_event">Espit Chupitos</string>
-    <string name="type_event">Soirée Etudiante </string>
+    <string name="homefragment_title">EVENEMENTS</string>
+
+    //onBoarding
+    <string name="onboarding_button_next">SUIVANT</string>
+    <string name="onboarding_button_back">RETOUR</string>
+    <string name="onboarding_title_1">Parcours les évènements à venir de ton BDE </string>
+    <string name="onboarding_text_1">Tout au long de l\'année tu trouveras des évènements variés pour nous retrouver et passer de bons moments.</string>
+    <string name="onboarding_title_2">Achète ta place facilement et ne rate aucun évènement</string>
+    <string name="onboarding_text_2">Grâce à cette app, tu peux stocker tous tes billets au même endroit, les retrouver rapidement et les faire scanner par l\'équipe du BDE le jour J !</string>
+    <string name="onboarding_title_3">Prends contact quand tu veux avec les membres de ton BDE </string>
+    <string name="onboarding_text_3">Des questions ? Des précisions ? Nous sommes à ta disposition pour t\'éclairer et t\'aider au mieux à passer des moments inoubliables avec nous !</string>
 
     //card description
-    <string name="button_place">Prendre ma place</string>
+    <string name="descriptioncard_button_takeplace">Prendre ma place</string>
+
+    //Bottom Navigation
+    <string name="navigationbar_title_events">ÉVÉNEMENTS</string>
+    <string name="navigationbar_title_myaccount">MON COMPTE</string>
+
+    //Login and creation account
+    <string name="account_text_email">Adresse e-mail</string>
+    <string name="account_text_password">Mot de passe</string>
+    <string name="account_text_create_account">Créer un compte</string>
+    <string name="account_text_login">Me connecter</string>
+    <string name="account_text_phonenumber">Téléphone</string>
 </resources>

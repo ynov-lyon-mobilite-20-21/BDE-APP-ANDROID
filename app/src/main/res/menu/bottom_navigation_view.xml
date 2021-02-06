@@ -4,10 +4,10 @@
     <item
         android:id="@+id/bottomNavigationEventButton"
         android:icon="@mipmap/ic_events_foreground"
-        android:title="ÉVÉNEMENTS"/>
+        android:title="@string/navigationbar_title_events"/>
 
     <item
         android:id="@+id/bottomNavigationAccountButton"
         android:icon="@mipmap/ic_account_foreground"
-        android:title="MON COMPTE"/>
+        android:title="@string/navigationbar_title_myaccount"/>
 </menu>

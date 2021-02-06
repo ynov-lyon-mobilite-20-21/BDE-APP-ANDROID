@@ -8,46 +8,66 @@
     tools:context=".ui.screens.onboarding.viewPager.SecondScreen">
 
     <ImageView
-        android:id="@+id/image_onboarding3"
-        android:layout_width="match_parent"
-        android:layout_height="340dp"
-        android:layout_marginTop="70dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:src="@drawable/ic_illustrations_onboarding2"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        android:id="@+id/logo_ynov"
+        android:layout_width="80dp"
+        android:layout_height="52dp"
+        android:src="@drawable/onboarding_illustration_ynov_campus"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="parent"
-        app:layout_constraintEnd_toStartOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <ImageView
+        android:id="@+id/image_onboarding1"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:src="@drawable/onboarding_illustration_2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/logo_ynov"
+        app:layout_constraintBottom_toTopOf="@id/title_onboarding2"/>
 
     <TextView
-        android:id="@+id/title_onboarding3"
+        android:id="@+id/title_onboarding2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="34dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="47dp"
-        android:text="Achète ta place facilement et ne rate aucun évènement"
+        android:layout_marginEnd="54dp"
+        android:layout_marginBottom="12dp"
+        android:text="@string/onboarding_title_2"
         android:textColor="@color/title_onboarding"
         android:textSize="@dimen/size_title_onboarding"
         android:fontFamily="@font/roboto_bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/image_onboarding3" />
+        app:layout_constraintBottom_toTopOf="@id/text_onboarding2"/>
 
     <TextView
-        android:id="@+id/text_onboarding3"
+        android:id="@+id/text_onboarding2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="34dp"
         android:layout_marginTop="15dp"
-        android:layout_marginEnd="42dp"
-        android:text="Grâce à cette app, tu peux stocker tous tes billets au même endroit, les retrouver rapidement et les faire scanner par l'équipe du BDE le jour J !"
+        android:layout_marginEnd="45dp"
+        android:layout_marginBottom="70dp"
+        android:text="@string/onboarding_text_2"
         android:textColor="@color/black"
         android:textSize="@dimen/size_text_onboarding"
         android:fontFamily="@font/roboto_regular"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/title_onboarding3" />
+        app:layout_constraintBottom_toTopOf="@id/button_next"/>
+
+    <TextView
+        android:id="@+id/button_next"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SUIVANT"
+        android:textSize="14sp"
+        android:visibility="invisible"
+        android:layout_marginEnd="25dp"
+        android:layout_marginBottom="45dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

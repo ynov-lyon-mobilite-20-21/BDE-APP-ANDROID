@@ -23,7 +23,7 @@
                 android:layout_height="24dp"
                 android:layout_marginStart="25dp"
                 android:layout_marginTop="38dp"
-                android:background="@drawable/ic_baseline_arrow_back_24" />
+                android:background="@drawable/descriptioncard_button_back_homefragment" />
 
             <ImageView
                 android:id="@+id/imageEvent"
@@ -32,7 +32,7 @@
                 android:background="@color/color_home_fragment"
                 android:contentDescription="TODO"
                 android:scaleType="centerCrop"
-                android:src="@drawable/ic_card_kolok"
+                android:src="@drawable/card_illustration_kolok"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
         </RelativeLayout>
@@ -85,7 +85,7 @@
                     android:layout_width="20dp"
                     android:layout_height="match_parent"
                     android:layout_marginEnd="5dp"
-                    android:src="@drawable/eventclock"
+                    android:src="@drawable/descriptioncard_illustration_clock"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@id/eventHour"
                     app:layout_constraintTop_toTopOf="parent"/>
@@ -137,12 +137,12 @@
                 android:layout_centerHorizontal="true"
                 android:textAllCaps="false"
                 android:textColor="@color/white"
-                android:text="@string/button_place"
+                android:text="@string/descriptioncard_button_takeplace"
                 android:fontFamily="@font/roboto_regular"
                 android:textSize="12sp"
                 android:layout_marginTop="40dp"
                 android:layout_marginBottom="15dp"
-                android:background="@drawable/button_event_description"/>
+                android:background="@drawable/descriptioncard_button_takeplace"/>
         </RelativeLayout>
     </LinearLayout>
 </ScrollView>

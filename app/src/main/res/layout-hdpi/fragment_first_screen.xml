@@ -8,44 +8,65 @@
     tools:context=".ui.screens.onboarding.viewPager.FirstScreen">
 
     <ImageView
-        android:id="@+id/image_onboarding3"
+        android:id="@+id/logo_ynov"
+        android:layout_width="65dp"
+        android:layout_height="40dp"
+        android:src="@drawable/onboarding_illustration_ynov_campus"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <ImageView
+        android:id="@+id/image_onboarding1"
         android:layout_width="match_parent"
-        android:layout_height="212dp"
-        android:layout_marginTop="60dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="0dp"
         android:layout_marginEnd="32dp"
         android:layout_marginStart="32dp"
-        android:src="@drawable/ic_illustrations_onboarding1"
+        android:src="@drawable/onboarding_illustration_1"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/title_onboarding1"
+        app:layout_constraintTop_toBottomOf="@id/logo_ynov"/>
 
     <TextView
-        android:id="@+id/title_onboarding3"
+        android:id="@+id/title_onboarding1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="34dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginBottom="12dp"
         android:layout_marginEnd="54dp"
-        android:text="Parcours les évènements à venir de ton BDE "
+        android:text="@string/onboarding_title_1"
         android:textColor="@color/title_onboarding"
         android:textSize="@dimen/size_title_onboarding"
         android:fontFamily="@font/roboto_bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/image_onboarding3" />
+        app:layout_constraintBottom_toTopOf="@id/text_onboarding1"/>
 
     <TextView
         android:id="@+id/text_onboarding1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="34dp"
-        android:layout_marginTop="15dp"
         android:layout_marginEnd="25dp"
-        android:text="Tout au long de l'année tu trouveras des évènements variés pour nous retrouver et passer de bons moments."
+        android:layout_marginBottom="70dp"
+        android:text="@string/onboarding_text_1"
         android:textColor="@color/black"
         android:textSize="@dimen/size_text_onboarding"
         android:fontFamily="@font/roboto_regular"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/title_onboarding3" />
+        app:layout_constraintBottom_toTopOf="@id/button_next"/>
+
+    <TextView
+        android:id="@+id/button_next"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SUIVANT"
+        android:textSize="14sp"
+        android:visibility="invisible"
+        android:layout_marginEnd="25dp"
+        android:layout_marginBottom="45dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
