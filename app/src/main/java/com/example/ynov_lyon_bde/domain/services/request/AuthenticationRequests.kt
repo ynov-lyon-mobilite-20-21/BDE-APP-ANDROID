@@ -41,11 +41,7 @@ class AuthenticationRequests() : KoinComponent {
         token = JSONObject(connectUserJson).getJSONObject("data").getString("token")
 
         //Save token in shared preference
-        sharedPreferencesService.saveIn(
-            "TOKEN",
-            token!!,
-            context
-        )
+        sharedPreferencesService.saveIn("TOKEN", token!!, context)
         return success
     }
 

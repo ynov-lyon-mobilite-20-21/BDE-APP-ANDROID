@@ -47,10 +47,10 @@ class AuthenticationViewModel : ViewModel() {
     fun showHideBehaviour(editText: EditText, imageView: ImageView){
         if(editText.transformationMethod == PasswordTransformationMethod.getInstance()){
             editText.transformationMethod = HideReturnsTransformationMethod.getInstance()
-            imageView.setImageResource(R.drawable.hide)
+            imageView.setImageResource(R.drawable.userconnect_illustration_noshow_password)
         } else{
             editText.transformationMethod = PasswordTransformationMethod.getInstance()
-            imageView.setImageResource(R.drawable.show)
+            imageView.setImageResource(R.drawable.userconnect_illustration_show_password)
         }
     }
 
