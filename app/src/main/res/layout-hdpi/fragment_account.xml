@@ -58,6 +58,7 @@
                     android:textAlignment="center"
                     android:textColor="@color/white"
                     android:textSize="14sp"
+                    android:fontFamily="@font/tabac_big_sans_semibold_italic_webfont"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/ynov_campus"/>
 
@@ -202,6 +203,7 @@
                     android:shadowRadius="1"
                     android:textAlignment="center"
                     android:textColor="@color/white"
+                    android:fontFamily="@font/tabac_big_sans_semibold_italic_webfont"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 

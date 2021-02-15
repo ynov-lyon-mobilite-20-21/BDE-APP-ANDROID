@@ -58,6 +58,7 @@
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textSize="20sp"
+                android:fontFamily="@font/tabac_big_sans_semibold_italic_webfont"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/ynov_campus"/>
 
@@ -80,9 +81,9 @@
                 android:id="@+id/information_bloc"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginStart="85dp"
+                android:layout_marginStart="42dp"
                 android:layout_marginTop="16dp"
-                android:layout_marginEnd="85dp"
+                android:layout_marginEnd="42dp"
                 android:layout_marginBottom="16dp"
                 android:background="@drawable/account_design"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -205,6 +206,7 @@
                 android:shadowRadius="1"
                 android:textAlignment="center"
                 android:textColor="@color/white"
+                android:fontFamily="@font/tabac_big_sans_semibold_italic_webfont"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
