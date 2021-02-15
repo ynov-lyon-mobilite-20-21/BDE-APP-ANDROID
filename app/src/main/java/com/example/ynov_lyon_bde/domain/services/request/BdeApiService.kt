@@ -1,20 +1,45 @@
 package com.example.ynov_lyon_bde.domain.services.request
 
 import android.util.Log
+import com.example.ynov_lyon_bde.domain.services.SharedPreferencesService
+import com.example.ynov_lyon_bde.domain.utils.Constants
 import com.example.ynov_lyon_bde.domain.utils.Constants.Companion.MEDIA_TYPE_JSON
 import com.example.ynov_lyon_bde.domain.utils.JsonServiceBuilder
 import com.example.ynov_lyon_bde.domain.utils.RetrofitServiceBuilder
+import okhttp3.Headers
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.RequestBody
 import okhttp3.RequestBody.Companion.toRequestBody
 import okhttp3.ResponseBody
 import org.json.JSONObject
 import retrofit2.Response
+import retrofit2.Retrofit
 
 class BdeApiService {
 
     enum class NameRequest {
         REFRESH, ME, USER, LOGIN
+    }
+
+    suspend fun <T> call(nameRequest: NameRequest, body: T?, token: T): Response<ResponseBody> {
+        val retrofit = RetrofitServiceBuilder.buildService(RetrofitApiInterface::class.java)
+        val jsonTut: String = JsonServiceBuilder().dataClassObjectToJsonString(body)
+        val requestBody: RequestBody = jsonTut.toRequestBody(MEDIA_TYPE_JSON.toMediaTypeOrNull())
+
+        return when(nameRequest){
+            NameRequest.USER ->{
+                retrofit.createUser(requestBody)
+            }
+            NameRequest.LOGIN ->{
+                retrofit.loginUser(requestBody)
+            }
+            NameRequest.REFRESH ->{
+                retrofit.refreshToken(requestBody)
+            }
+            NameRequest.ME ->{
+                retrofit.getUser("Bearer $token")
+            }
+        }
     }
 
     suspend fun <T> apiCaller(nameRequest: NameRequest, propertyRequest: T): String? {

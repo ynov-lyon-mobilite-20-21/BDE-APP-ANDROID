@@ -12,6 +12,7 @@ import com.example.ynov_lyon_bde.data.model.Event
 import com.example.ynov_lyon_bde.R
 import com.example.ynov_lyon_bde.data.model.EventType
 import com.example.ynov_lyon_bde.data.model.ImageType
+import com.example.ynov_lyon_bde.domain.services.SharedPreferencesService
 import com.example.ynov_lyon_bde.ui.screens.MainActivity
 import com.example.ynov_lyon_bde.ui.screens.connection.LoginActivity
 import kotlinx.android.synthetic.main.fragment_account.*
@@ -55,3 +56,5 @@ class ProfileFragment : Fragment() {
         }
     }
 }
+
+
