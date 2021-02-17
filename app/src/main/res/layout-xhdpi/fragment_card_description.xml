@@ -1,6 +1,150 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.screens.event.CardDescription">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/eventDescriptionImage"
+            android:layout_width="match_parent"
+            android:layout_height="260dp">
+
+            <Button
+                android:id="@+id/back_home_fragment"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="38dp"
+                android:background="@drawable/descriptioncard_button_back_homefragment" />
+
+            <ImageView
+                android:id="@+id/imageEvent"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:contentDescription="TODO"
+                android:scaleType="centerCrop"
+                android:background="@color/color_home_fragment"
+                android:src="@drawable/card_illustration_kolok"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="40dp">
+
+            <TextView
+                android:id="@+id/eventTitle"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="ESPIT CHUPITOS"
+                android:textAllCaps="true"
+                android:textColor="@color/black"
+                android:textSize="@dimen/size_eventTitle"
+                android:fontFamily="@font/roboto_bold"/>
+
+            <TextView
+                android:id="@+id/eventDescriptionType"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/eventTitle"
+                android:text="SOIREE ETUDIANTE"
+                android:textAllCaps="true"
+                android:textColor="@color/black"
+                android:textSize="@dimen/size_eventDescriptionType"
+                android:fontFamily="@font/roboto_regular" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/eventTime"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/eventDescriptionType"
+                android:layout_marginTop="30dp">
+
+                <TextView
+                    android:id="@+id/dateEvent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="13/11/2020"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/size_dateEvent"
+                    android:fontFamily="@font/roboto_regular"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
+
+                <ImageView
+                    android:id="@+id/eventClockIcon"
+                    android:layout_width="20dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="5dp"
+                    android:src="@drawable/descriptioncard_illustration_clock"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/eventHour"
+                    app:layout_constraintTop_toTopOf="parent"/>
+
+                <TextView
+                    android:id="@+id/eventHour"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="21H - 3H"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/size_dateEvent"
+                    android:fontFamily="@font/roboto_regular"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:id="@+id/eventAddress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/eventTime"
+                android:layout_marginTop="30dp"
+                android:text="22 Rue Joseph Serlin, 69001 Lyon"
+                android:textColor="@color/black"
+                android:textSize="@dimen/size_eventAddress"
+                android:fontFamily="@font/roboto_regular"/>
+
+            <TextView
+                android:id="@+id/eventDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/eventAddress"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="30dp"
+                android:fontFamily="@font/roboto_regular"
+                android:paddingBottom="15dp"
+                android:text="@string/test"
+                android:textColor="@color/black"
+                android:textSize="@dimen/size_eventDescription"/>
+
+            <Button
+                android:id="@+id/button_take_place"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/eventDescription"
+                android:layout_gravity="center"
+                android:layout_centerHorizontal="true"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:text="@string/descriptioncard_button_takeplace"
+                android:textSize="@dimen/size_button"
+                android:fontFamily="@font/roboto_regular"
+                android:background="@drawable/descriptioncard_button_takeplace"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="15dp"/>
+        </RelativeLayout>
+    </LinearLayout>
+</ScrollView>
+

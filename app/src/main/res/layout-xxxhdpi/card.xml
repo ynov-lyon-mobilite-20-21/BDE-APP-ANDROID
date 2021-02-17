@@ -54,8 +54,8 @@
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:padding="23dp"
-                    android:src="@drawable/card_illustration_beer"
+                    android:padding="26dp"
+                    android:src="@drawable/card_illustration_cocktail"
                     app:tint="@color/yellow"/>
             </RelativeLayout>
 
@@ -86,7 +86,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/eventTitle"
                     android:fontFamily="@font/roboto_regular"
-                    android:text=""
+                    android:text="Soirée Etudiante"
                     android:textColor="@color/gray"
                     android:textSize="17sp"
                     app:layout_constraintTop_toBottomOf="@id/eventTitle" />

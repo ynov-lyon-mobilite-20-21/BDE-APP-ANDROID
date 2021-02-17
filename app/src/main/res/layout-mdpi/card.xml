@@ -48,13 +48,13 @@
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:padding="20dp"
+                    android:padding="19dp"
                     android:src="@drawable/card_figure_circle" />
 
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:padding="25dp"
+                    android:padding="26dp"
                     android:src="@drawable/card_illustration_beer"
                     app:tint="@color/yellow" />
             </RelativeLayout>
@@ -75,7 +75,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text=""
+                    android:text="Esprit Chupitos"
                     android:fontFamily="@font/roboto_medium"
                     android:textColor="@color/black"
                     android:textSize="21sp" />
@@ -87,9 +87,9 @@
                     android:layout_below="@+id/eventTitle"
                     android:layout_marginTop="1dp"
                     android:fontFamily="@font/roboto_regular"
-                    android:text=""
+                    android:text="Soirée Etudiante"
                     android:textColor="@color/gray"
-                    android:textSize="17sp"
+                    android:textSize="15sp"
                     app:layout_constraintTop_toBottomOf="@id/eventTitle" />
 
             </RelativeLayout>
