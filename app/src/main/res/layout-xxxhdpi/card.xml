@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cardView"
+    android:layout_width="match_parent"
+    android:layout_height="273dp"
+    app:cardElevation="10dp"
+    app:cardCornerRadius="8dp"
+    android:layout_marginTop="15dp"
+    android:layout_marginBottom="10dp"
+    android:layout_marginLeft="8dp"
+    android:layout_marginRight="8dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/eventImage"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@color/color_home_fragment"
+            android:scaleType="centerCrop"
+            android:src="@drawable/card_illustration_kolok"
+            app:layout_constraintBottom_toTopOf="@id/eventInfo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <RelativeLayout
+            android:id="@+id/eventInfo"
+            android:layout_width="match_parent"
+            android:layout_height="79dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/eventImage">
+
+            <RelativeLayout
+                android:id="@+id/eventIconRelativeLayout"
+                android:layout_width="79dp"
+                android:layout_height="match_parent"
+                app:layout_constraintEnd_toStartOf="@id/eventCardText"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="18dp"
+                    android:src="@drawable/card_figure_circle"/>
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="23dp"
+                    android:src="@drawable/card_illustration_beer"
+                    app:tint="@color/yellow"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/eventCardText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="0dp"
+                android:layout_toEndOf="@+id/eventIconRelativeLayout"
+                app:layout_constraintStart_toEndOf="@id/eventIconRelativeLayout">
+
+                <TextView
+                    android:id="@+id/eventTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="Espit Chupitos"
+                    android:fontFamily="@font/roboto_medium"
+                    android:textColor="@color/black"
+                    android:textSize="23sp" />
+
+                <TextView
+                    android:id="@+id/eventType"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/eventTitle"
+                    android:fontFamily="@font/roboto_regular"
+                    android:text=""
+                    android:textColor="@color/gray"
+                    android:textSize="17sp"
+                    app:layout_constraintTop_toBottomOf="@id/eventTitle" />
+
+            </RelativeLayout>
+        </RelativeLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>
+

@@ -23,7 +23,14 @@ class EventsFragment : Fragment() {
     }
 
     private val  data = listOf(
-        Event("","Espit","22:10", EventType.STUDENTPARTY, ImageType.PARTY,"5 rue de chez michel","Voilà une description de l'évènement", 0),
+        Event("","Espit Chupitos","22:10", EventType.STUDENTPARTY, ImageType.PARTY,"22 Rue Joseph Serlin, 69001 Lyon","Vous l'attendiez tous, la soirée la plus chaude de l'année est de retour à Espit Chupitos !\n" +
+            "\n" +
+            "Rendez-vous ce mercredi 13 novembre de 21h à 3h !\n" +
+            "Pour l'occasion, tous les shots seront à 2€.\n" +
+            "\n" +
+            "L'entrée se fera uniquement sous prévente, les tarifs sont les suivants : 2€ pour les adhérents au BDE et 5€ pour les non adhérents.\n" +
+            "\n" +
+            " On compte sur vous pour une soirée de folie !", 0),
         Event("","Espit Night","22:10", EventType.STUDENTPARTY, ImageType.PARTY,"5 rue de chez michel","Voilà une description de l'évènement", 0),
         Event("","Espit de fou","22:10", EventType.STUDENTPARTY, ImageType.PARTY,"5 rue de chez michel","Voilà une description de l'évènement", 0),
         Event("","Espit yes","22:10", EventType.STUDENTPARTY, ImageType.PARTY,"5 rue de chez michel","Voilà une description de l'évènement", 0)
