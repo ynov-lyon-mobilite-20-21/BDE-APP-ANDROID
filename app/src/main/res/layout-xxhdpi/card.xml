@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/cardView"
     android:layout_width="match_parent"
-    android:layout_height="250dp"
+    android:layout_height="260dp"
     app:cardElevation="10dp"
     app:cardCornerRadius="8dp"
     android:layout_marginTop="15dp"
@@ -75,7 +75,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="Espit Chupitos"
+                    android:text=""
                     android:fontFamily="@font/roboto_medium"
                     android:textColor="@color/black"
                     android:textSize="@dimen/size_card_eventTitle"/>
@@ -86,11 +86,10 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/eventTitle"
                     android:fontFamily="@font/roboto_regular"
-                    android:text="Soirée Etudiante"
+                    android:text=""
                     android:textColor="@color/gray"
                     android:textSize="@dimen/size_card_eventType"
                     app:layout_constraintTop_toBottomOf="@id/eventTitle" />
-
             </RelativeLayout>
         </RelativeLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>

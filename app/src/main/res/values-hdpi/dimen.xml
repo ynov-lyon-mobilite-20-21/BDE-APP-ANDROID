@@ -3,4 +3,19 @@
     <dimen name="size_title_onboarding">22sp</dimen>
     <dimen name="size_text_onboarding">12sp</dimen>
     <dimen name="button_onboarding">12sp</dimen>
+
+    //eventFragment
+    <dimen name="size_title_eventFragment">27sp</dimen>
+
+    //card
+    <dimen name="size_card_eventTitle">18sp</dimen>
+    <dimen name="size_card_eventType">12sp</dimen>
+
+    //cardDescription
+    <dimen name="size_eventTitle">35sp</dimen>
+    <dimen name="size_eventDescriptionType">10sp</dimen>
+    <dimen name="size_dateEvent">12sp</dimen>
+    <dimen name="size_eventAddress">12sp</dimen>
+    <dimen name="size_eventDescription">11sp</dimen>
+    <dimen name="size_button">11sp</dimen>
 </resources>

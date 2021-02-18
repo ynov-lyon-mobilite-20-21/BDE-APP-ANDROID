@@ -75,10 +75,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="Espit Chupitos"
-                    android:fontFamily="@font/roboto_medium"
+                    android:text=""
                     android:textColor="@color/black"
-                    android:textSize="23sp" />
+                    android:textSize="@dimen/size_card_eventTitle"
+                    android:fontFamily="@font/roboto_medium"/>
 
                 <TextView
                     android:id="@+id/eventType"
@@ -86,11 +86,10 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/eventTitle"
                     android:fontFamily="@font/roboto_regular"
-                    android:text="Soirée Etudiante"
+                    android:text=""
                     android:textColor="@color/gray"
-                    android:textSize="17sp"
+                    android:textSize="@dimen/size_card_eventType"
                     app:layout_constraintTop_toBottomOf="@id/eventTitle" />
-
             </RelativeLayout>
         </RelativeLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/cardView"
     android:layout_width="match_parent"
-    android:layout_height="273dp"
+    android:layout_height="310dp"
     app:cardElevation="10dp"
     app:cardCornerRadius="5dp"
     android:layout_marginTop="15dp"
@@ -55,7 +55,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:padding="26dp"
-                    android:src="@drawable/card_illustration_beer"
+                    android:src="@drawable/card_illustration_cocktail"
                     app:tint="@color/yellow" />
             </RelativeLayout>
 
@@ -75,10 +75,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="Esprit Chupitos"
-                    android:fontFamily="@font/roboto_medium"
+                    android:text=""
                     android:textColor="@color/black"
-                    android:textSize="21sp" />
+                    android:textSize="@dimen/size_card_eventTitle"
+                    android:fontFamily="@font/roboto_medium"/>
 
                 <TextView
                     android:id="@+id/eventType"
@@ -87,11 +87,10 @@
                     android:layout_below="@+id/eventTitle"
                     android:layout_marginTop="1dp"
                     android:fontFamily="@font/roboto_regular"
-                    android:text="Soirée Etudiante"
+                    android:text=""
                     android:textColor="@color/gray"
-                    android:textSize="15sp"
+                    android:textSize="@dimen/size_card_eventType"
                     app:layout_constraintTop_toBottomOf="@id/eventTitle" />
-
             </RelativeLayout>
         </RelativeLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>

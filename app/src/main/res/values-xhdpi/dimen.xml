@@ -7,6 +7,10 @@
     //eventFragment
     <dimen name="size_title_eventFragment">30sp</dimen>
 
+    //card
+    <dimen name="size_card_eventTitle">19sp</dimen>
+    <dimen name="size_card_eventType">15sp</dimen>
+
     //cardDescription
     <dimen name="size_eventTitle">40sp</dimen>
     <dimen name="size_eventDescriptionType">12sp</dimen>
