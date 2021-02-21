@@ -6,17 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".ui.screens.profil.ProfileFragment">
 
-    <!-- Background -->
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scaleType="centerCrop"
-        android:src="@drawable/onboarding_illustration_1"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <ScrollView
         android:id="@+id/scroll_page_profil"
         android:layout_width="match_parent"
@@ -50,23 +39,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
-                <!-- Campus image -->
-                <!-- layout_constraintHorizontal_bias="1.0" -> The right side is shorter -->
-                <!-- layout_constraintVertical_bias="0" -> The top side is shorter -->
-                <ImageView
-                    android:id="@+id/ynov_campus"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:scaleType="fitXY"
-                    android:scaleX="0.8"
-                    android:scaleY="0.8"
-                    android:src="@drawable/onboarding_illustration_1"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="1.0"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0" />
+
 
                 <!-- User informations title -->
                 <TextView
@@ -88,8 +61,7 @@
                     app:layout_constraintBottom_toTopOf="@id/information_bloc"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/ynov_campus" />
+                    app:layout_constraintStart_toStartOf="parent"/>
 
                 <!-- User informations bloc -->
                 <LinearLayout
@@ -289,6 +261,24 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/user_tickets" />
+
+            <Button
+                android:id="@+id/button_scanner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="scanner"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+            <Button
+                android:id="@+id/btn_qr"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Qr code"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

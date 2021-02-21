@@ -18,7 +18,14 @@
         android:id="@+id/accountFragment"
         android:name="com.example.ynov_lyon_bde.ui.screens.profil.ProfileFragment"
         android:label="fragment_account"
-        tools:layout="@layout/fragment_account"/>
+        tools:layout="@layout/fragment_account">
+        <action
+            android:id="@+id/action_accountFragment_to_scanner"
+            app:destination="@id/scanner" />
+        <action
+            android:id="@+id/action_accountFragment_to_qrCode"
+            app:destination="@id/qrCode" />
+    </fragment>
 
     <fragment
         android:id="@+id/cardDescription"
@@ -32,5 +39,15 @@
 
     <action android:id="@+id/action_global_eventsFragment" app:destination="@id/eventsFragment"/>
     <action android:id="@+id/action_global_accountFragment" app:destination="@id/accountFragment"/>
+    <fragment
+        android:id="@+id/scanner"
+        android:name="com.Scanner"
+        android:label="fragment_scanner"
+        tools:layout="@layout/fragment_scanner" />
+    <fragment
+        android:id="@+id/qrCode"
+        android:name="com.example.ynov_lyon_bde.QrCode"
+        android:label="fragment_qr_code"
+        tools:layout="@layout/fragment_qr_code" />
 
 </navigation>

@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.ynov_lyon_bde.data.model.Event
@@ -16,6 +17,7 @@ import com.example.ynov_lyon_bde.ui.screens.MainActivity
 import com.example.ynov_lyon_bde.ui.screens.connection.LoginActivity
 import kotlinx.android.synthetic.main.fragment_account.*
 import kotlinx.android.synthetic.main.fragment_account.view.*
+import kotlinx.android.synthetic.main.fragment_scanner.view.*
 
 class ProfileFragment : Fragment() {
 
@@ -38,6 +40,15 @@ class ProfileFragment : Fragment() {
         view.action_delete.setOnClickListener {
             val intent = Intent(activity, LoginActivity::class.java)
             startActivity(intent)
+
+        }
+
+        view.button_scanner.setOnClickListener {
+            view.button_scanner.findNavController().navigate(R.id.action_accountFragment_to_scanner)
+        }
+
+        view.btn_qr.setOnClickListener {
+            view.btn_qr.findNavController().navigate(R.id.action_accountFragment_to_qrCode)
         }
         return view
     }
