@@ -193,7 +193,7 @@
                     android:background="@drawable/background_title_profil"
                     android:paddingStart="15dp"
                     android:paddingTop="5dp"
-                    android:paddingEnd="70dp"
+                    android:paddingEnd="60dp"
                     android:paddingBottom="5dp"
                     android:text="MES BILLETS"
                     android:textSize="16sp"
