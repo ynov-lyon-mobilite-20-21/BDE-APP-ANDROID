@@ -26,4 +26,14 @@
     <string name="account_text_create_account">Créer un compte</string>
     <string name="account_text_login">Me connecter</string>
     <string name="account_text_phonenumber">Téléphone</string>
+
+
+    <string name="test">Vous l\'attendiez tous, la soirée la plus chaude de l\'année est de retour à Espit Chupitos !<br></br>
+<br></br>
+Rendez-vous ce mercredi 13 novembre de 21h à 3h !<br></br>
+Pour l\'occasion, tous les shots seront à 2€.<br></br>
+<br></br>
+L\'entrée se fera uniquement sous prévente, les tarifs sont les suivants : 2€ pour les adhérents au BDE et 5€ pour les non adhérents.<br></br>
+<br></br>
+ On compte sur vous pour une soirée de folie !</string>
 </resources>
