@@ -10,12 +10,12 @@ interface RetrofitApiInterface {
     @POST("api/users")
     suspend fun createUser(@Body requestBody: RequestBody): Response<ResponseBody>
 
-    @POST("api/auth")
+    @POST("api/auth/login")
     suspend fun loginUser(@Body requestBody: RequestBody): Response<ResponseBody>
 
     @GET("api/me")
     suspend fun getUser(@Header("Authorization") token: String?): Response<ResponseBody>
 
-    @POST("api/auth/refresh")
+    @POST("api/auth/refreshToken")
     suspend fun refreshToken(@Body requestBody: RequestBody): Response<ResponseBody>
 }

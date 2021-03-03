@@ -3,16 +3,15 @@ package com.example.ynov_lyon_bde.ui.screens
 
 import android.os.Bundle
 import android.util.Log
+import android.util.Patterns
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.fragment.app.Fragment
 import com.example.ynov_lyon_bde.R
-import com.example.ynov_lyon_bde.data.model.DTO.LoginDTO
-import com.example.ynov_lyon_bde.data.model.DTO.UserDTO
 import com.example.ynov_lyon_bde.domain.utils.SpinnerService
-import com.example.ynov_lyon_bde.domain.viewmodel.AuthenticationViewModel
+import com.example.ynov_lyon_bde.domain.viewmodel.signUp.SignUpViewModel
 import kotlinx.android.synthetic.main.fragment_createuser.*
 import kotlinx.android.synthetic.main.fragment_createuser.view.*
 import kotlinx.coroutines.Dispatchers
@@ -33,7 +32,7 @@ class SignUpFragment: Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_createuser, container, false)
 
-        val authenticationViewModel = AuthenticationViewModel()
+        val signUpViewModel = SignUpViewModel()
         val spinnerAdapter = SpinnerService()
 
         val promotion = arrayOf("Classe", "Bachelor 1",
@@ -52,53 +51,33 @@ class SignUpFragment: Fragment() {
 
         //Show / Hide button
         view.showHideButton.setOnClickListener {
-            authenticationViewModel.showHideBehaviour(editTextPassword, showHideButton)
+            signUpViewModel.showHideBehaviour(editTextPassword, showHideButton)
         }
 
         view.buttonCreateUser.setOnClickListener {
 
             // Take informations User
-            val email = authenticationViewModel.checkMail(editTextMail.text.toString())
+            val contentEditTextMail = editTextMail.text.toString();
+            val mail = if(Patterns.EMAIL_ADDRESS.matcher(contentEditTextMail).matches()) {
+                contentEditTextMail
+            } else null
             var names: MutableList<String>? = null
-            if (email != null) {
-                names = authenticationViewModel.checkNames(editTextMail.text.toString()) // firstname + lastname
+            if (mail != null) {
+                names = signUpViewModel.checkNames(editTextMail.text.toString()) // firstname + lastname
             }
 
             val password = editTextPassword.text.toString()
             val promotion = spinnerPromotion.selectedItem.toString()
             val formation = spinnerFormation.selectedItem.toString()
 
-            if (names != null && email != null && password != "" && authenticationViewModel.spinnerInformed(mutableListOf(promotion, formation))) {
+            if (names != null && mail != null && password != "" && signUpViewModel.spinnerInformed(mutableListOf(promotion, formation))) {
                 var message: String? = null
-
-                //create DTO models
-                val userDto = UserDTO(
-                    firstName = names[0],
-                    lastName = names[1],
-                    mail = email,
-                    password = password,
-                    promotion = promotion,
-                    formation = formation
-                )
-                val loginDto = LoginDTO(
-                    mail = email,
-                    password = password
-                )
 
                 //send request to api to create user
                 GlobalScope.launch(Dispatchers.Main) {
                     val deferred = async(Dispatchers.IO) {
                         //call requests
-                        try {
-                            context?.let { it1 ->
-                                authenticationViewModel.callApiSignUp(userDto, loginDto,
-                                    it1
-                                )
-                            }
-                        } catch (err: Exception) {
-                            message = err.message
-                            Log.e("message", message)
-                        }
+                        message = context?.let { it1 -> signUpViewModel.create(names,mail,password,promotion,formation,it1) }
                     }
                     deferred.await()
                     if (message.isNullOrEmpty()) {

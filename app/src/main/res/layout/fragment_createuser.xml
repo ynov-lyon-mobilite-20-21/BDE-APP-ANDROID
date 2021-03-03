@@ -16,7 +16,7 @@
         android:layout_marginRight="40dp"
         android:ems="10"
         android:hint="@string/account_text_email"
-        android:inputType="textPersonName"
+        android:inputType="textEmailAddress"
         android:text=""
         android:background="@drawable/createuser_illustration_edittext"
         app:layout_constraintBottom_toTopOf="@+id/editTextPassword"

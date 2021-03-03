@@ -14,16 +14,14 @@ import java.lang.Exception
 
 class RedirectService {
 
-
 fun redirect(context: Context): Intent {
-
     val authenticationViewModel = AuthenticationRequests()
     var intent = Intent().setClass(context, SignInFragment::class.java)
     val sharedPreferencesService = SharedPreferencesService()
 
     var errorGetUser: String? = null
     var errorRefresh: String? = null
-    if (verifStorageUser()) {
+    if (verifStorageUser(context)) {
         intent = Intent().setClass(context, ProfileFragment::class.java)
     } else {
         if (sharedPreferencesService.retrived("TOKEN", context).isNullOrEmpty()) {
@@ -71,9 +69,12 @@ fun redirect(context: Context): Intent {
     return intent
 }
 
-    fun  verifStorageUser() : Boolean {
-        val userExist : Boolean = false
-        //TODO Verif user exist
+    fun  verifStorageUser(context: Context) : Boolean {
+        val sharedPreferencesService = SharedPreferencesService()
+        var userExist = false
+        if (sharedPreferencesService.retrivedUser(context) != null){
+            userExist = true
+        }
         return userExist
     }
 

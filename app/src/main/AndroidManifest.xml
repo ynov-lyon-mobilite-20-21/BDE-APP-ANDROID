@@ -24,7 +24,9 @@
         <activity android:name=".ui.screens.onboarding.OnBoardingActivity">
         </activity>
 
-        <activity android:name=".ui.screens.connection.LoginActivity">
+        <activity android:name=".ui.screens.connection.LoginActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+
         </activity>
 
     </application>

@@ -10,7 +10,7 @@ class ErrorManager {
     }
 
     //Throw an error if json response of request is null or code request no enter 200 and 299
-    fun handleException(apiResponse: String?, errorMessage: ErrorType): Boolean {
+    fun handleException(apiResponse: String?, errorType: ErrorType): Boolean {
         var success: Boolean = true
         if (!apiResponse.isNullOrEmpty()) {
             val t = apiResponse.split(";")
@@ -23,7 +23,7 @@ class ErrorManager {
             }
 
             if (code !in 200..299) {
-                when (errorMessage) {
+                when (errorType) {
                     ErrorType.CODE ->
                         throw Exception(jsonObject.getString("code"))
                     ErrorType.ERROR ->
