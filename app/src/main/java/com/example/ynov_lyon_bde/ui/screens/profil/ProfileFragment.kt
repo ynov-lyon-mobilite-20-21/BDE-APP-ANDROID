@@ -2,22 +2,19 @@ package com.example.ynov_lyon_bde.ui.screens.profil
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.ynov_lyon_bde.data.model.Event
 import com.example.ynov_lyon_bde.R
+import com.example.ynov_lyon_bde.data.model.Event
 import com.example.ynov_lyon_bde.data.model.EventType
 import com.example.ynov_lyon_bde.data.model.ImageType
-import com.example.ynov_lyon_bde.ui.screens.MainActivity
 import com.example.ynov_lyon_bde.ui.screens.connection.LoginActivity
 import kotlinx.android.synthetic.main.fragment_account.*
 import kotlinx.android.synthetic.main.fragment_account.view.*
-import kotlinx.android.synthetic.main.fragment_scanner.view.*
 
 class ProfileFragment : Fragment() {
 
@@ -44,7 +41,7 @@ class ProfileFragment : Fragment() {
         }
 
         view.button_scanner.setOnClickListener {
-            view.button_scanner.findNavController().navigate(R.id.action_accountFragment_to_scanner)
+            view.button_scanner.findNavController().navigate(R.id.action_accountFragment_to_scanner2)
         }
 
         view.btn_qr.setOnClickListener {
