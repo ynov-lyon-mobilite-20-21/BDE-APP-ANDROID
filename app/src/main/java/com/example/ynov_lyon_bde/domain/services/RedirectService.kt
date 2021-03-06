@@ -14,62 +14,36 @@ import java.lang.Exception
 
 class RedirectService {
 
-fun redirect(context: Context): Intent {
-    val authenticationViewModel = AuthenticationRequests()
-    var intent = Intent().setClass(context, SignInFragment::class.java)
-    val sharedPreferencesService = SharedPreferencesService()
+    fun redirect(context: Context): Intent {
+        val authenticationRequests = AuthenticationRequests()
+        var intent = Intent().setClass(context, SignInFragment::class.java)
+        val sharedPreferencesService = SharedPreferencesService()
 
-    var errorGetUser: String? = null
-    var errorRefresh: String? = null
-    if (verifStorageUser(context)) {
-        intent = Intent().setClass(context, ProfileFragment::class.java)
-    } else {
-        if (sharedPreferencesService.retrived("TOKEN", context).isNullOrEmpty()) {
-           intent = Intent().setClass(context, SignInFragment::class.java)
+        if (verifStorageUser(context)) {
+            intent = Intent().setClass(context, ProfileFragment::class.java)
         } else {
-            GlobalScope.launch(Dispatchers.Main) {
-                val deferred = async(Dispatchers.IO) {
-                    //call requests
-                    try {
-                        authenticationViewModel.callInformationUserRequest(context)
-                    } catch (err: Exception) {
-                        errorGetUser = err.message
-                        Log.e("error", errorGetUser)
-                    }
-                    if (errorGetUser == "INVALID_TOKEN") {
+            if (sharedPreferencesService.retrived("TOKEN", context).isNullOrEmpty()) {
+               intent = Intent().setClass(context, SignInFragment::class.java)
+            } else {
+                GlobalScope.launch(Dispatchers.Main) {
+                    val deferred = async(Dispatchers.IO) {
+                        //call requests
                         try {
-                            authenticationViewModel.callRefreshRequest(context)
+                            authenticationRequests.meAndRefreshToken(context)
                         } catch (err: Exception) {
-                            errorRefresh = err.message
-                            Log.e("error", errorRefresh)
-                        }
-                        if (errorRefresh.isNullOrEmpty()) {
-                            try {
-                                errorGetUser = null
-                                authenticationViewModel.callInformationUserRequest(context)
-                            } catch (err: Exception) {
-                                errorGetUser = err.message
-                                Log.e("error", errorGetUser)
-                                intent = Intent().setClass(context, SignInFragment::class.java)
-                            }
+                            intent = Intent().setClass(context, SignInFragment::class.java)
+                            Log.e("error", err.message)
                         }
                     }
+                    deferred.await()
                 }
-                deferred.await()
-            }
-            if (errorGetUser == null) {
-                intent = Intent().setClass(context, ProfileFragment::class.java)
-            }
-            if (errorRefresh != null) {
-                intent = Intent().setClass(context, SignInFragment::class.java)
             }
         }
+        Log.e("intent", intent.toString())
+        return intent
     }
-    Log.e("intent", intent.toString())
-    return intent
-}
 
-    fun  verifStorageUser(context: Context) : Boolean {
+    private fun verifStorageUser(context: Context) : Boolean {
         val sharedPreferencesService = SharedPreferencesService()
         var userExist = false
         if (sharedPreferencesService.retrivedUser(context) != null){
@@ -77,6 +51,4 @@ fun redirect(context: Context): Intent {
         }
         return userExist
     }
-
-
 }

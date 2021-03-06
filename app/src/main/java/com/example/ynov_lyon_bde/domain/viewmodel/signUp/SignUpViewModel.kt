@@ -14,17 +14,6 @@ import com.example.ynov_lyon_bde.domain.services.request.AuthenticationRequests
 import java.lang.Exception
 
 class SignUpViewModel : ViewModel() {
-    fun checkNames(email: String): MutableList<String>? {
-        val names: MutableList<String> = mutableListOf()
-        val emailSplit: String = email.split('@')[0]
-        return if(emailSplit.contains(".")){
-            names.add(emailSplit.split('.')[0])
-            names.add(emailSplit.split('.')[1])
-            names
-        }else{
-            null
-        }
-    }
 
     fun spinnerInformed(txtSpinner : MutableList<String>): Boolean {
         var spinnerInformed = true
@@ -46,11 +35,11 @@ class SignUpViewModel : ViewModel() {
         }
     }
 
-    suspend fun create(names:MutableList<String>, mail: String, password: String, promotion: String, formation: String, context : Context):String? {
+    suspend fun create(lastName: String, firstName:String, mail: String, password: String, promotion: String, formation: String, context : Context):String? {
         var message : String? = null
         val userDto = UserDTO(
-            firstName = names[0],
-            lastName = names[1],
+            firstName = firstName,
+            lastName = lastName,
             mail = mail,
             password = password,
             promotion = promotion,
@@ -64,7 +53,7 @@ class SignUpViewModel : ViewModel() {
         try{
             if (authenticationRequests.callRegisterRequest(userDto)) {
                 if (authenticationRequests.callLoginRequest(loginDto, context)) {
-                    authenticationRequests.callInformationUserRequest(context)
+                    authenticationRequests.meAndRefreshToken(context)
                 }
             }
         }catch(err : Exception){

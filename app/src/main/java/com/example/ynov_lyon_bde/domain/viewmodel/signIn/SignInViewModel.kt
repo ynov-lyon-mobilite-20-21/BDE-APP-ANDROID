@@ -26,7 +26,7 @@ class SignInViewModel : ViewModel() {
         val authenticationRequests = AuthenticationRequests()
         try{
             if (authenticationRequests.callLoginRequest(loginDto, context)) {
-                authenticationRequests.callInformationUserRequest(context)
+                authenticationRequests.meAndRefreshToken(context)
             }
         }
         catch (err: Exception) {
@@ -46,7 +46,7 @@ class SignInViewModel : ViewModel() {
             "USER_DOESNT_EXIST" -> messageForUser = "Email ou mot de passe incorrect"
             "BAD_CREDENTIALS" -> messageForUser = "Formulaire mal renseigné"
         }
-        return messageForUser
+        return messageForUser ?: message
     }
 
     fun showHideBehaviour(editText: EditText, imageView: ImageView){

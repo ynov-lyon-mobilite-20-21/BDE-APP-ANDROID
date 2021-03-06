@@ -36,4 +36,6 @@ Pour l\'occasion, tous les shots seront à 2€.<br></br>
 L\'entrée se fera uniquement sous prévente, les tarifs sont les suivants : 2€ pour les adhérents au BDE et 5€ pour les non adhérents.<br></br>
 <br></br>
  On compte sur vous pour une soirée de folie !</string>
+    <string name="account_text_first_name">Prénom</string>
+    <string name="account_text_last_name">Nom</string>
 </resources>
