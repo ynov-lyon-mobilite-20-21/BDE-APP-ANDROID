@@ -1,7 +1,6 @@
-package com.example.ynov_lyon_bde.ui.screens
+package com.example.ynov_lyon_bde.ui.screens.connection.signUp
 
 import android.os.Bundle
-import android.util.Log
 import android.util.Patterns
 import android.view.LayoutInflater
 import android.view.View
@@ -9,7 +8,6 @@ import android.view.ViewGroup
 import android.widget.*
 import androidx.fragment.app.Fragment
 import com.example.ynov_lyon_bde.R
-import com.example.ynov_lyon_bde.domain.utils.SpinnerService
 import com.example.ynov_lyon_bde.domain.viewmodel.signUp.SignUpViewModel
 import kotlinx.android.synthetic.main.fragment_createuser.*
 import kotlinx.android.synthetic.main.fragment_createuser.view.*
@@ -27,44 +25,39 @@ class SignUpFragment: Fragment() {
         val view = inflater.inflate(R.layout.fragment_createuser, container, false)
 
         val signUpViewModel = SignUpViewModel()
-        val spinnerAdapter = SpinnerService()
 
-        val promotion = arrayOf("Classe", "Bachelor 1",
+        val promotion = arrayOf("Bachelor 1",
             "Bachelor 2", "Bachelor 3",
             "Mastère 1", "Mastère 2")
 
-        val formation = arrayOf("Filière",
-            "Animation 3D",
+        val formation = arrayOf("Animation 3D",
             "Audiovisuel",
             "Création & Design",
             "Marketing Communication",
             "Informatique")
 
-        view.spinnerFormation.adapter = spinnerAdapter.initAdapter(requireContext(), formation, view.spinnerFormation)
-        view.spinnerPromotion.adapter = spinnerAdapter.initAdapter(requireContext(), promotion, view.spinnerPromotion)
+        val adapterFormation = ArrayAdapter(requireContext(), android.R.layout.simple_list_item_1, formation)
+        val adapterPromotion = ArrayAdapter(requireContext(), android.R.layout.simple_list_item_1, promotion)
 
-        //Show / Hide button
-        view.showHideButton.setOnClickListener {
-            signUpViewModel.showHideBehaviour(editTextPassword, showHideButton)
-        }
+        view.spinnerFormation.setAdapter(adapterFormation)
+        view.spinnerPromotion.setAdapter(adapterPromotion)
 
-        view.buttonCreateUser.setOnClickListener {
-            // Take informations User
-            val contentEditTextMail = editTextMail.text.toString();
+        view.buttonCreateUserSignUp.setOnClickListener {
+            // get text input
+            val contentEditTextMail = editTextMailCreate.text.toString()
             val mail = if(Patterns.EMAIL_ADDRESS.matcher(contentEditTextMail).matches()) {
                 contentEditTextMail
             } else null
 
-            val firstName = editTextFirstName.text.toString()
-            val lastName = editTextLastName.text.toString()
-            val password = editTextPassword.text.toString()
-            val promotion = spinnerPromotion.selectedItem.toString()
-            val formation = spinnerFormation.selectedItem.toString()
+            val firstName = editTextLastName.text.toString()
+            val lastName = editTextFirstName.text.toString()
+            val password = editTextPasswordCreate.text.toString()
+            val promotion = spinnerPromotion.text.toString()
+            val formation = spinnerFormation.text.toString()
 
-            if (firstName != null && lastName != null && mail != null && password != "" && signUpViewModel.spinnerInformed(mutableListOf(promotion, formation))) {
+            if (firstName != null && lastName != null && mail != null && password != "" && promotion != null && formation != null) {
                 var message: String? = null
 
-                //send request to api to create user
                 GlobalScope.launch(Dispatchers.Main) {
                     val deferred = async(Dispatchers.IO) {
                         //call requests

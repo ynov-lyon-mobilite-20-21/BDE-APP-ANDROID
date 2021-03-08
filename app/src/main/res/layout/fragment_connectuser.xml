@@ -4,42 +4,61 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/account_background_logo_ynov"
+    android:background="@drawable/ic_sign_in_background"
     tools:context=".ui.screens.connection.signIn.SignInFragment">
 
-    <EditText
-        android:id="@+id/editTextMail2"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tiEditTextMailConnect"
         android:layout_width="match_parent"
         android:layout_height="56dp"
         android:layout_marginLeft="40dp"
         android:layout_marginRight="40dp"
-        android:background="@drawable/createuser_illustration_edittext_password"
+        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
         android:ems="10"
         android:hint="@string/account_text_email"
         android:inputType="textEmailAddress"
         android:text=""
+        android:textColorHint="#23B2A4"
+        app:boxStrokeColor="#23B2A4"
+        app:hintTextColor="#23B2A4"
+        app:boxBackgroundMode="filled"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.42" />
+        app:layout_constraintVertical_bias="0.42">
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/editTextMailConnect"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    </com.google.android.material.textfield.TextInputLayout>
 
-    <EditText
-        android:id="@+id/editTextPassword2"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tiEditTextPasswordConnect"
         android:layout_width="match_parent"
         android:layout_height="56dp"
         android:layout_marginLeft="40dp"
         android:layout_marginRight="40dp"
-        android:background="@drawable/createuser_illustration_edittext_password"
+        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
         android:ems="10"
         android:hint="@string/account_text_password"
-        android:inputType="textPassword"
         android:text=""
+        android:textColorHint="#23B2A4"
+        app:boxStrokeColor="#23B2A4"
+        app:hintTextColor="#23B2A4"
+        app:endIconMode="password_toggle"
+        app:boxBackgroundMode="filled"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextMail2"
-        app:layout_constraintVertical_bias="0.149" />
+        app:layout_constraintTop_toBottomOf="@+id/tiEditTextMailConnect"
+        app:layout_constraintVertical_bias="0.149" >
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editTextPasswordConnect"
+            android:inputType="textPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:id="@+id/buttonConnect"
@@ -47,6 +66,7 @@
         android:layout_width="158dp"
         android:layout_height="36dp"
         android:background="@drawable/createuser_figure_button"
+        app:backgroundTint="#23B2A4"
         android:text="@string/account_text_login"
         android:textAllCaps="false"
         android:textColor="@color/white"
@@ -54,25 +74,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextPassword2"
+        app:layout_constraintTop_toBottomOf="@+id/tiEditTextPasswordConnect"
         app:layout_constraintVertical_bias="0.461" />
 
-    <ImageView
-        android:id="@+id/showHideButton2"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:ems="10"
-        android:inputType="textPassword"
-        app:layout_constraintBottom_toBottomOf="@+id/editTextPassword2"
-        app:layout_constraintEnd_toEndOf="@+id/editTextPassword2"
-        app:layout_constraintHorizontal_bias="0.9"
-        app:layout_constraintStart_toStartOf="@+id/editTextPassword2"
-        app:layout_constraintTop_toTopOf="@+id/editTextPassword2"
-        app:layout_constraintVertical_bias="0.538"
-        app:srcCompat="@drawable/userconnect_illustration_show_password"/>
-
     <Button
-        android:id="@+id/buttonCreateUser2"
+        android:id="@+id/buttonCreateUserSignIn"
         style="@style/Widget.AppCompat.Button"
         android:layout_width="158dp"
         android:layout_height="36dp"
@@ -80,13 +86,12 @@
         android:text="@string/account_text_create_account"
         android:textAllCaps="false"
         android:textColor="@color/white"
+        app:backgroundTint="#393a4e"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buttonConnect"
         app:layout_constraintVertical_bias="0.308" />
-
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

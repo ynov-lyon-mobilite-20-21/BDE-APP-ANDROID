@@ -1,7 +1,6 @@
 package com.example.ynov_lyon_bde.ui.screens.connection.signIn
 
 import android.os.Bundle
-import android.util.Log
 import android.util.Patterns
 import android.view.LayoutInflater
 import android.view.View
@@ -29,22 +28,17 @@ class SignInFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_connectuser, container, false)
         val signInViewModel = SignInViewModel()
 
-        //Show / Hide button
-        view.showHideButton2.setOnClickListener {
-            signInViewModel.showHideBehaviour(editTextPassword2, showHideButton2)
-        }
-
-        view.buttonCreateUser2.setOnClickListener {
+        view.buttonCreateUserSignIn.setOnClickListener {
             findNavController().navigate(R.id.action_signInFragment_to_signUpFragment)
         }
 
         view.buttonConnect.setOnClickListener {
-            // Take informations User
-            val contentEditTextMail = editTextMail2.text.toString();
+            // get text input
+            val contentEditTextMail = editTextMailConnect.text.toString();
             val email = if(Patterns.EMAIL_ADDRESS.matcher(contentEditTextMail).matches()) {
                 contentEditTextMail
             } else null
-            val password = editTextPassword2.text.toString()
+            val password = editTextPasswordConnect.text.toString()
             var message: String? = null
             if (email != null) {
                 GlobalScope.launch(Dispatchers.Main) {

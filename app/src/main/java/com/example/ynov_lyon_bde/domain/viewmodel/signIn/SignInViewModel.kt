@@ -1,19 +1,10 @@
 package com.example.ynov_lyon_bde.domain.viewmodel.signIn
 
-
 import android.content.Context
-import android.text.method.HideReturnsTransformationMethod
-import android.text.method.PasswordTransformationMethod
 import android.util.Log
-import android.widget.EditText
-import android.widget.ImageView
 import androidx.lifecycle.ViewModel
-import com.example.ynov_lyon_bde.R
 import com.example.ynov_lyon_bde.data.model.DTO.LoginDTO
 import com.example.ynov_lyon_bde.domain.services.request.AuthenticationRequests
-import com.example.ynov_lyon_bde.domain.services.request.BdeApiService
-import com.example.ynov_lyon_bde.domain.utils.JsonServiceBuilder
-import org.json.JSONObject
 
 class SignInViewModel : ViewModel() {
 
@@ -47,15 +38,5 @@ class SignInViewModel : ViewModel() {
             "BAD_CREDENTIALS" -> messageForUser = "Formulaire mal renseigné"
         }
         return messageForUser ?: message
-    }
-
-    fun showHideBehaviour(editText: EditText, imageView: ImageView){
-        if(editText.transformationMethod == PasswordTransformationMethod.getInstance()){
-            editText.transformationMethod = HideReturnsTransformationMethod.getInstance()
-            imageView.setImageResource(R.drawable.userconnect_illustration_noshow_password)
-        } else{
-            editText.transformationMethod = PasswordTransformationMethod.getInstance()
-            imageView.setImageResource(R.drawable.userconnect_illustration_show_password)
-        }
     }
 }

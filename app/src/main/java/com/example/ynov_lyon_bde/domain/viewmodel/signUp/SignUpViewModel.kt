@@ -1,39 +1,14 @@
 package com.example.ynov_lyon_bde.domain.viewmodel.signUp
 
 import android.content.Context
-import android.text.method.HideReturnsTransformationMethod
-import android.text.method.PasswordTransformationMethod
 import android.util.Log
-import android.widget.EditText
-import android.widget.ImageView
 import androidx.lifecycle.ViewModel
-import com.example.ynov_lyon_bde.R
 import com.example.ynov_lyon_bde.data.model.DTO.LoginDTO
 import com.example.ynov_lyon_bde.data.model.DTO.UserDTO
 import com.example.ynov_lyon_bde.domain.services.request.AuthenticationRequests
 import java.lang.Exception
 
 class SignUpViewModel : ViewModel() {
-
-    fun spinnerInformed(txtSpinner : MutableList<String>): Boolean {
-        var spinnerInformed = true
-        for (item in txtSpinner){
-            if(item == "" || item == "Classe" || item == "Filière"){
-                spinnerInformed = false
-            }
-        }
-        return spinnerInformed
-    }
-
-    fun showHideBehaviour(editText: EditText, imageView: ImageView){
-        if(editText.transformationMethod == PasswordTransformationMethod.getInstance()){
-            editText.transformationMethod = HideReturnsTransformationMethod.getInstance()
-            imageView.setImageResource(R.drawable.userconnect_illustration_noshow_password)
-        } else{
-            editText.transformationMethod = PasswordTransformationMethod.getInstance()
-            imageView.setImageResource(R.drawable.userconnect_illustration_show_password)
-        }
-    }
 
     suspend fun create(lastName: String, firstName:String, mail: String, password: String, promotion: String, formation: String, context : Context):String? {
         var message : String? = null
@@ -82,6 +57,5 @@ class SignUpViewModel : ViewModel() {
         }
         return messageForUser
     }
-
 
 }
