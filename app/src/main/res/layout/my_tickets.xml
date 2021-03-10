@@ -1,25 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/ticket"
-    android:layout_width="122dp"
-    android:layout_height="170dp"
-    android:orientation="vertical"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
     android:layout_margin="10dp"
+    android:orientation="vertical"
     app:cardCornerRadius="15dp">
 
     <!-- Content -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/content_ticket"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="match_parent">
 
         <!-- Background ticket -->
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/background_ticket"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_marginBottom="35dp"
             android:background="#17182F"
@@ -31,28 +30,30 @@
             <!-- Theme icon -->
             <ImageView
                 android:id="@+id/theme_image"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:adjustViewBounds="true"
+                android:scaleType="centerInside"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@mipmap/soiree_foreground"
-                android:scaleType="fitXY"
-                android:scaleX="1.2"
-                android:scaleY="1.1"/>
+                app:srcCompat="@drawable/ic_testkoloktest" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <!-- Informations ticket -->
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/information_ticket"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_width="0dp"
+            android:layout_height="35dp"
             android:paddingStart="15dp"
+            android:paddingEnd="15dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/background_ticket">
+            app:layout_constraintEnd_toEndOf="@+id/background_ticket"
+            app:layout_constraintHorizontal_bias="0.058"
+            app:layout_constraintStart_toStartOf="@+id/background_ticket"
+            app:layout_constraintTop_toBottomOf="@+id/background_ticket"
+            app:layout_constraintVertical_bias="0.0">
 
             <!-- Date event -->
             <TextView
@@ -65,7 +66,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.2"/>
+                app:layout_constraintVertical_bias="0.2" />
 
             <!-- Title event -->
             <TextView
@@ -76,11 +77,11 @@
                 android:textColor="#17182F"
                 android:textSize="10dp"
                 android:textStyle="bold"
-                app:layout_constraintVertical_bias="0.0"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/date_event"
-                app:layout_constraintBottom_toBottomOf="parent"/>
+                app:layout_constraintVertical_bias="0.0" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -179,8 +179,9 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/user_tickets"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
                 android:layout_marginTop="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/user_informations">
@@ -191,19 +192,19 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/background_title_profil"
+                    android:fontFamily="@font/tabac_big_sans_semibold_italic_webfont"
                     android:paddingStart="15dp"
                     android:paddingTop="5dp"
                     android:paddingEnd="70dp"
                     android:paddingBottom="5dp"
-                    android:text="MES BILLETS"
-                    android:textSize="16sp"
                     android:shadowColor="@color/shadow_home_fragment"
                     android:shadowDx="4"
                     android:shadowDy="4"
                     android:shadowRadius="1"
+                    android:text="MES BILLETS"
                     android:textAlignment="center"
                     android:textColor="@color/white"
-                    android:fontFamily="@font/tabac_big_sans_semibold_italic_webfont"
+                    android:textSize="16sp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -211,7 +212,7 @@
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recyclerView_tickets"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="0dp"
                     android:layout_marginTop="10dp"
                     android:orientation="horizontal"
                     app:layout_constraintBottom_toBottomOf="parent"
