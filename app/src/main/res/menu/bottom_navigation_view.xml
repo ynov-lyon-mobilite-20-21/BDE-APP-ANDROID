@@ -3,11 +3,11 @@
     <!-- Items Navigation Menu -->
     <item
         android:id="@+id/bottomNavigationEventButton"
-        android:icon="@mipmap/ic_events_foreground"
+        android:icon="@drawable/ticket_icon"
         android:title="ÉVÉNEMENTS"/>
 
     <item
         android:id="@+id/bottomNavigationAccountButton"
-        android:icon="@mipmap/ic_account_foreground"
+        android:icon="@drawable/profil_icon"
         android:title="MON COMPTE"/>
 </menu>
