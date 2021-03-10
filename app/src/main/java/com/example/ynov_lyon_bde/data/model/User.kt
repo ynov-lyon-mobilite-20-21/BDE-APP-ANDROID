@@ -12,4 +12,3 @@ data class User (
     val formation: String,
     val activationKey:String
     )
-

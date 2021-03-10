@@ -4,97 +4,164 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/account_background_logo_ynov"
-    tools:context=".ui.screens.SignUpFragment">
+    android:background="@drawable/ic_sign_in_background"
+    tools:context=".ui.screens.connection.signUp.SignUpFragment">
 
-
-    <EditText
-        android:id="@+id/editTextMail"
-        android:layout_width="328dp"
+    <!-- EMAIL -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tiEditTextMailCreate"
+        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
+        android:layout_width="match_parent"
         android:layout_height="56dp"
-        android:ems="10"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
         android:hint="@string/account_text_email"
-        android:inputType="textPersonName"
-        android:text=""
-        android:background="@drawable/createuser_illustration_edittext"
-        app:layout_constraintBottom_toTopOf="@+id/editTextPassword"
+        android:textColorHint="#23B2A4"
+        app:boxStrokeColor="#23B2A4"
+        app:hintTextColor="#23B2A4"
+        android:inputType="textEmailAddress"
+        app:boxBackgroundMode="filled"
+        app:layout_constraintBottom_toTopOf="@+id/tiEditTextLastName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editTextMailCreate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </com.google.android.material.textfield.TextInputLayout>
 
-    <EditText
-        android:id="@+id/editTextPassword"
-        android:layout_width="328dp"
+    <!-- NOM -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tiEditTextLastName"
+        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
+        android:layout_width="match_parent"
         android:layout_height="56dp"
-        android:ems="10"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:textColorHint="#23B2A4"
+        app:boxStrokeColor="#23B2A4"
+        app:hintTextColor="#23B2A4"
+        android:hint="@string/account_text_last_name"
+        app:boxBackgroundMode="filled"
+        app:layout_constraintBottom_toTopOf="@+id/tiEditTextFirstName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tiEditTextMailCreate">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editTextLastName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <!-- PRENOM -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tiEditTextFirstName"
+        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:textColorHint="#23B2A4"
+        app:boxStrokeColor="#23B2A4"
+        app:hintTextColor="#23B2A4"
+        android:hint="@string/account_text_first_name"
+        app:boxBackgroundMode="filled"
+        app:layout_constraintBottom_toTopOf="@+id/tiEditTextPasswordCreate"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tiEditTextLastName">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editTextFirstName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- MOT DE PASSE -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tiEditTextPasswordCreate"
+        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:textColorHint="#23B2A4"
+        app:boxStrokeColor="#23B2A4"
+        app:hintTextColor="#23B2A4"
         android:hint="@string/account_text_password"
-        android:inputType="textPassword"
-        android:text=""
-        android:background="@drawable/createuser_illustration_edittext_password"
-        app:layout_constraintBottom_toTopOf="@+id/editTextPhone"
+        app:boxBackgroundMode="filled"
+        app:endIconMode="password_toggle"
+        app:layout_constraintBottom_toTopOf="@+id/tiSpinnerPromotion"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextMail"/>
+        app:layout_constraintTop_toBottomOf="@+id/tiEditTextFirstName">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editTextPasswordCreate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword" />
+    </com.google.android.material.textfield.TextInputLayout>
 
-    <ImageView
-        android:id="@+id/showHideButton"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:ems="10"
-        android:inputType="textPassword"
-        app:layout_constraintBottom_toTopOf="@+id/editTextPhone"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.88"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextMail"
-        app:srcCompat="@drawable/userconnect_illustration_show_password"/>
-
-    <EditText
-        android:id="@+id/editTextPhone"
-        android:layout_width="328dp"
+    <!-- SPINNER CLASSE-->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tiSpinnerPromotion"
+        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+        android:layout_width="match_parent"
         android:layout_height="56dp"
-        android:ems="10"
-        android:hint="@string/account_text_phonenumber"
-        android:inputType="textPassword"
-        android:text=""
-        android:background="@drawable/createuser_illustration_edittext"
-        app:layout_constraintBottom_toTopOf="@+id/spinnerPromotion"
+        android:hint="@string/account_spinner_promotion"
+        app:boxBackgroundMode="filled"
+        android:textColorHint="#23B2A4"
+        app:boxStrokeColor="#23B2A4"
+        app:hintTextColor="#23B2A4"
+        app:layout_constraintBottom_toTopOf="@+id/tiSpinnerFormation"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextPassword"/>
+        app:layout_constraintTop_toBottomOf="@+id/tiEditTextPasswordCreate">
+        <AutoCompleteTextView
+            android:id="@+id/spinnerPromotion"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginEnd="40dp" />
+    </com.google.android.material.textfield.TextInputLayout>
 
-    <Spinner
-        android:id="@+id/spinnerPromotion"
-        style="@style/Widget.AppCompat.Spinner"
-        android:layout_width="328dp"
+    <!-- SPINNER FILIERE-->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tiSpinnerFormation"
+        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+        android:layout_width="match_parent"
         android:layout_height="56dp"
-        android:background="@drawable/createuser_illustration_spinner_style"
-        app:layout_constraintBottom_toTopOf="@+id/spinnerFormation"
+        android:hint="@string/account_spinner_formation"
+        app:boxBackgroundMode="filled"
+        app:boxStrokeColor="#23B2A4"
+        app:hintTextColor="#23B2A4"
+        android:textColorHint="#23B2A4"
+        app:layout_constraintBottom_toTopOf="@+id/buttonCreateUserSignUp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextPhone"/>
-
-    <Spinner
-        android:id="@+id/spinnerFormation"
-        android:layout_width="328dp"
-        android:layout_height="56dp"
-        android:background="@drawable/createuser_illustration_spinner_style"
-        app:layout_constraintBottom_toTopOf="@+id/buttonCreateUser"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinnerPromotion"/>
+        app:layout_constraintTop_toBottomOf="@+id/tiSpinnerPromotion">
+        <AutoCompleteTextView
+            android:id="@+id/spinnerFormation"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginEnd="40dp" />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <Button
-        android:id="@+id/buttonCreateUser"
+        android:id="@+id/buttonCreateUserSignUp"
         style="@style/Widget.AppCompat.Button"
         android:layout_width="158dp"
         android:layout_height="36dp"
         android:background="@drawable/createuser_figure_button"
+        app:backgroundTint="#393a4e"
         android:text="@string/account_text_create_account"
         android:textAllCaps="false"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinnerFormation"/>
+        app:layout_constraintTop_toBottomOf="@+id/tiSpinnerFormation"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

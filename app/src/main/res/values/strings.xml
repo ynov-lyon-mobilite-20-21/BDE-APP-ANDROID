@@ -25,8 +25,6 @@
     <string name="account_text_password">Mot de passe</string>
     <string name="account_text_create_account">Créer un compte</string>
     <string name="account_text_login">Me connecter</string>
-    <string name="account_text_phonenumber">Téléphone</string>
-
 
     <string name="test">Vous l\'attendiez tous, la soirée la plus chaude de l\'année est de retour à Espit Chupitos !<br></br>
 <br></br>
@@ -36,4 +34,8 @@ Pour l\'occasion, tous les shots seront à 2€.<br></br>
 L\'entrée se fera uniquement sous prévente, les tarifs sont les suivants : 2€ pour les adhérents au BDE et 5€ pour les non adhérents.<br></br>
 <br></br>
  On compte sur vous pour une soirée de folie !</string>
+    <string name="account_text_first_name">Prénom</string>
+    <string name="account_text_last_name">Nom</string>
+    <string name="account_spinner_promotion">Classe</string>
+    <string name="account_spinner_formation">Filière</string>
 </resources>
