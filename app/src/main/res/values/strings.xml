@@ -7,4 +7,8 @@
 
     //card description
     <string name="button_place">Prendre ma place</string>
+
+    //fragment_account
+    <string name="my_informations">MES INFORMATIONS</string>
+    <string name="my_tickets">MES BILLETS</string>
 </resources>

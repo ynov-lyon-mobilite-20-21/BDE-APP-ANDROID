@@ -44,19 +44,19 @@
                     android:id="@+id/user_informations_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/background_title_profil"
+                    android:background="@drawable/square"
+                    android:text="@string/my_informations"
+                    android:shadowColor="@color/shadow_home_fragment"
+                    android:shadowDx="4"
+                    android:shadowDy="4"
+                    android:shadowRadius="1"
                     android:paddingStart="15dp"
                     android:paddingTop="5dp"
-                    android:paddingEnd="15dp"
+                    android:paddingEnd="20dp"
                     android:paddingBottom="5dp"
-                    android:text="MES INFORMATIONS"
-                    android:shadowColor="@color/shadow_home_fragment"
-                    android:shadowDx="3"
-                    android:shadowDy="3"
-                    android:shadowRadius="1"
                     android:textAlignment="center"
                     android:textColor="@color/white"
-                    android:textSize="16sp"
+                    android:textSize="24sp"
                     android:fontFamily="@font/tabac_big_sans_semibold_italic_webfont"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/ynov_campus"/>
@@ -67,7 +67,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/icon_options"
-                    android:layout_marginStart="24dp"
+                    android:layout_marginStart="32dp"
                     app:layout_constraintBottom_toBottomOf="@id/user_informations_title"
                     app:layout_constraintStart_toEndOf="@id/user_informations_title"
                     app:layout_constraintTop_toTopOf="@+id/user_informations_title"/>
@@ -156,17 +156,20 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent">
 
-                        <!-- Design icon (ampoule) -->
+                        <!-- Idea Ynov icon -->
                         <ImageView
                             android:id="@+id/ampoule"
                             android:layout_width="match_parent"
-                            android:layout_height="80dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="32dp"
+                            android:scaleType="fitXY"
+                            android:scaleX="1.2"
+                            android:scaleY="1.2"
+                            android:src="@drawable/icon_ynov_crea_idea"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintVertical_bias="1.05"
-                            android:src="@drawable/ampoule_profile_icon" />
+                            app:layout_constraintTop_toTopOf="parent" />
                     </androidx.constraintlayout.widget.ConstraintLayout>
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -188,20 +191,20 @@
                     android:id="@+id/user_tickets_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/background_title_profil"
+                    android:background="@drawable/square"
                     android:fontFamily="@font/tabac_big_sans_semibold_italic_webfont"
                     android:paddingStart="15dp"
                     android:paddingTop="5dp"
-                    android:paddingEnd="60dp"
+                    android:paddingEnd="90dp"
                     android:paddingBottom="5dp"
                     android:shadowColor="@color/shadow_home_fragment"
-                    android:shadowDx="3"
-                    android:shadowDy="3"
+                    android:shadowDx="4"
+                    android:shadowDy="4"
                     android:shadowRadius="1"
-                    android:text="MES BILLETS"
+                    android:text="@string/my_tickets"
                     android:textAlignment="center"
                     android:textColor="@color/white"
-                    android:textSize="16sp"
+                    android:textSize="24sp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
